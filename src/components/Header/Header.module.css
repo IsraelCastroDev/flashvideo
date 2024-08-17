@@ -1,0 +1,14 @@
+.nav__menu {
+  translate: -100%;
+  transition: translate 0.4s ease-in-out;
+  position: absolute;
+  top: 3.7em;
+  left: 0;
+  right: 30%;
+  bottom: 0;
+  padding: 1.25rem 1rem;
+}
+
+input[type="checkbox"]:checked ~ .nav__menu {
+  translate: 0;
+}
