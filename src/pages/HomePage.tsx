@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPopularMovies } from "../api/movies";
+import { getPopularMovies } from "../api/moviesAPI";
 import Carousel from "../components/ui/Carousel";
 import Loader from "../components/ui/Loader/Loader";
 
