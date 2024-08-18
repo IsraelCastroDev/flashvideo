@@ -5,7 +5,9 @@ function LayoutMovie() {
   return (
     <>
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }
