@@ -1,7 +1,13 @@
 import { useQueries } from "@tanstack/react-query";
-import { getCreditsByMovie, getMovieById } from "../api/movies";
+import {
+  getCreditsByMovie,
+  getMovieById,
+  getMovieRecommendations,
+} from "../api/movies";
 import { useParams } from "react-router-dom";
 import Carousel from "../components/ui/Carousel";
+import Loader from "../components/ui/Loader/Loader";
+import { toast } from "react-toastify";
 
 function MoviePage() {
   const { id } = useParams<{ id?: string }>();
@@ -31,24 +37,43 @@ function MoviePage() {
         },
         enabled: movieId !== undefined,
       },
+      {
+        queryKey: ["recommendations", movieId],
+        queryFn: () => {
+          if (movieId === undefined) {
+            return Promise.resolve(null); // O retorna una promesa rechazada si prefieres
+          }
+          return getMovieRecommendations(movieId);
+        },
+        enabled: movieId !== undefined,
+      },
     ],
   });
 
-  const [movieResult, creditsResult] = results;
+  const [movieResult, creditsResult, recommendedMovies] = results;
 
   const {
     isLoading: isLoadingMovie,
     isError: isErrorMovie,
     data: movie,
   } = movieResult;
+
   const {
     isLoading: isLoadingCredits,
     isError: isErrorCredits,
     data: credits,
   } = creditsResult;
 
-  if (isLoadingMovie || isLoadingCredits) return <p>Cargando...</p>;
-  if (isErrorMovie || isErrorCredits) return <p>Error</p>;
+  const {
+    isLoading: isLoadingRecommendations,
+    isError: isErrorRecommendations,
+    data: recommendations,
+  } = recommendedMovies;
+
+  if (isLoadingMovie || isLoadingCredits || isLoadingRecommendations)
+    return <Loader />;
+  if (isErrorMovie || isErrorCredits || isErrorRecommendations)
+    return toast.error("No se pudo cargar la información de la película");
 
   if (!movie) return <p>No se encontró la película</p>;
 
@@ -100,6 +125,15 @@ function MoviePage() {
         <h3 className="text-lg font-bold">Reparto</h3>
         <div className="mt-2">
           {credits?.cast && <Carousel data={credits?.cast} />}
+        </div>
+      </section>
+
+      <section className="px-4 py-2 mt-4">
+        <h3 className="text-lg font-bold">Recomendaciones</h3>
+        <div className="mt-2">
+          {recommendations?.results && (
+            <Carousel data={recommendations.results} />
+          )}
         </div>
       </section>
     </>
