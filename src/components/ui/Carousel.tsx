@@ -1,13 +1,17 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Movie } from "../../types";
+import { Cast, Movie } from "../../types";
 import { Link } from "react-router-dom";
 import "swiper/css";
 
 interface Props {
-  movies: Movie[];
+  data: Movie[] | Cast[];
 }
 
-function Carousel({ movies }: Props) {
+function isMovie(data: Movie | Cast): data is Movie {
+  return (data as Movie).title !== undefined;
+}
+
+function Carousel({ data }: Props) {
   return (
     <Swiper
       spaceBetween={30}
@@ -15,15 +19,23 @@ function Carousel({ movies }: Props) {
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {movies.map((movie) => (
-        <SwiperSlide key={movie.id} tag="li">
-          <Link to={`/peliculas/${movie.id}`}>
+      {data.map((item) => (
+        <SwiperSlide
+          key={item.id}
+          tag="li"
+          className={`${isMovie(item) ? "" : "bg-white h-52"}`}
+        >
+          <Link to={`/peliculas/${item.id}`}>
             <img
-              src={`${import.meta.env.VITE_IMAGE_URL}w200${movie.poster_path}`}
-              alt={`Poster de ${movie.title}`}
+              src={`${import.meta.env.VITE_IMAGE_URL}w200${
+                isMovie(item) ? item.poster_path : item.profile_path
+              }`}
+              alt={`Poster de ${isMovie(item) ? item.title : item.name}`}
               className="rounded-xl"
             />
-            <h2 className="text-sm font-bold">{movie.title}</h2>
+            <h2 className="text-sm font-bold">{`${
+              isMovie(item) ? item.title : item.original_name
+            }`}</h2>
           </Link>
         </SwiperSlide>
       ))}
