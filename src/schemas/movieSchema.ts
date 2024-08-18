@@ -31,7 +31,24 @@ export const MovieAPIResponse = z.object({
 
 // cast
 
-export const CastSchema = z.object({
+export const PersonSchema = z.object({
+  adult: z.boolean(),
+  also_known_as: z.array(z.string()).default([]),
+  biography: z.string(),
+  birthday: z.string(),
+  deathday: z.string().nullable().optional(),
+  gender: z.number(),
+  homepage: z.string().nullable().optional(),
+  id: z.number(),
+  imdb_id: z.string(),
+  known_for_department: z.string(),
+  name: z.string(),
+  place_of_birth: z.string(),
+  popularity: z.number(),
+  profile_path: z.string().nullable().optional(),
+});
+
+export const CastMemberSchema = z.object({
   adult: z.boolean(),
   gender: z.number(),
   id: z.number(),
@@ -48,7 +65,7 @@ export const CastSchema = z.object({
 
 export const CreditsAPIResponse = z.object({
   id: z.number(),
-  cast: z.array(CastSchema),
+  cast: z.array(CastMemberSchema),
   crew: z.array(
     z.object({
       adult: z.boolean(),
