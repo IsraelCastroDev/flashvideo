@@ -6,6 +6,9 @@ import PeoplePage from "./pages/PeoplePage";
 import SeriesPage from "./pages/SeriesPage";
 import MoviesPage from "./pages/MoviesPage";
 import LayoutMovie from "./layouts/LayoutMovie";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import PersonPage from "./pages/PersonPage";
 
 function App() {
   return (
@@ -20,8 +23,10 @@ function App() {
 
         <Route element={<LayoutMovie />}>
           <Route path="/peliculas/:id" element={<MoviePage />} />
+          <Route path="/persona/:id" element={<PersonPage />} />
         </Route>
       </Routes>
+      <ToastContainer />
     </>
   );
 }
