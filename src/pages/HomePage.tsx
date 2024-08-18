@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPopularMovies } from "../api/movies";
 import Carousel from "../components/ui/Carousel";
+import Loader from "../components/ui/Loader/Loader";
 
 function HomePage() {
   const { data, isLoading } = useQuery({
@@ -8,7 +9,7 @@ function HomePage() {
     queryKey: ["popular"],
   });
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
 
   const popularMovies = data?.results ?? [];
   const hasMovies = popularMovies.length > 0;
@@ -19,11 +20,7 @@ function HomePage() {
         <h2 className="text-2xl font-bold">Películas populares</h2>
 
         <ul className="mt-5">
-          {hasMovies ? (
-            <Carousel movies={popularMovies} />
-          ) : (
-            <p>No hay pelis</p>
-          )}
+          {hasMovies ? <Carousel data={popularMovies} /> : <p>No hay pelis</p>}
         </ul>
       </section>
     </>
