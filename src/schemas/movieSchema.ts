@@ -10,6 +10,7 @@ export const MovieSchema = z.object({
   poster_path: z.string(),
   release_date: z.string(),
   title: z.string(),
+  vote_average: z.number(),
 });
 
 export const MovieAPIResponse = z.object({
