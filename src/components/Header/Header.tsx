@@ -28,7 +28,7 @@ function Header() {
         </nav>
 
         <Link to={"/"}>
-          <h1 className="text-2xl font-black">Más Pelis</h1>
+          <h1 className="text-2xl font-black">Flash Video</h1>
         </Link>
 
         <button>
