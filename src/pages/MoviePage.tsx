@@ -8,7 +8,6 @@ import { useRecommendations } from "../hooks/useRecommendations";
 
 function MoviePage() {
   const { id } = useParams<{ id?: string }>();
-  // Asegúrate de que `movieId` sea un número
   const movieId = id ? Number(id) : 0;
 
   const {
