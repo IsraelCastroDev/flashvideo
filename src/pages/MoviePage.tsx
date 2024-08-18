@@ -1,26 +1,54 @@
-import { useQuery } from "@tanstack/react-query";
-import { getMovieById } from "../api/movies";
+import { useQueries } from "@tanstack/react-query";
+import { getCreditsByMovie, getMovieById } from "../api/movies";
 import { useParams } from "react-router-dom";
+import Carousel from "../components/ui/Carousel";
 
 function MoviePage() {
-  const { id } = useParams<{ id?: string }>(); // `id` puede ser `undefined`
+  const { id } = useParams<{ id?: string }>();
+  // Asegúrate de que `movieId` sea un número
+  const movieId = id ? Number(id) : undefined;
 
-  // Verifica si `id` es `undefined` antes de usarlo
-  const movieId = id ? Number(id) : null;
-
-  const {
-    data: movie,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["movie", movieId],
-    queryFn: () =>
-      movieId ? getMovieById(movieId) : Promise.reject("ID no válido"),
-    enabled: movieId !== null,
+  // Usa el hook `useQueries` para manejar múltiples consultas
+  const results = useQueries({
+    queries: [
+      {
+        queryKey: ["movie", movieId],
+        queryFn: () => {
+          if (movieId === undefined) {
+            return Promise.resolve(null); // O retorna una promesa rechazada si prefieres
+          }
+          return getMovieById(movieId);
+        },
+        enabled: movieId !== undefined,
+      },
+      {
+        queryKey: ["credits", movieId],
+        queryFn: () => {
+          if (movieId === undefined) {
+            return Promise.resolve(null); // O retorna una promesa rechazada si prefieres
+          }
+          return getCreditsByMovie(movieId);
+        },
+        enabled: movieId !== undefined,
+      },
+    ],
   });
 
-  if (isLoading) return <p>Cargando...</p>;
-  if (isError) return <p>Error</p>;
+  const [movieResult, creditsResult] = results;
+
+  const {
+    isLoading: isLoadingMovie,
+    isError: isErrorMovie,
+    data: movie,
+  } = movieResult;
+  const {
+    isLoading: isLoadingCredits,
+    isError: isErrorCredits,
+    data: credits,
+  } = creditsResult;
+
+  if (isLoadingMovie || isLoadingCredits) return <p>Cargando...</p>;
+  if (isErrorMovie || isErrorCredits) return <p>Error</p>;
 
   if (!movie) return <p>No se encontró la película</p>;
 
@@ -44,10 +72,34 @@ function MoviePage() {
           />
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 px-4">
           <h1 className="text-center text-xl font-bold">
             {movie.title} <span className="font-semibold">({year})</span>
           </h1>
+
+          <div className="mt-2">
+            <h3 className="text-lg font-bold">Vista general</h3>
+
+            <div>
+              <p className="text-pretty font-semibold mt-2">{movie.overview}</p>
+            </div>
+
+            <ol className="grid grid-cols-2 gap-3 mt-4">
+              {credits?.crew.slice(0, 4).map((c) => (
+                <li key={c.credit_id}>
+                  <h3 className="font-black">{c.original_name}</h3>
+                  <p>{c.known_for_department}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-2 mt-4 bg-gray-100">
+        <h3 className="text-lg font-bold">Reparto</h3>
+        <div className="mt-2">
+          {credits?.cast && <Carousel data={credits?.cast} />}
         </div>
       </section>
     </>
