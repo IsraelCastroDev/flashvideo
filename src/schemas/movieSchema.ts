@@ -68,7 +68,7 @@ export const CreditsAPIResponse = z.object({
 
 // peliculas recomendadas
 export const RecommendedMovieSchema = z.object({
-  backdrop_path: z.string(),
+  backdrop_path: z.string().nullable().optional(),
   id: z.number(),
   title: z.string(),
   original_title: z.string(),
