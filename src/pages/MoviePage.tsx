@@ -1,74 +1,31 @@
-import { useQueries } from "@tanstack/react-query";
-import {
-  getCreditsByMovie,
-  getMovieById,
-  getMovieRecommendations,
-} from "../api/movies";
 import { useParams } from "react-router-dom";
 import Carousel from "../components/ui/Carousel";
 import Loader from "../components/ui/Loader/Loader";
 import { toast } from "react-toastify";
+import { useMovie } from "../hooks/useMovies";
+import { useCredits } from "../hooks/useCredits";
+import { useRecommendations } from "../hooks/useRecommendations";
 
 function MoviePage() {
   const { id } = useParams<{ id?: string }>();
   // Asegúrate de que `movieId` sea un número
-  const movieId = id ? Number(id) : undefined;
-
-  // Usa el hook `useQueries` para manejar múltiples consultas
-  const results = useQueries({
-    queries: [
-      {
-        queryKey: ["movie", movieId],
-        queryFn: () => {
-          if (movieId === undefined) {
-            return Promise.resolve(null); // O retorna una promesa rechazada si prefieres
-          }
-          return getMovieById(movieId);
-        },
-        enabled: movieId !== undefined,
-      },
-      {
-        queryKey: ["credits", movieId],
-        queryFn: () => {
-          if (movieId === undefined) {
-            return Promise.resolve(null); // O retorna una promesa rechazada si prefieres
-          }
-          return getCreditsByMovie(movieId);
-        },
-        enabled: movieId !== undefined,
-      },
-      {
-        queryKey: ["recommendations", movieId],
-        queryFn: () => {
-          if (movieId === undefined) {
-            return Promise.resolve(null); // O retorna una promesa rechazada si prefieres
-          }
-          return getMovieRecommendations(movieId);
-        },
-        enabled: movieId !== undefined,
-      },
-    ],
-  });
-
-  const [movieResult, creditsResult, recommendedMovies] = results;
+  const movieId = id ? Number(id) : 0;
 
   const {
+    data: movie,
     isLoading: isLoadingMovie,
     isError: isErrorMovie,
-    data: movie,
-  } = movieResult;
-
+  } = useMovie(movieId);
   const {
+    data: credits,
     isLoading: isLoadingCredits,
     isError: isErrorCredits,
-    data: credits,
-  } = creditsResult;
-
+  } = useCredits(movieId);
   const {
+    data: recommendations,
     isLoading: isLoadingRecommendations,
     isError: isErrorRecommendations,
-    data: recommendations,
-  } = recommendedMovies;
+  } = useRecommendations(movieId);
 
   if (isLoadingMovie || isLoadingCredits || isLoadingRecommendations)
     return <Loader />;
