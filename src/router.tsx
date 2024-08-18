@@ -1,31 +1,35 @@
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import Layout from "./layouts/Layout";
-import HomePage from "./pages/HomePage";
-import MoviePage from "./pages/MoviePage";
-import PeoplePage from "./pages/PeoplePage";
-import SeriesPage from "./pages/SeriesPage";
-import MoviesPage from "./pages/MoviesPage";
-import LayoutMovie from "./layouts/LayoutMovie";
 import { ToastContainer } from "react-toastify";
+import Loader from "./components/ui/Loader/Loader";
 import "react-toastify/dist/ReactToastify.css";
-import PersonPage from "./pages/PersonPage";
+
+const HomePageLazy = lazy(() => import("./pages/HomePage"));
+const LayoutLazy = lazy(() => import("./layouts/Layout"));
+const LayoutMovieLazy = lazy(() => import("./layouts/LayoutMovie"));
+const MoviePageLazy = lazy(() => import("./pages/MoviePage"));
+const PersonPageLazy = lazy(() => import("./pages/PersonPage"));
+const PeoplePageLazy = lazy(() => import("./pages/PeoplePage"));
+const SeriesPageLazy = lazy(() => import("./pages/SeriesPage"));
+const MoviesPageLazy = lazy(() => import("./pages/MoviesPage"));
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} index />
-          <Route path="/peliculas" element={<MoviesPage />} />
-          <Route path="/series" element={<SeriesPage />} />
-          <Route path="/gente" element={<PeoplePage />} />
-        </Route>
-
-        <Route element={<LayoutMovie />}>
-          <Route path="/peliculas/:id" element={<MoviePage />} />
-          <Route path="/persona/:id" element={<PersonPage />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route element={<LayoutLazy />}>
+            <Route path="/" element={<HomePageLazy />} index />
+            <Route path="/peliculas" element={<MoviesPageLazy />} />
+            <Route path="/series" element={<SeriesPageLazy />} />
+            <Route path="/gente" element={<PeoplePageLazy />} />
+          </Route>
+          <Route element={<LayoutMovieLazy />}>
+            <Route path="/peliculas/:id" element={<MoviePageLazy />} />
+            <Route path="/persona/:id" element={<PersonPageLazy />} />
+          </Route>
+        </Routes>
+      </Suspense>
       <ToastContainer />
     </>
   );
