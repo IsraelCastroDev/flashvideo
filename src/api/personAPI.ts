@@ -1,4 +1,4 @@
-import { PersonSchema } from "../schemas/personSchema";
+import { PersonSchema } from "../schemas/movieSchema";
 import { Person } from "../types";
 import { api } from "./axios";
 
