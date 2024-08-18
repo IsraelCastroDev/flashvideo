@@ -1,4 +1,8 @@
-import { MovieAPIResponse, MovieSchema } from "../schemas/movieSchema";
+import {
+  CreditsAPIResponse,
+  MovieAPIResponse,
+  MovieSchema,
+} from "../schemas/movieSchema";
 import { Movie } from "../types";
 import { api } from "./axios";
 
@@ -18,6 +22,17 @@ export const getPopularMovies = async () => {
 export const getMovieById = async (id: Movie["id"]) => {
   const { data } = await api(`/movie/${id}?api_key=${API_KEY}&language=es-MX`);
   const validateData = MovieSchema.safeParse(data);
+
+  if (validateData.success) {
+    return validateData.data;
+  }
+};
+
+export const getCreditsByMovie = async (id: Movie["id"]) => {
+  const { data } = await api(
+    `/movie/${id}/credits?api_key=${API_KEY}&language=es-MX`
+  );
+  const validateData = CreditsAPIResponse.safeParse(data);
 
   if (validateData.success) {
     return validateData.data;
