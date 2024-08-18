@@ -29,6 +29,8 @@ export const getCreditsByMovie = async (id: Movie["id"]) => {
   const { data } = await api(`/movie/${id}/credits`);
   const validateData = CreditsAPIResponse.safeParse(data);
 
+  console.log(validateData);
+
   if (validateData.success) {
     return validateData.data;
   }
