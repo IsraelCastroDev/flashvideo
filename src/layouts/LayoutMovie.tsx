@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header/Header";
+import Footer from "../components/Footer";
 
 function LayoutMovie() {
   return (
@@ -8,6 +9,7 @@ function LayoutMovie() {
       <main>
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 }
