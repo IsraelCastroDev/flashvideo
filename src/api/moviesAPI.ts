@@ -1,5 +1,6 @@
 import {
   CreditsAPIResponse,
+  KeyWordsSchemaAPIResponse,
   MovieAPIResponse,
   MovieSchema,
   RecommendedMovieAPIResponse,
@@ -29,8 +30,6 @@ export const getCreditsByMovie = async (id: Movie["id"]) => {
   const { data } = await api(`/movie/${id}/credits`);
   const validateData = CreditsAPIResponse.safeParse(data);
 
-  console.log(validateData);
-
   if (validateData.success) {
     return validateData.data;
   }
@@ -39,6 +38,15 @@ export const getCreditsByMovie = async (id: Movie["id"]) => {
 export const getMovieRecommendations = async (id: Movie["id"]) => {
   const { data } = await api(`/movie/${id}/recommendations`);
   const validateData = RecommendedMovieAPIResponse.safeParse(data);
+
+  if (validateData.success) {
+    return validateData.data;
+  }
+};
+
+export const getKeyWordsByMovie = async (id: Movie["id"]) => {
+  const { data } = await api(`/movie/${id}/keywords`);
+  const validateData = KeyWordsSchemaAPIResponse.safeParse(data);
 
   if (validateData.success) {
     return validateData.data;
