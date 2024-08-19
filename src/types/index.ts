@@ -2,11 +2,11 @@ import { z } from "zod";
 import {
   PersonSchema,
   MovieSchema,
-  RecommendedMovieSchema,
+  CastMemberSchema,
 } from "../schemas/movieSchema";
 
 export type Movie = z.infer<typeof MovieSchema>;
-export type RecommendedMovie = z.infer<typeof RecommendedMovieSchema>;
+export type CastMember = z.infer<typeof CastMemberSchema>;
 
 // person
 export type Person = z.infer<typeof PersonSchema>;
