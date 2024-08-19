@@ -110,3 +110,20 @@ export const KeyWordsSchemaAPIResponse = z.object({
     })
   ),
 });
+
+// MOVIES TOP RATED
+export const MovieRatedAPISchema = z.object({
+  page: z.number(),
+  results: z.array(MovieSchema),
+});
+
+// UPCOMING MOVIES
+export const UpcommingMoviesAPISchema = z.object({
+  dates: z.object({
+    maximum: z.string(),
+    minimum: z.string(),
+  }),
+  page: z.number(),
+  results: z.array(MovieSchema),
+  total_pages: z.number(),
+});
