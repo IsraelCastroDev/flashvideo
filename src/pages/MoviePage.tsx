@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import Carousel from "../components/ui/Carousel";
 import Loader from "../components/ui/Loader/Loader";
 import { toast } from "react-toastify";
-import { useMovie } from "../hooks/movies/useMovies";
+import { useMovieDetails } from "../hooks/movies/useMoviesDetails";
 import { getYear } from "../helpers";
 
 function MoviePage() {
@@ -10,7 +10,7 @@ function MoviePage() {
   const movieId = id ? Number(id) : 0;
 
   const { movieQuery, creditsQuery, keyWordsQuery, recommendationsQuery } =
-    useMovie(movieId);
+    useMovieDetails(movieId);
 
   const {
     data: movie,
