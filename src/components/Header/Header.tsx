@@ -13,7 +13,7 @@ function Header() {
           <MenuIcon />
         </label>
         <input type="checkbox" id="btn-menu" hidden />
-        <nav className={`${styles.nav__menu} bg-sky-900`}>
+        <nav className={`${styles.nav__menu} bg-sky-950 z-50`}>
           <ul className="flex flex-col justify-center gap-4">
             <Link to="/peliculas" className="font-bold text-xl">
               Películas
