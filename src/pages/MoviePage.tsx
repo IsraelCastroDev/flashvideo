@@ -2,38 +2,54 @@ import { useParams } from "react-router-dom";
 import Carousel from "../components/ui/Carousel";
 import Loader from "../components/ui/Loader/Loader";
 import { toast } from "react-toastify";
-import { useMovie } from "../hooks/useMovies";
-import { useCredits } from "../hooks/useCredits";
-import { useRecommendations } from "../hooks/useRecommendations";
+import { useMovie } from "../hooks/movies/useMovies";
+import { getYear } from "../helpers";
 
 function MoviePage() {
   const { id } = useParams<{ id?: string }>();
   const movieId = id ? Number(id) : 0;
 
+  const { movieQuery, creditsQuery, keyWordsQuery, recommendationsQuery } =
+    useMovie(movieId);
+
   const {
     data: movie,
     isLoading: isLoadingMovie,
     isError: isErrorMovie,
-  } = useMovie(movieId);
+  } = movieQuery;
   const {
     data: credits,
     isLoading: isLoadingCredits,
     isError: isErrorCredits,
-  } = useCredits(movieId);
+  } = creditsQuery;
+  const {
+    data: keywords,
+    isLoading: isLoadingKeyWords,
+    isError: isErrorKeyWords,
+  } = keyWordsQuery;
   const {
     data: recommendations,
     isLoading: isLoadingRecommendations,
     isError: isErrorRecommendations,
-  } = useRecommendations(movieId);
+  } = recommendationsQuery;
 
-  if (isLoadingMovie || isLoadingCredits || isLoadingRecommendations)
+  if (
+    isLoadingMovie ||
+    isLoadingCredits ||
+    isLoadingRecommendations ||
+    isLoadingKeyWords
+  )
     return <Loader />;
-  if (isErrorMovie || isErrorCredits || isErrorRecommendations)
+
+  if (
+    isErrorMovie ||
+    isErrorCredits ||
+    isErrorRecommendations ||
+    isErrorKeyWords
+  )
     return toast.error("No se pudo cargar la información de la película");
 
   if (!movie) return <p>No se encontró la película</p>;
-
-  const year = new Date(movie.release_date).getFullYear();
 
   return (
     <>
@@ -41,13 +57,19 @@ function MoviePage() {
         <div
           className={`bg-center bg-cover bg-no-repeat h-72 relative block`}
           style={{
-            backgroundImage: `url("${import.meta.env.VITE_IMAGE_URL}w500${
-              movie.backdrop_path
+            backgroundImage: `url("${
+              movie.backdrop_path !== null
+                ? `${import.meta.env.VITE_IMAGE_URL}w500${movie.backdrop_path}`
+                : "https://img.freepik.com/free-photo/movie-background-collage_23-2149876006.jpg"
             }")`,
           }}
         >
           <img
-            src={`${import.meta.env.VITE_IMAGE_URL}w200${movie.poster_path}`}
+            src={
+              movie.backdrop_path !== null
+                ? `${import.meta.env.VITE_IMAGE_URL}w200${movie.poster_path}`
+                : "https://img.freepik.com/free-photo/movie-background-collage_23-2149876006.jpg"
+            }
             alt={`Poster de ${movie.title}`}
             className="block w-32 h-40 top-1/2 left-1/2 -translate-x-48 -translate-y-1/2 absolute rounded-xl"
           />
@@ -55,7 +77,10 @@ function MoviePage() {
 
         <div className="mt-4 px-4">
           <h1 className="text-center text-xl font-bold">
-            {movie.title} <span className="font-semibold">({year})</span>
+            {movie.title}{" "}
+            <span className="font-semibold">
+              ({getYear(movie.release_date)})
+            </span>
           </h1>
 
           <div className="mt-2">
@@ -90,6 +115,18 @@ function MoviePage() {
           {recommendations?.results && (
             <Carousel data={recommendations.results} />
           )}
+        </div>
+      </section>
+
+      <section className="px-4 py-4">
+        <h3 className="text-lg font-bold">Palabras claves</h3>
+
+        <div className="flex w-full flex-wrap justify-start gap-2 mt-2">
+          {keywords?.keywords.map((keyword) => (
+            <div key={keyword.id} className="bg-gray-300 p-2">
+              <p>{keyword.name}</p>
+            </div>
+          ))}
         </div>
       </section>
     </>
