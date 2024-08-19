@@ -8,7 +8,7 @@ const HomePageLazy = lazy(() => import("./pages/HomePage"));
 const LayoutLazy = lazy(() => import("./layouts/Layout"));
 const LayoutMovieLazy = lazy(() => import("./layouts/LayoutMovie"));
 const MoviePageLazy = lazy(() => import("./pages/MoviePage"));
-const PersonPageLazy = lazy(() => import("./pages/PersonPage"));
+const PersonPageLazy = lazy(() => import("./pages/PersonPage/PersonPage"));
 const PeoplePageLazy = lazy(() => import("./pages/PeoplePage"));
 const SeriesPageLazy = lazy(() => import("./pages/SeriesPage"));
 const MoviesPageLazy = lazy(() => import("./pages/MoviesPage"));
