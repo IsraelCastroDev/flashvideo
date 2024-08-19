@@ -1,16 +1,32 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQueries } from "@tanstack/react-query";
 import { Person } from "../types";
-import { getDetailsByPerson } from "../api/personAPI";
+import {
+  getDetailsByPerson,
+  getMovieCreditsFromPerson,
+} from "../api/personAPI";
 
 export function usePerson(personId: Person["id"]) {
-  const person = useQuery({
-    queryKey: ["person", personId],
-    queryFn: () => {
-      if (personId === undefined) return Promise.resolve(null);
-      return getDetailsByPerson(personId);
-    },
-    enabled: personId !== undefined,
+  const result = useQueries({
+    queries: [
+      {
+        queryKey: ["person", personId],
+        queryFn: () => {
+          if (personId === undefined) return Promise.resolve(null);
+          return getDetailsByPerson(personId);
+        },
+        enabled: personId !== undefined,
+      },
+      {
+        queryKey: ["personMovieCredits", personId],
+        queryFn: () => {
+          if (personId === undefined) return Promise.resolve(null);
+          return getMovieCreditsFromPerson(personId);
+        },
+      },
+    ],
   });
 
-  return person;
+  const [personQuery, movieCreditsQuery] = result;
+
+  return { personQuery, movieCreditsQuery };
 }
