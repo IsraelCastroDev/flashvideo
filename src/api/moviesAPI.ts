@@ -2,8 +2,10 @@ import {
   CreditsAPIResponse,
   KeyWordsSchemaAPIResponse,
   MovieAPIResponse,
+  MovieRatedAPISchema,
   MovieSchema,
   RecommendedMovieAPIResponse,
+  UpcommingMoviesAPISchema,
 } from "../schemas/movieSchema";
 import { Movie } from "../types";
 import { api } from "./axios";
@@ -47,6 +49,24 @@ export const getMovieRecommendations = async (id: Movie["id"]) => {
 export const getKeyWordsByMovie = async (id: Movie["id"]) => {
   const { data } = await api(`/movie/${id}/keywords`);
   const validateData = KeyWordsSchemaAPIResponse.safeParse(data);
+
+  if (validateData.success) {
+    return validateData.data;
+  }
+};
+
+export const getMoviesTopRated = async () => {
+  const { data } = await api(`/movie/top_rated`);
+  const validateData = MovieRatedAPISchema.safeParse(data);
+
+  if (validateData.success) {
+    return validateData.data;
+  }
+};
+
+export const getUpcomingReleaseMovies = async () => {
+  const { data } = await api("/movie/upcoming");
+  const validateData = UpcommingMoviesAPISchema.safeParse(data);
 
   if (validateData.success) {
     return validateData.data;
