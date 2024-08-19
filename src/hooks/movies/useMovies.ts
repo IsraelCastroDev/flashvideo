@@ -1,52 +1,25 @@
-import { useQueries } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
-  getCreditsByMovie,
-  getKeyWordsByMovie,
-  getMovieById,
-  getMovieRecommendations,
+  getMoviesTopRated,
+  getPopularMovies,
+  getUpcomingReleaseMovies,
 } from "../../api/moviesAPI";
-import { Movie } from "../../types";
 
-export function useMovie(movieId: Movie["id"]) {
-  const result = useQueries({
-    queries: [
-      {
-        queryKey: ["movie", movieId],
-        queryFn: () => {
-          if (movieId === undefined) return Promise.resolve(null);
-          return getMovieById(movieId);
-        },
-        enabled: movieId !== undefined,
-      },
-      {
-        queryKey: ["keywords", movieId],
-        queryFn: () => {
-          if (movieId === undefined) return Promise.resolve(null);
-          return getKeyWordsByMovie(movieId);
-        },
-        enabled: movieId !== undefined,
-      },
-      {
-        queryKey: ["credits", movieId],
-        queryFn: () => {
-          if (movieId === undefined) return Promise.resolve(null);
-          return getCreditsByMovie(movieId);
-        },
-        enabled: movieId !== undefined,
-      },
-      {
-        queryKey: ["recommendations", movieId],
-        queryFn: () => {
-          if (movieId === undefined) return Promise.resolve(null);
-          return getMovieRecommendations(movieId);
-        },
-        enabled: movieId !== undefined,
-      },
-    ],
+export function useMovies() {
+  const popularMoviesQuery = useQuery({
+    queryKey: ["popular"],
+    queryFn: getPopularMovies,
   });
 
-  const [movieQuery, keyWordsQuery, creditsQuery, recommendationsQuery] =
-    result;
+  const topRatedMoviesQuery = useQuery({
+    queryKey: ["topRated"],
+    queryFn: getMoviesTopRated,
+  });
 
-  return { movieQuery, keyWordsQuery, creditsQuery, recommendationsQuery };
+  const upcommingMoviesQuery = useQuery({
+    queryKey: ["upcoming"],
+    queryFn: getUpcomingReleaseMovies,
+  });
+
+  return { popularMoviesQuery, topRatedMoviesQuery, upcommingMoviesQuery };
 }
