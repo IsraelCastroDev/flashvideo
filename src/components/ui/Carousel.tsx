@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { CastMember, Movie } from "../../types";
 import { Link } from "react-router-dom";
 import "swiper/css";
+import { formatDate } from "../../helpers";
 
 interface Props {
   data: Movie[] | CastMember[];
@@ -21,6 +22,22 @@ function Carousel({ data }: Props) {
       spaceBetween={30}
       slidesPerView={3}
       tag="ul"
+      breakpoints={{
+        768: {
+          slidesPerView: 4,
+        },
+        830: {
+          slidesPerView: 5,
+        },
+        1100: {
+          slidesPerView: 7,
+        },
+        touchStartPreventDefault: {
+          touchStartPreventDefault: false,
+          simulateTouch: true,
+          grabCursor: true,
+        },
+      }}
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
     >
@@ -80,6 +97,10 @@ function Carousel({ data }: Props) {
                 {isMovie(item) ? item.title : item.original_name}
               </h2>
               {isCast(item) && <p className="text-sm">{item.character}</p>}
+
+              <p className="text-gray-600">
+                {isMovie(item) && formatDate(item.release_date)}
+              </p>
             </div>
           </Link>
         </SwiperSlide>

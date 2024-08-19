@@ -12,3 +12,10 @@
 input[type="checkbox"]:checked ~ .nav__menu {
   translate: 0;
 }
+
+@media (width >= 768px) {
+  .nav__menu {
+    translate: 0;
+    position: unset;
+  }
+}

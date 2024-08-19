@@ -4,9 +4,15 @@ function Footer() {
   return (
     <footer className="bg-sky-950 text-white text-center p-3">
       Hecho por Israel Castro con la API de{" "}
-      <small>
-        <Link to="https://www.themoviedb.org/">TheMovieDB</Link>
-      </small>
+      <strong>
+        <Link
+          to="https://www.themoviedb.org/"
+          target="_blank"
+          className="underline"
+        >
+          TheMovieDB
+        </Link>
+      </strong>
     </footer>
   );
 }
