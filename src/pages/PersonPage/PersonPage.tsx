@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { usePerson } from "../../hooks/usePerson";
 import Loader from "../../components/ui/Loader/Loader";
 import Carousel from "../../components/ui/Carousel";
 import { getYear } from "../../helpers";
+import { usePerson } from "../../hooks/people/usePerson";
 
 function PersonPage() {
   const { id } = useParams<{ id: string }>();
   const personId = id ? Number(id) : 0;
 
-  const { personQuery, movieCreditsQuery } = usePerson(personId);
+  const { personQuery, movieCreditsFromPersonQuery } = usePerson(personId);
 
   const {
     data: person,
@@ -17,17 +17,18 @@ function PersonPage() {
     isError: isErrorPerson,
   } = personQuery;
   const {
-    data: movieCredits,
-    isLoading: isLoadingMovieCredits,
-    isError: isErrorMovieCredits,
-  } = movieCreditsQuery;
+    data: movieCreditsFromPerson,
+    isLoading: isLoadingMovieCreditsFromPerson,
+    isError: isErrorMovieCreditsFromPerson,
+  } = movieCreditsFromPersonQuery;
 
-  if (isLoadingPerson || isLoadingMovieCredits) return <Loader />;
-  if (isErrorPerson || isErrorMovieCredits)
+  if (isLoadingPerson || isLoadingMovieCreditsFromPerson) return <Loader />;
+  if (isErrorPerson || isErrorMovieCreditsFromPerson)
     return toast.error("No se pudo cargar la información");
 
   if (!person) return <p>No se encontró la persona</p>;
-  if (!movieCredits) return <p>No se encontró la información de la persona</p>;
+  if (!movieCreditsFromPerson)
+    return <p>No se encontró la información de la persona</p>;
 
   return (
     <>
@@ -74,14 +75,14 @@ function PersonPage() {
 
       <section className="px-4 mt-4 space-y-2">
         <h2 className="text-xl font-bold">Conocido por</h2>
-        <Carousel data={movieCredits.cast} />
+        <Carousel data={movieCreditsFromPerson.cast} />
       </section>
 
       <section className="px-4">
         <h2 className="text-xl font-bold">Interpretación</h2>
 
         <div className="mt-4">
-          {movieCredits.cast.map((movie) => (
+          {movieCreditsFromPerson.cast.map((movie) => (
             <div
               key={movie.id}
               className="flex items-center gap-6 border border-t-gray-500 py-2 last-of-type:border-b-gray-500"
