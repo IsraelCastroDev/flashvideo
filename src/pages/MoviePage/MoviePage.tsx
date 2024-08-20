@@ -7,7 +7,9 @@ import RelatedInformationAboutMovie from "../../components/Movie/RelatedInformat
 
 function MoviePage() {
   const { id } = useParams<{ id?: string }>();
-  const movieId = id ? Number(id) : 0;
+  const idMovieSplit = id?.split("-")[0];
+
+  const movieId = idMovieSplit !== undefined ? Number(idMovieSplit) : 0;
 
   const { movieQuery, creditsQuery, keyWordsQuery, recommendationsQuery } =
     useMovieDetails(movieId);
