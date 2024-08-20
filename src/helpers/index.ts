@@ -21,7 +21,11 @@ export const convertStringToSlug = (str: string): string => {
       .trim()
       .replace(/ /g, "-") // Reemplaza todos los espacios con guiones
       .replace(/:/g, "")
-      .replace(/&/g, "and")
+      .replace(/&&/g, "y") // Reemplaza "&&" con "y"
+      .replace(/ /g, "-") // Reemplaza todos los espacios con guiones
+      .replace(/:/g, "") // Elimina todos los dos puntos
+      .replace(/[/#]/g, "") // Elimina otros caracteres especiales, por ejemplo, "/", "#"
+      .replace(/\s+/g, "-")
       .toLowerCase();
 
   return "";
