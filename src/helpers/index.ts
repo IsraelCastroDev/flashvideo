@@ -16,6 +16,13 @@ export const formatDate = (date: string): string => {
 };
 
 export const convertStringToSlug = (str: string): string => {
-  if (str) return str.trim().replaceAll(" ", "-").toLocaleLowerCase();
+  if (str)
+    return str
+      .trim()
+      .replace(/ /g, "-") // Reemplaza todos los espacios con guiones
+      .replace(/:/g, "")
+      .replace(/&/g, "and")
+      .toLowerCase();
+
   return "";
 };
