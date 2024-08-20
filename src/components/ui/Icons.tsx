@@ -40,3 +40,20 @@ export function SearchIcon({ classname }: Props) {
     </svg>
   );
 }
+
+export function PlayIcon({ classname }: Props) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 1200 1200"
+    >
+      <path
+        className={classname}
+        fill="currentColor"
+        d="M0 145.898v908.203h1200V145.898zm147.144 147.218h905.713v613.77H147.144zm318.237 106.861v408.839L818.848 603.81z"
+      />
+    </svg>
+  );
+}
