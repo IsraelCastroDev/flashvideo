@@ -25,8 +25,8 @@ function App() {
             <Route path="/gente" element={<PeoplePageLazy />} />
           </Route>
           <Route element={<LayoutMovieLazy />}>
-            <Route path="/peliculas/:id" element={<MoviePageLazy />} />
-            <Route path="/persona/:id" element={<PersonPageLazy />} />
+            <Route path="/movie/:id" element={<MoviePageLazy />} />
+            <Route path="/person/:id" element={<PersonPageLazy />} />
           </Route>
         </Routes>
       </Suspense>

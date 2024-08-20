@@ -54,9 +54,7 @@ function Carousel({ data }: Props) {
           } rounded-xl h-72`}
         >
           <Link
-            to={`${
-              isMovie(item) ? `/peliculas/${item.id}` : `/persona/${item.id}`
-            }`}
+            to={`${isMovie(item) ? `/movie/${item.id}` : `/person/${item.id}`}`}
           >
             <img
               src={`${
