@@ -30,7 +30,7 @@ function Carousel({ data }: Props) {
           slidesPerView: 5,
         },
         1100: {
-          slidesPerView: 4,
+          slidesPerView: 7,
         },
         touchStartPreventDefault: {
           touchStartPreventDefault: false,
