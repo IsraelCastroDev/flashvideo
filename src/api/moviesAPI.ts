@@ -6,6 +6,7 @@ import {
   MovieSchema,
   RecommendedMovieAPIResponse,
   UpcommingMoviesAPISchema,
+  VideosAPIResponse,
 } from "../schemas/movieSchema";
 import { Movie } from "../types";
 import { api } from "./axios";
@@ -70,5 +71,17 @@ export const getUpcomingReleaseMovies = async () => {
 
   if (validateData.success) {
     return validateData.data;
+  }
+};
+
+// ---------VIDEOS
+export const getVideosOfTheMovie = async (id: Movie["id"]) => {
+  const { data } = await api(`/movie/${id}/videos`);
+  const validateData = VideosAPIResponse.safeParse(data);
+
+  if (validateData.success) {
+    return validateData.data;
+  } else {
+    validateData.error.message.toString();
   }
 };
