@@ -35,7 +35,11 @@ function PersonPage() {
       <section className="px-4">
         <div className="flex justify-center items-center flex-col mt-10 gap-3">
           <img
-            src={`${import.meta.env.VITE_IMAGE_URL}w200${person.profile_path}`}
+            src={`${
+              person.profile_path !== null
+                ? `${import.meta.env.VITE_BASE_IMAGE_URL}${person.profile_path}`
+                : "/img/perfil-default.jpg"
+            }`}
             alt={`Imagen de perfil de ${person.name}`}
             className="w-40 h-48 block rounded-md"
           />

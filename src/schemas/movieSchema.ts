@@ -45,7 +45,7 @@ export const PersonSchema = z.object({
   gender: z.number(),
   homepage: z.string().nullable().optional(),
   id: z.number(),
-  imdb_id: z.string(),
+  imdb_id: z.string().nullable().optional(),
   known_for_department: z.string(),
   name: z.string(),
   place_of_birth: z.string().nullable().optional(),
