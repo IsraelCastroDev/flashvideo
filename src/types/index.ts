@@ -7,6 +7,7 @@ import {
   CreditsAPIResponse,
   RecommendedMovieAPIResponse,
   KeyWordsSchemaAPIResponse,
+  VideoSchema,
 } from "../schemas/movieSchema";
 
 export type Movie = z.infer<typeof MovieSchema>;
@@ -20,3 +21,6 @@ export type KeywordsResponse = z.infer<typeof KeyWordsSchemaAPIResponse>;
 
 // person
 export type Person = z.infer<typeof PersonSchema>;
+
+// video
+export type Video = z.infer<typeof VideoSchema>;
