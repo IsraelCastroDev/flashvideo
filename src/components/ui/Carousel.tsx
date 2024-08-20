@@ -75,7 +75,6 @@ function Carousel({ data }: Props) {
                     }`
               }
               `}
-              */
               alt={`Poster de ${isMovie(item) ? item.title : item.name}`}
               className="rounded-xl"
               loading="lazy"
