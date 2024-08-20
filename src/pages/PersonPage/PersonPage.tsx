@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../components/ui/Loader/Loader";
 import Carousel from "../../components/ui/Carousel";
-import { getYear } from "../../helpers";
+import { formatDate, getYear } from "../../helpers";
 import { usePerson } from "../../hooks/people/usePerson";
 
 function PersonPage() {
@@ -47,7 +47,11 @@ function PersonPage() {
 
           <div>
             <h3 className="font-bold">Fecha de nacimiento</h3>
-            <p>{person.birthday}</p>
+            <p>
+              {person.birthday !== null && person.birthday !== undefined
+                ? formatDate(person.birthday)
+                : "Fecha de nacimiento no disponible"}
+            </p>
           </div>
 
           {person.deathday && (
@@ -59,7 +63,9 @@ function PersonPage() {
 
           <div>
             <h3 className="font-bold">Lugar de nacimiento</h3>
-            <p>{person.place_of_birth}</p>
+            <p>
+              {person.place_of_birth || "Lugar de nacimiento no disponible"}
+            </p>
           </div>
 
           <div>
