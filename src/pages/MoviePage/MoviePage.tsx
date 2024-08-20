@@ -11,8 +11,13 @@ function MoviePage() {
 
   const movieId = idMovieSplit !== undefined ? Number(idMovieSplit) : 0;
 
-  const { movieQuery, creditsQuery, keyWordsQuery, recommendationsQuery } =
-    useMovieDetails(movieId);
+  const {
+    movieQuery,
+    creditsQuery,
+    keyWordsQuery,
+    recommendationsQuery,
+    videosOfMoviesQuery,
+  } = useMovieDetails(movieId);
 
   const {
     data: movie,
@@ -34,12 +39,18 @@ function MoviePage() {
     isLoading: isLoadingRecommendations,
     isError: isErrorRecommendations,
   } = recommendationsQuery;
+  const {
+    data: videosOfMovie,
+    isLoading: isLoadingVideos,
+    isError: isErrorVideos,
+  } = videosOfMoviesQuery;
 
   if (
     isLoadingMovie ||
     isLoadingCredits ||
     isLoadingRecommendations ||
-    isLoadingKeyWords
+    isLoadingKeyWords ||
+    isLoadingVideos
   )
     return <Loader />;
 
@@ -47,7 +58,8 @@ function MoviePage() {
     isErrorMovie ||
     isErrorCredits ||
     isErrorRecommendations ||
-    isErrorKeyWords
+    isErrorKeyWords ||
+    isErrorVideos
   )
     return toast.error("No se pudo cargar la información de la película");
 
@@ -55,7 +67,13 @@ function MoviePage() {
 
   return (
     <>
-      {credits && <MovieDetails credits={credits} movie={movie} />}
+      {credits && videosOfMovie && movie && (
+        <MovieDetails
+          credits={credits}
+          movie={movie}
+          videos={videosOfMovie.results}
+        />
+      )}
       {credits && keywords && recommendations && (
         <RelatedInformationAboutMovie
           credits={credits}
