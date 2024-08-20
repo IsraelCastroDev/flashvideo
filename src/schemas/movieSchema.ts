@@ -40,7 +40,7 @@ export const PersonSchema = z.object({
   adult: z.boolean(),
   also_known_as: z.array(z.string()).default([]).nullable().optional(),
   biography: z.string().nullable().optional(),
-  birthday: z.string(),
+  birthday: z.string().nullable().optional(),
   deathday: z.string().nullable().optional(),
   gender: z.number(),
   homepage: z.string().nullable().optional(),
@@ -48,7 +48,7 @@ export const PersonSchema = z.object({
   imdb_id: z.string(),
   known_for_department: z.string(),
   name: z.string(),
-  place_of_birth: z.string(),
+  place_of_birth: z.string().nullable().optional(),
   popularity: z.number(),
   profile_path: z.string().nullable().optional(),
 });
