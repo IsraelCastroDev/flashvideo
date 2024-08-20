@@ -82,14 +82,14 @@ function Carousel({ data }: Props) {
 
             <div className="p-2">
               <h2
-                className="text-sm font-bold"
+                className="text-xl font-bold"
                 title={`${isMovie(item) ? item.title : item.original_name}`}
               >
                 {isMovie(item) ? item.title : item.original_name}
               </h2>
               {isCast(item) && <p className="text-sm">{item.character}</p>}
 
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm">
                 {isMovie(item) && formatDate(item.release_date)}
               </p>
             </div>
