@@ -1,8 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CastMember, Movie } from "../../types";
 import { Link } from "react-router-dom";
-import "swiper/css";
 import { formatDate } from "../../helpers";
+import "swiper/css";
 
 interface Props {
   data: Movie[] | CastMember[];
@@ -75,14 +75,6 @@ function Carousel({ data }: Props) {
                     }`
               }
               `}
-              /*
-              ${import.meta.env.VITE_IMAGE_URL}w200${
-                isMovie(item)
-                  ? item.poster_path
-                  : isCast(item)
-                  ? item.profile_path
-                  : item.poster_path
-              }
               */
               alt={`Poster de ${isMovie(item) ? item.title : item.name}`}
               className="rounded-xl"
