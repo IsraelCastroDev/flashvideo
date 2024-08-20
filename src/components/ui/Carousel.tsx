@@ -3,7 +3,6 @@ import { CastMember, Movie } from "../../types";
 import { Link } from "react-router-dom";
 import { convertStringToSlug, formatDate } from "../../helpers";
 import "swiper/css";
-import "./Carousel.css";
 
 interface Props {
   data: Movie[] | CastMember[];
