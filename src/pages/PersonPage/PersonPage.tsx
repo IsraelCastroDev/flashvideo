@@ -7,7 +7,9 @@ import { usePerson } from "../../hooks/people/usePerson";
 
 function PersonPage() {
   const { id } = useParams<{ id: string }>();
-  const personId = id ? Number(id) : 0;
+  const idSplit = id?.split("-")[0];
+
+  const personId = id ? Number(idSplit) : 0;
 
   const { personQuery, movieCreditsFromPersonQuery } = usePerson(personId);
 
