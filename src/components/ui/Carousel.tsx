@@ -19,7 +19,7 @@ function isCast(item: Movie | CastMember): item is CastMember {
 function Carousel({ data }: Props) {
   return (
     <Swiper
-      spaceBetween={30}
+      spaceBetween={20}
       slidesPerView={3}
       tag="ul"
       breakpoints={{
