@@ -30,7 +30,7 @@ function Carousel({ data }: Props) {
           slidesPerView: 5,
         },
         1100: {
-          slidesPerView: 7,
+          slidesPerView: 4,
         },
         touchStartPreventDefault: {
           touchStartPreventDefault: false,
@@ -60,13 +60,13 @@ function Carousel({ data }: Props) {
               src={`${
                 isCast(item)
                   ? item.profile_path
-                    ? `${import.meta.env.VITE_IMAGE_URL}w200${
+                    ? `${import.meta.env.VITE_IMAGE_URL}/w200${
                         item.profile_path
                       }`
                     : "/img/perfil-default.jpg"
                   : `${
                       item.poster_path !== null
-                        ? `${import.meta.env.VITE_IMAGE_URL}w200${
+                        ? `${import.meta.env.VITE_IMAGE_URL}/w200${
                             item.poster_path
                           }`
                         : "https://img.freepik.com/free-photo/movie-background-collage_23-2149876006.jpg"
