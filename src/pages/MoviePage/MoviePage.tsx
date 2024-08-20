@@ -87,7 +87,7 @@ function MoviePage() {
             </h1>
 
             <div className="mt-2">
-              <h3 className="text-lg font-bold">Vista general</h3>
+              <h3 className="text-xl font-bold">Vista general</h3>
 
               <div>
                 <p className="text-pretty font-semibold mt-2">
@@ -109,14 +109,14 @@ function MoviePage() {
       </section>
 
       <section className="px-4 py-2 mt-4 bg-gray-100">
-        <h3 className="text-lg font-bold">Reparto</h3>
+        <h3 className="text-xl font-bold">Reparto</h3>
         <div className="mt-2">
           {credits?.cast && <Carousel data={credits?.cast} />}
         </div>
       </section>
 
       <section className="px-4 py-2 mt-4">
-        <h3 className="text-lg font-bold">Recomendaciones</h3>
+        <h3 className="text-xl font-bold">Recomendaciones</h3>
         <div className="mt-2">
           {recommendations?.results && (
             <Carousel data={recommendations.results} />
@@ -125,7 +125,7 @@ function MoviePage() {
       </section>
 
       <section className="px-4 py-4">
-        <h3 className="text-lg font-bold">Palabras claves</h3>
+        <h3 className="text-xl font-bold">Palabras claves</h3>
 
         <div className="flex w-full flex-wrap justify-start gap-2 mt-2">
           {keywords?.keywords.map((keyword) => (
