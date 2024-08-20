@@ -4,6 +4,7 @@ import {
   getKeyWordsByMovie,
   getMovieById,
   getMovieRecommendations,
+  getVideosOfTheMovie,
 } from "../../api/moviesAPI";
 import { Movie } from "../../types";
 
@@ -44,10 +45,20 @@ export function useMovieDetails(movieId: Movie["id"]) {
     enabled: movieId !== undefined,
   });
 
+  const videosOfMoviesQuery = useQuery({
+    queryKey: ["videos", movieId],
+    queryFn: () => {
+      if (movieId === undefined) return Promise.resolve(null);
+      return getVideosOfTheMovie(movieId);
+    },
+    enabled: movieId !== undefined,
+  });
+
   return {
     movieQuery,
     keyWordsQuery,
     creditsQuery,
     recommendationsQuery,
+    videosOfMoviesQuery,
   };
 }
