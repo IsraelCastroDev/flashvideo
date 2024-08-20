@@ -7,8 +7,8 @@ function Header() {
   const isHome = location.pathname === "/";
 
   return (
-    <header className="text-white sticky top-0 z-50">
-      <div className="flex items-center justify-between gap-1 bg-sky-950 py-5 md:py-1 px-4">
+    <header className={`${!isHome ? "sticky top-0" : ""} text-white z-10`}>
+      <div className="flex items-center justify-between gap-1 bg-sky-950 py-5 md:py-1 px-4 sticky top-0 z-20">
         <div className="flex items-center gap-4 md:flex-row-reverse">
           <label htmlFor="btn-menu" className="cursor-pointer block md:hidden">
             <MenuIcon />
