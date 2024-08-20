@@ -20,7 +20,7 @@ export const convertStringToSlug = (str: string): string => {
     return str
       .trim()
       .replace(/ /g, "-") // Reemplaza todos los espacios con guiones
-      .replace(/:/g, "")
+      .replace(/:/g, "") // Reemplaza todos los dos puntos con vacío
       .replace(/&&/g, "y") // Reemplaza "&&" con "y"
       .replace(/ /g, "-") // Reemplaza todos los espacios con guiones
       .replace(/:/g, "") // Elimina todos los dos puntos
