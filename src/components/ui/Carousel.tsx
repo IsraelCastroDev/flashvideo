@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CastMember, Movie } from "../../types";
 import { Link } from "react-router-dom";
-import { formatDate } from "../../helpers";
+import { convertStringToSlug, formatDate } from "../../helpers";
 import "swiper/css";
+import "./Carousel.css";
 
 interface Props {
   data: Movie[] | CastMember[];
@@ -21,7 +22,6 @@ function Carousel({ data }: Props) {
     <Swiper
       spaceBetween={20}
       slidesPerView={3}
-      tag="ul"
       breakpoints={{
         768: {
           slidesPerView: 4,
@@ -54,7 +54,11 @@ function Carousel({ data }: Props) {
           } rounded-xl h-72`}
         >
           <Link
-            to={`${isMovie(item) ? `/movie/${item.id}` : `/person/${item.id}`}`}
+            to={`${
+              isMovie(item)
+                ? `/movie/${item.id}-${convertStringToSlug(item.title)}`
+                : `/person/${item.id}-${convertStringToSlug(item.name)}`
+            }`}
           >
             <img
               src={`${

@@ -14,3 +14,8 @@ export const formatDate = (date: string): string => {
   };
   return new Intl.DateTimeFormat("es-MX", options).format(dateParam);
 };
+
+export const convertStringToSlug = (str: string): string => {
+  if (str) return str.trim().replaceAll(" ", "-").toLocaleLowerCase();
+  return "";
+};
