@@ -1,12 +1,16 @@
 import { getYear } from "../../helpers";
-import { CreditsResponse, Movie } from "../../types";
+import { CreditsResponse, Movie, Video } from "../../types";
+import Modal from "../ui/Modal";
 
 interface Props {
   movie: Movie;
   credits: CreditsResponse;
+  videos: Video[];
 }
 
-function MovieDetails({ movie, credits }: Props) {
+function MovieDetails({ movie, credits, videos }: Props) {
+  const trailer = videos.find((v) => v.type.toLowerCase() === "trailer");
+
   return (
     <section className="md:relative">
       <div>
@@ -47,7 +51,14 @@ function MovieDetails({ movie, credits }: Props) {
                     ({getYear(movie.release_date)})
                   </span>
                 </h1>
-                <p className="font-semibold">{movie.release_date}</p>
+                <div className="flex justify-between items-center mt-3">
+                  <p className="font-semibold">{movie.release_date}</p>
+                  {trailer && (
+                    <>
+                      <Modal trailer={trailer} />
+                    </>
+                  )}
+                </div>
               </div>
 
               <div className="mt-2">
