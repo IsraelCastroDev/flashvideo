@@ -1,4 +1,5 @@
-import { getYear } from "../../helpers";
+import { Link } from "react-router-dom";
+import { convertStringToSlug, getYear } from "../../helpers";
 import { MovieCredits } from "../../types";
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 function InfoPerson({ movieCreditsFromPerson }: Props) {
   return (
     <section className="px-4 py-4 md:hidden">
-      <h2 className="text-xl md:text-2xl font-semibold">Interpretación</h2>
+      <h2 className="text-xl md:text-2xl font-semibold">Interpretacións</h2>
 
       <div className="mt-4">
         {movieCreditsFromPerson.cast.map((movie) => (
@@ -22,7 +23,12 @@ function InfoPerson({ movieCreditsFromPerson }: Props) {
                 : "-----"}
             </p>
             <div>
-              <h4 className="font-bold">{movie.title}</h4>
+              <Link
+                to={`/movie/${movie.id}-${convertStringToSlug(movie.title)}`}
+                className="font-bold hover:text-sky-500"
+              >
+                {movie.title}
+              </Link>
               <p>
                 como <span>{movie.character}</span>
               </p>
