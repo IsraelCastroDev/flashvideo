@@ -1,4 +1,10 @@
-import { formatDate, getYear } from "../../helpers";
+import { Link } from "react-router-dom";
+import {
+  calculateAge,
+  convertStringToSlug,
+  formatDate,
+  getYear,
+} from "../../helpers";
 import { MovieCredits, Person } from "../../types";
 import Carousel from "../ui/Carousel";
 
@@ -35,7 +41,9 @@ function AsidePerson({ person, movieCreditsFromPerson }: Props) {
             <h3 className="font-semibold">Fecha de nacimiento</h3>
             <p>
               {person.birthday !== null && person.birthday !== undefined
-                ? formatDate(person.birthday)
+                ? `${formatDate(person.birthday)} (${calculateAge(
+                    person?.birthday
+                  )} años)`
                 : "Fecha de nacimiento no disponible"}
             </p>
           </div>
@@ -96,7 +104,14 @@ function AsidePerson({ person, movieCreditsFromPerson }: Props) {
                     : "-----"}
                 </p>
                 <div>
-                  <h4 className="font-bold">{movie.title}</h4>
+                  <Link
+                    to={`/movie/${movie.id}-${convertStringToSlug(
+                      movie.title
+                    )}`}
+                    className="font-bold hover:text-sky-500"
+                  >
+                    {movie.title}
+                  </Link>
                   <p>
                     como <span>{movie.character}</span>
                   </p>

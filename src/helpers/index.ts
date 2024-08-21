@@ -19,6 +19,7 @@ export const convertStringToSlug = (str: string): string => {
   if (str)
     return str
       .trim()
+      .normalize("NFD")
       .replace(/ /g, "-") // Reemplaza todos los espacios con guiones
       .replace(/:/g, "") // Reemplaza todos los dos puntos con vacío
       .replace(/&&/g, "y") // Reemplaza "&&" con "y"
@@ -29,4 +30,23 @@ export const convertStringToSlug = (str: string): string => {
       .toLowerCase();
 
   return "";
+};
+
+export const calculateAge = (dateStr: string): number => {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  const birthDate = new Date(year, month - 1, day);
+  const today = new Date();
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDifference = today.getMonth() - birthDate.getMonth();
+
+  // Si no ha cumplido años este año
+  if (
+    monthDifference < 0 ||
+    (monthDifference === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  return age;
 };
