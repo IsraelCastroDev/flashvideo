@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CastMember, Movie } from "../../types";
-import { Link } from "react-router-dom";
 import { convertStringToSlug, formatDate } from "../../helpers";
 import "swiper/css";
 
