@@ -32,10 +32,10 @@ function SearchResults({ searchResult, isMovie, isPerson }: Props) {
                       className="block object-cover w-30 h-44"
                     />
                   ) : (
-                    <img
-                      src={`https://img.freepik.com/free-photo/movie-background-collage_23-2149876006.jpg`}
-                      alt={res.name!}
-                      className="block object-cover w-30 h-44"
+                    <ImageIcon
+                      classname="fill-gray-500"
+                      width="10rem"
+                      height="14rem"
                     />
                   )}
                 </Link>
@@ -69,8 +69,7 @@ function SearchResults({ searchResult, isMovie, isPerson }: Props) {
                 <Link
                   to={`/person/${res.id}-${convertStringToSlug(res.name!)}`}
                 >
-                  {res.profile_path !== null &&
-                  res.profile_path !== undefined ? (
+                  {res.profile_path !== null ? (
                     <img
                       src={`${import.meta.env.VITE_IMAGE_URL}/w300${
                         res.profile_path
@@ -79,10 +78,10 @@ function SearchResults({ searchResult, isMovie, isPerson }: Props) {
                       className="block object-cover w-30 h-44"
                     />
                   ) : (
-                    <img
-                      src={`https://img.freepik.com/free-photo/movie-background-collage_23-2149876006.jpg`}
-                      alt={res.name!}
-                      className="block object-cover w-30 h-44"
+                    <ImageIcon
+                      classname="fill-gray-500"
+                      width="10rem"
+                      height="14rem"
                     />
                   )}
                 </Link>
@@ -132,7 +131,7 @@ function SearchResults({ searchResult, isMovie, isPerson }: Props) {
 
               <div className="w-3/4">
                 <div>
-                  <h2 className="font-bold text-lg">{res.original_name}</h2>
+                  <h2 className="font-bold text-lg">{res.name}</h2>
                   <small className="text-gray-500">
                     {formatDate(res.first_air_date!)}
                   </small>
