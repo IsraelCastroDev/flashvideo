@@ -41,8 +41,10 @@ function RelatedInformationAboutMovie({
 
         <div className="flex w-full flex-wrap justify-start gap-2 mt-2">
           {keywords?.keywords.map((keyword) => (
-            <div key={keyword.id} className="bg-gray-300 p-4 rounded-md">
-              <p className="font-semibold">{keyword.name}</p>
+            <div key={keyword.id} className="bg-gray-300 px-2 py-1 rounded-md">
+              <p className="font-semibold text-sm md:font-bold">
+                {keyword.name}
+              </p>
             </div>
           ))}
         </div>
