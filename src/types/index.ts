@@ -8,6 +8,8 @@ import {
   RecommendedMovieAPIResponse,
   KeyWordsSchemaAPIResponse,
   VideoSchema,
+  MultiAPIResponse,
+  TVSeriesSchema,
 } from "../schemas/movieSchema";
 
 export type Movie = z.infer<typeof MovieSchema>;
@@ -24,3 +26,7 @@ export type Person = z.infer<typeof PersonSchema>;
 
 // video
 export type Video = z.infer<typeof VideoSchema>;
+
+export type Multi = z.infer<typeof MultiAPIResponse>;
+export type TVSerie = z.infer<typeof TVSeriesSchema>;
+export type SearchResult = Movie | Person | TVSerie;
