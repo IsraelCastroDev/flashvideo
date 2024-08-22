@@ -5,6 +5,8 @@ export const getSearchMultiResults = async (query: string) => {
   const { data } = await api(`/search/multi?query=${query}`);
   const validateData = MultiAPIResponse.safeParse(data);
 
+  console.log(data);
+
   console.log("data-zod----->", validateData);
 
   if (validateData.success) {
