@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Loader from "./components/ui/Loader/Loader";
 import "react-toastify/dist/ReactToastify.css";
 import SearhPage from "./pages/SearchPage/SearchPage";
+import NotFound from "./pages/NotFound";
 
 const HomePageLazy = lazy(() => import("./pages/HomePage"));
 const LayoutLazy = lazy(() => import("./layouts/Layout"));
@@ -25,10 +26,12 @@ function App() {
             <Route path="/series" element={<SeriesPageLazy />} />
             <Route path="/gente" element={<PeoplePageLazy />} />
             <Route path="search" element={<SearhPage />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
           <Route element={<LayoutMovieLazy />}>
             <Route path="/movie/:id" element={<MoviePageLazy />} />
             <Route path="/person/:id" element={<PersonPageLazy />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Suspense>
