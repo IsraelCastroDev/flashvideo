@@ -48,7 +48,7 @@ function MovieDetails({ movie, credits, videos }: Props) {
                 <h1 className="text-center md:text-left text-xl md:text-4xl font-bold md:font-black">
                   {movie.title}{" "}
                   <span className="font-semibold">
-                    ({getYear(movie.release_date)})
+                    ({getYear(movie.release_date!)})
                   </span>
                 </h1>
                 <div className="flex justify-between items-center mt-3">
