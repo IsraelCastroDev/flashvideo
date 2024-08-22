@@ -2,7 +2,7 @@ import { SearchIcon } from "../ui/Icons";
 
 function Search() {
   return (
-    <div className="flex items-center gap-2 w-full border border-b-gray-500 px-4 py-2 md:py-4 md:px-10 sticky top-0">
+    <div className="flex items-center gap-2 w-full border border-b-gray-500 bg-white px-4 py-2 md:py-4 md:px-10 sticky top-0">
       <SearchIcon classname="fill-slate-500" />
       <input
         type="text"

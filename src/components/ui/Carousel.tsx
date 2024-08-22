@@ -42,7 +42,7 @@ function Carousel({ data }: Props) {
     >
       {data.map((item) => (
         <SwiperSlide
-          key={item.id}
+          key={item.id || item.original_name}
           tag="li"
           className={`${
             isMovie(item)
