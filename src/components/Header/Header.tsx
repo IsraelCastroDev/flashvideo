@@ -19,20 +19,23 @@ function Header() {
           <input type="checkbox" id="btn-menu" hidden />
           <nav className={`${styles.nav__menu} bg-sky-950 z-50`}>
             <ul className="flex flex-col md:flex-row justify-center md:items-center gap-4">
-              <Link to="/peliculas" className="font-bold text-xl">
+              <Link
+                to="/peliculas"
+                className="font-bold text-xl md:text-[1rem]"
+              >
                 Películas
               </Link>
-              <Link to="/series" className="font-bold text-xl">
+              <Link to="/series" className="font-bold text-xl md:text-[1rem]">
                 Series
               </Link>
-              <Link to="/gente" className="font-bold text-xl">
+              <Link to="/gente" className="font-bold text-xl md:text-[1rem]">
                 Gente
               </Link>
             </ul>
           </nav>
 
           <Link to={"/"}>
-            <h1 className="text-2xl md:text-3xl font-black">Flash Video</h1>
+            <h1 className="text-2xl md:text-2xl font-black">Flash Video</h1>
           </Link>
         </div>
 
