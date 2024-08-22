@@ -55,7 +55,7 @@ function Carousel({ data }: Props) {
           <Link
             to={`${
               isMovie(item)
-                ? `/movie/${item.id}-${convertStringToSlug(item.title)}`
+                ? `/movie/${item.id}-${convertStringToSlug(item.title!)}`
                 : `/person/${item.id}-${convertStringToSlug(item.name)}`
             }`}
           >
@@ -93,7 +93,7 @@ function Carousel({ data }: Props) {
               )}
 
               <p className="text-gray-600 text-sm">
-                {isMovie(item) && formatDate(item.release_date)}
+                {isMovie(item) && formatDate(item.release_date!)}
               </p>
             </div>
           </Link>
