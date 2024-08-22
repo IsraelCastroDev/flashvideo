@@ -22,7 +22,7 @@ function SearhPage() {
   };
 
   const isPerson = (item: SearchResult): item is Person => {
-    return "birthday" in item;
+    return "profile_path" in item;
   };
 
   if (isLoadingSearch) return <Loader />;
