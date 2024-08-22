@@ -1,31 +1,38 @@
-import { boolean, z } from "zod";
+import { z } from "zod";
 
-export const MovieSchema = z.object({
-  adult: boolean(),
-  backdrop_path: z.string().nullable().optional(),
-  genre_ids: z.array(z.number()).nullable().optional(),
-  id: z.number(),
-  original_language: z.string(),
-  original_title: z.string(),
-  overview: z.string(),
-  poster_path: z.string().nullable().optional(),
-  release_date: z.string(),
-  title: z.string(),
-  vote_average: z.number(),
-  genres: z
-    .array(
-      z.object({
-        id: z.number(),
-        name: z.string(),
-      })
-    )
-    .nullable()
-    .optional(),
-  vote_count: z.number().nullable().optional(),
-  character: z.string().nullable().optional(),
-  credit_id: z.string().nullable().optional(),
-  order: z.number().nullable().optional(),
-});
+export const MovieSchema = z
+  .object({
+    adult: z.boolean(),
+    first_air_date: z.string().nullable().optional(),
+    backdrop_path: z.string().nullable().optional(),
+    genre_ids: z.array(z.number()).nullable().optional(),
+    original_country: z.array(z.string()).nullable().optional(),
+    id: z.number(),
+    name: z.string().nullable().optional(),
+    media_type: z.string().nullable().optional(),
+    original_language: z.string().nullable().optional(),
+    original_title: z.string().nullable().optional(),
+    original_name: z.string().nullable().optional(),
+    overview: z.string().nullable().optional(),
+    poster_path: z.string().nullable().optional(),
+    release_date: z.string().nullable().optional(), // Puede ser opcional si no siempre está presente
+    title: z.string().nullable().optional(), // Puede ser opcional si no siempre está presente
+    vote_average: z.number().nullable().optional(),
+    genres: z
+      .array(
+        z.object({
+          id: z.number(),
+          name: z.string(),
+        })
+      )
+      .nullable()
+      .optional(),
+    vote_count: z.number().nullable().optional(),
+    character: z.string().nullable().optional(),
+    credit_id: z.string().nullable().optional(),
+    order: z.number().nullable().optional(),
+  })
+  .passthrough();
 
 export const MovieAPIResponse = z.object({
   page: z.number(),
@@ -36,22 +43,24 @@ export const MovieAPIResponse = z.object({
 
 // cast
 
-export const PersonSchema = z.object({
-  adult: z.boolean(),
-  also_known_as: z.array(z.string()).default([]).nullable().optional(),
-  biography: z.string().nullable().optional(),
-  birthday: z.string().nullable().optional(),
-  deathday: z.string().nullable().optional(),
-  gender: z.number(),
-  homepage: z.string().nullable().optional(),
-  id: z.number(),
-  imdb_id: z.string().nullable().optional(),
-  known_for_department: z.string(),
-  name: z.string(),
-  place_of_birth: z.string().nullable().optional(),
-  popularity: z.number(),
-  profile_path: z.string().nullable().optional(),
-});
+export const PersonSchema = z
+  .object({
+    adult: z.boolean(),
+    also_known_as: z.array(z.string()).default([]).nullable().optional(),
+    biography: z.string().nullable().optional(),
+    birthday: z.string().nullable().optional(),
+    deathday: z.string().nullable().optional(),
+    gender: z.number().nullable().optional(), // Puede ser opcional si no siempre está presente
+    homepage: z.string().nullable().optional(),
+    id: z.number(),
+    imdb_id: z.string().nullable().optional(),
+    known_for_department: z.string().nullable().optional(),
+    name: z.string(),
+    place_of_birth: z.string().nullable().optional(),
+    popularity: z.number().nullable().optional(),
+    profile_path: z.string().nullable().optional(),
+  })
+  .passthrough();
 
 export const CastMemberSchema = z.object({
   adult: z.boolean(),
@@ -145,4 +154,38 @@ export const VideoSchema = z.object({
 export const VideosAPIResponse = z.object({
   id: z.number(),
   results: z.array(VideoSchema),
+});
+
+// TV SERIES
+export const TVSeriesSchema = z
+  .object({
+    adult: z.boolean(),
+    backdrop_path: z.string().nullable().optional(),
+    genre_ids: z.array(z.number()).nullable().optional(),
+    id: z.number().nullable().optional(),
+    origin_country: z.array(z.string()).nullable().optional(),
+    original_language: z.string().nullable().optional(),
+    original_name: z.string().nullable().optional(),
+    overview: z.string().nullable().optional(),
+    popularity: z.number().nullable().optional(),
+    poster_path: z.string().nullable().optional(),
+    first_air_date: z.string().nullable().optional(),
+    name: z.string().nullable().optional(),
+    vote_average: z.number().nullable().optional(),
+    vote_count: z.number().nullable().optional(),
+  })
+  .passthrough();
+
+// SEARCH
+export const ResultSearchSchema = z.union([
+  PersonSchema,
+  MovieSchema,
+  TVSeriesSchema,
+]);
+
+export const MultiAPIResponse = z.object({
+  page: z.number(),
+  results: z.array(ResultSearchSchema),
+  total_pages: z.number(),
+  total_results: z.number(),
 });
