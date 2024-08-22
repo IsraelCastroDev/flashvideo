@@ -100,13 +100,13 @@ function AsidePerson({ person, movieCreditsFromPerson }: Props) {
               >
                 <p className="font-semibold flex-initial">
                   {movie.release_date !== ""
-                    ? getYear(movie.release_date)
+                    ? getYear(movie.release_date!)
                     : "-----"}
                 </p>
                 <div>
                   <Link
                     to={`/movie/${movie.id}-${convertStringToSlug(
-                      movie.title
+                      movie.title!
                     )}`}
                     className="font-bold hover:text-sky-500"
                   >
