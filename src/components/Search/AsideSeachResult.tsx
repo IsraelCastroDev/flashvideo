@@ -1,6 +1,11 @@
 import styles from "./AsideSearchResult.module.css";
+import { NavLink } from "react-router-dom";
 
-function AsideSeachResult() {
+interface Props {
+  query: string;
+}
+
+function AsideSeachResult({ query }: Props) {
   return (
     <aside className="md:w-1/3">
       <div className="bg-sky-500 text-white p-2">
@@ -9,25 +14,57 @@ function AsideSeachResult() {
 
       <div className="border shadow">
         <ul
-          className={`flex md:flex-col items-center md:items-start gap-5 md:gap-0 overflow-x-scroll py-2 px-3 md:px-0 md:py-0 ${styles["custom-scroll"]} font-bold`}
+          className={`flex md:flex-col items-center md:items-start gap-5 md:gap-0 overflow-x-scroll py-2 px-3 md:px-0 md:py-0 ${styles["custom-scroll"]} font-bold w-full`}
         >
-          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3">
-            Series
+          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3 cursor-pointer">
+            <NavLink
+              to={`/search/tv?query=${query}`}
+              className={({ isActive }) =>
+                `block w-full ${isActive ? "bg-gray-300" : ""}`
+              }
+            >
+              Series
+            </NavLink>
           </li>
-          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3">
-            Películas
+          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3 cursor-pointer">
+            <NavLink
+              to={`/search/movie?query=${query}`}
+              className="block w-full"
+            >
+              Películas
+            </NavLink>
           </li>
-          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3">
-            Colecciones
+          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3 cursor-pointer">
+            <NavLink
+              to={`/search/collection?query=${query}`}
+              className="block w-full"
+            >
+              Colecciones
+            </NavLink>
           </li>
-          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3">
-            Palabras Claves
+          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3 cursor-pointer">
+            <NavLink
+              to={`/search/keyword?query=${query}`}
+              className="block w-full"
+            >
+              Palabras Claves
+            </NavLink>
           </li>
-          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3">
-            Gente
+          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3 cursor-pointer">
+            <NavLink
+              to={`/search/person?query=${query}`}
+              className="block w-full"
+            >
+              Gente
+            </NavLink>
           </li>
-          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3">
-            Compañías
+          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3 cursor-pointer">
+            <NavLink
+              to={`/search/company?query=${query}`}
+              className="block w-full"
+            >
+              Compañías
+            </NavLink>
           </li>
         </ul>
       </div>
