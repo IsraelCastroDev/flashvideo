@@ -52,6 +52,7 @@ export const PersonSchema = z
     deathday: z.string().nullable().optional(),
     gender: z.number().nullable().optional(), // Puede ser opcional si no siempre está presente
     homepage: z.string().nullable().optional(),
+    know_for: z.array(MovieSchema).nullable().optional(),
     id: z.number(),
     imdb_id: z.string().nullable().optional(),
     known_for_department: z.string().nullable().optional(),
@@ -61,6 +62,13 @@ export const PersonSchema = z
     profile_path: z.string().nullable().optional(),
   })
   .passthrough();
+
+export const PersonSearchSchema = z.object({
+  page: z.number(),
+  results: z.array(PersonSchema),
+  total_pages: z.number(),
+  total_results: z.number(),
+});
 
 export const CastMemberSchema = z.object({
   adult: z.boolean(),
