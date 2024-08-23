@@ -15,8 +15,6 @@ export const getSearchMultiResults = async (query: string) => {
 export const getSearchPerson = async (query: string) => {
   const { data } = await api(`/search/person?query=${query}`);
   const validate = PersonSearchSchema.safeParse(data);
-  console.log(data);
-  console.log(validate);
 
   if (validate.success) {
     return validate.data;
