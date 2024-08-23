@@ -4,13 +4,13 @@ import Loader from "../../components/ui/Loader/Loader";
 import { useSearch } from "../../hooks/search/useSearch";
 import { Movie, Person, SearchResult } from "../../types";
 import SearchResults from "../../components/Search/SearchResults";
-import AsideSeachResult from "../../components/Search/AsideSeachResult";
 
 function SearhPage() {
   const queryParam = useLocation().search;
   const query = queryParam.split("=")[1];
 
   const { searchQuery } = useSearch(query);
+
   const {
     data: searchResult,
     isLoading: isLoadingSearch,
@@ -31,23 +31,19 @@ function SearhPage() {
 
   return (
     <>
-      <section className="flex flex-col md:flex-row gap-5">
-        <AsideSeachResult />
-
-        <ul className="flex flex-col gap-4 md:w-2/3">
-          {searchResult.results.length > 0 ? (
-            <SearchResults
-              searchResult={searchResult}
-              isMovie={isMovie}
-              isPerson={isPerson}
-            />
-          ) : (
-            <div className="h-[calc(100vh-237px)]">
-              <p className="text-lg font-bold">No se encontraron resultados.</p>
-            </div>
-          )}
-        </ul>
-      </section>
+      <ul className="flex flex-col gap-4 md:w-2/3">
+        {searchResult.results.length > 0 ? (
+          <SearchResults
+            searchResult={searchResult}
+            isMovie={isMovie}
+            isPerson={isPerson}
+          />
+        ) : (
+          <div className="h-[calc(100vh-237px)]">
+            <p className="text-lg font-bold">No se encontraron resultados.</p>
+          </div>
+        )}
+      </ul>
     </>
   );
 }
