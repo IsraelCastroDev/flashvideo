@@ -4,7 +4,7 @@ export const MovieSchema = z
   .object({
     adult: z.boolean(),
     first_air_date: z.string().nullable().optional(),
-    backdrop_path: z.string().nullable().optional(),
+    backdrop_path: z.string().nullable(),
     genre_ids: z.array(z.number()).nullable().optional(),
     original_country: z.array(z.string()).nullable().optional(),
     id: z.number(),
@@ -13,8 +13,8 @@ export const MovieSchema = z
     original_language: z.string().nullable().optional(),
     original_title: z.string().nullable().optional(),
     original_name: z.string().nullable().optional(),
-    overview: z.string().nullable().optional(),
-    poster_path: z.string().nullable().optional(),
+    overview: z.string().nullable(),
+    poster_path: z.string().nullable(),
     release_date: z.string().nullable().optional(), // Puede ser opcional si no siempre está presente
     title: z.string().nullable().optional(), // Puede ser opcional si no siempre está presente
     vote_average: z.number().nullable().optional(),
@@ -118,14 +118,23 @@ export const MovieCreditsAPIResponse = z.object({
 });
 
 // KEYWORDS
+export const KeywordSchema = z.array(
+  z.object({
+    id: z.number(),
+    name: z.string(),
+  })
+);
+
 export const KeyWordsSchemaAPIResponse = z.object({
   id: z.number(),
-  keywords: z.array(
-    z.object({
-      id: z.number(),
-      name: z.string(),
-    })
-  ),
+  keywords: KeywordSchema,
+});
+
+export const KeyWordsSearchSchemaAPIResponse = z.object({
+  page: z.number(),
+  results: KeywordSchema,
+  total_pages: z.number(),
+  total_results: z.number(),
 });
 
 // MOVIES TOP RATED
@@ -183,6 +192,13 @@ export const TVSeriesSchema = z
     vote_count: z.number().nullable().optional(),
   })
   .passthrough();
+
+export const TVSeriesAPIResponse = z.object({
+  page: z.number(),
+  results: z.array(TVSeriesSchema),
+  total_pages: z.number(),
+  total_results: z.number(),
+});
 
 // SEARCH
 export const ResultSearchSchema = z.union([
