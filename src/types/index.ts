@@ -10,6 +10,7 @@ import {
   VideoSchema,
   MultiAPIResponse,
   TVSeriesSchema,
+  KeywordSchema,
 } from "../schemas/movieSchema";
 
 export type Movie = z.infer<typeof MovieSchema>;
@@ -29,4 +30,6 @@ export type Video = z.infer<typeof VideoSchema>;
 
 export type Multi = z.infer<typeof MultiAPIResponse>;
 export type TVSerie = z.infer<typeof TVSeriesSchema>;
-export type SearchResult = Movie | Person | TVSerie;
+export type Keyword = z.infer<typeof KeywordSchema>;
+
+export type SearchResult = Movie | Person | TVSerie | Keyword;
