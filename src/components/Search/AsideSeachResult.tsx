@@ -58,14 +58,6 @@ function AsideSeachResult({ query }: Props) {
               Gente
             </NavLink>
           </li>
-          <li className="whitespace-nowrap md:hover:bg-gray-300 w-full h-full md:p-3 cursor-pointer">
-            <NavLink
-              to={`/search/company?query=${query}`}
-              className="block w-full"
-            >
-              Compañías
-            </NavLink>
-          </li>
         </ul>
       </div>
     </aside>
