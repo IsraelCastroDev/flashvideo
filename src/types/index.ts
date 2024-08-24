@@ -32,4 +32,4 @@ export type Multi = z.infer<typeof MultiAPIResponse>;
 export type TVSerie = z.infer<typeof TVSeriesSchema>;
 export type Keyword = z.infer<typeof KeywordSchema>;
 
-export type SearchResult = Movie | Person | TVSerie | Keyword;
+export type SearchResult = Movie | Person | TVSerie;
