@@ -25,8 +25,6 @@ function SearchPersonPage() {
     return "profile_path" in item;
   };
 
-  // console.log("desde search person page --------->", enabled);
-
   if (isLoadingPersonSearch) return <Loader />;
   if (isErrorPersonSearch)
     toast.error("Ocurrió un error al cargar la información");
