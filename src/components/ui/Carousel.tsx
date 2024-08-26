@@ -4,19 +4,22 @@ import { CastMember, Movie, TVSerie } from "../../types";
 import { convertStringToSlug, formatDate } from "../../helpers";
 import "swiper/css";
 
+type DataCarousel = Movie[] | CastMember[] | TVSerie[];
+type Item = Movie | CastMember | TVSerie;
+
 interface Props {
-  data: Movie[] | CastMember[] | TVSerie[];
+  data: DataCarousel;
 }
 
-function isMovie(item: Movie | CastMember | TVSerie): item is Movie {
+function isMovie(item: Item): item is Movie {
   return (item as Movie).title !== undefined;
 }
 
-function isCast(item: Movie | CastMember | TVSerie): item is CastMember {
+function isCast(item: Item): item is CastMember {
   return (item as CastMember).known_for_department !== undefined;
 }
 
-function isTVSerie(item: Movie | CastMember | TVSerie): item is TVSerie {
+function isTVSerie(item: Item): item is TVSerie {
   return (item as TVSerie).name !== undefined;
 }
 
@@ -32,8 +35,8 @@ function Carousel({ data }: Props) {
         830: {
           slidesPerView: 5,
         },
-        1100: {
-          slidesPerView: 7,
+        1200: {
+          slidesPerView: 6,
         },
         touchStartPreventDefault: {
           touchStartPreventDefault: false,
