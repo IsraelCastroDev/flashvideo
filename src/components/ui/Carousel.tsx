@@ -16,6 +16,10 @@ function isCast(item: Movie | CastMember | TVSerie): item is CastMember {
   return (item as CastMember).known_for_department !== undefined;
 }
 
+function isTVSerie(item: Movie | CastMember | TVSerie): item is TVSerie {
+  return (item as TVSerie).name !== undefined;
+}
+
 function Carousel({ data }: Props) {
   return (
     <Swiper
@@ -56,6 +60,8 @@ function Carousel({ data }: Props) {
             to={`${
               isMovie(item)
                 ? `/movie/${item.id}-${convertStringToSlug(item.title!)}`
+                : isTVSerie(item)
+                ? `/tv/${item.id}-${convertStringToSlug(item.name!)}`
                 : `/person/${item.id}-${convertStringToSlug(item.name!)}`
             }`}
           >
