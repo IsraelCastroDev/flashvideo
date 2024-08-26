@@ -25,13 +25,6 @@ function Header() {
                 >
                   Películas
                 </li>
-
-                <div className={styles.submenu}>
-                  <Link>Populares</Link>
-                  <Link>En cartelera</Link>
-                  <Link>Próximamente</Link>
-                  <Link>Mejor puntuadas</Link>
-                </div>
               </div>
               <div>
                 <li className="font-bold text-xl md:text-[1rem] cursor-pointer">
