@@ -34,6 +34,24 @@ export const MovieSchema = z
   })
   .passthrough();
 
+export const CollectionSchema = z.object({
+  adult: z.boolean(),
+  backdrop_path: z.string().nullable().optional(),
+  id: z.number(),
+  name: z.string(),
+  original_language: z.string(),
+  original_name: z.string(),
+  overview: z.string().nullable().optional(),
+  poster_path: z.string().nullable().optional(),
+});
+
+export const CollectionAPIResponse = z.object({
+  page: z.number(),
+  results: z.array(CollectionSchema),
+  total_pages: z.number(),
+  total_results: z.number(),
+});
+
 export const MovieAPIResponse = z.object({
   page: z.number(),
   results: z.array(MovieSchema),
