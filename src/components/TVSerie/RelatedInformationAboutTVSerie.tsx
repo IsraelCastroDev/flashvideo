@@ -36,7 +36,7 @@ function RelatedInformationAboutTVSerie({
         </div>
       </div>
 
-      <aside className="lg:w-1/3 lg:pl-4 shadow-box-shadow-left shadow-box-shadow">
+      <aside className="lg:w-1/3 lg:pl-4  py-4 shadow-box-shadow-left shadow-box-shadow">
         <h3 className="text-xl font-bold md:text-2xl">Palabras claves</h3>
 
         <div className="flex w-full flex-wrap justify-start gap-2 mt-2">
