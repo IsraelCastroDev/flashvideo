@@ -13,9 +13,11 @@ import {
   KeywordSchema,
   TVSerieRecommendationsAPIResponse,
   TVSerieKeywordsResponse,
+  CollectionSchema,
 } from "../schemas/movieSchema";
 
 export type Movie = z.infer<typeof MovieSchema>;
+export type Collection = z.infer<typeof CollectionSchema>;
 export type CastMember = z.infer<typeof CastMemberSchema>;
 export type MovieCredits = z.infer<typeof MovieCreditsAPIResponse>;
 export type CreditsResponse = z.infer<typeof CreditsAPIResponse>;
@@ -35,7 +37,9 @@ export type Person = z.infer<typeof PersonSchema>;
 // video
 export type Video = z.infer<typeof VideoSchema>;
 
+// search
 export type Multi = z.infer<typeof MultiAPIResponse>;
+
 export type TVSerie = z.infer<typeof TVSeriesSchema>;
 export type Keyword = z.infer<typeof KeywordSchema>;
 
