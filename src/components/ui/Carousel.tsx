@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { CastMember, Movie } from "../../types";
+import { CastMember, Movie, TVSerie } from "../../types";
 import { convertStringToSlug, formatDate } from "../../helpers";
 import "swiper/css";
 
 interface Props {
-  data: Movie[] | CastMember[];
+  data: Movie[] | CastMember[] | TVSerie[];
 }
 
-function isMovie(item: Movie | CastMember): item is Movie {
+function isMovie(item: Movie | CastMember | TVSerie): item is Movie {
   return (item as Movie).title !== undefined;
 }
 
-function isCast(item: Movie | CastMember): item is CastMember {
+function isCast(item: Movie | CastMember | TVSerie): item is CastMember {
   return (item as CastMember).known_for_department !== undefined;
 }
 
@@ -56,7 +56,7 @@ function Carousel({ data }: Props) {
             to={`${
               isMovie(item)
                 ? `/movie/${item.id}-${convertStringToSlug(item.title!)}`
-                : `/person/${item.id}-${convertStringToSlug(item.name)}`
+                : `/person/${item.id}-${convertStringToSlug(item.name!)}`
             }`}
           >
             <img
