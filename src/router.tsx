@@ -8,6 +8,9 @@ const HomePageLazy = lazy(() => import("./pages/HomePage"));
 const LayoutLazy = lazy(() => import("./layouts/Layout"));
 const LayoutMovieLazy = lazy(() => import("./layouts/LayoutMovie"));
 const LayoutSearch = lazy(() => import("./layouts/LayoutSearch"));
+const CollectionPageLazy = lazy(
+  () => import("./pages/CollectionPage/CollectionPage")
+);
 const MoviePageLazy = lazy(() => import("./pages/MoviePage/MoviePage"));
 const PersonPageLazy = lazy(() => import("./pages/PersonPage/PersonPage"));
 const PeoplePageLazy = lazy(() => import("./pages/PeoplePage"));
@@ -60,6 +63,7 @@ function App() {
             <Route path="/movie/:id" element={<MoviePageLazy />} />
             <Route path="/person/:id" element={<PersonPageLazy />} />
             <Route path="/tv/:id" element={<TVSeriePageLazy />} />
+            <Route path="/collection/:id" element={<CollectionPageLazy />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
