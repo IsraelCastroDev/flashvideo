@@ -11,6 +11,8 @@ import {
   MultiAPIResponse,
   TVSeriesSchema,
   KeywordSchema,
+  TVSerieRecommendationsAPIResponse,
+  TVSerieKeywordsResponse,
 } from "../schemas/movieSchema";
 
 export type Movie = z.infer<typeof MovieSchema>;
@@ -20,7 +22,12 @@ export type CreditsResponse = z.infer<typeof CreditsAPIResponse>;
 export type RecommendationsResponse = z.infer<
   typeof RecommendedMovieAPIResponse
 >;
+
+export type TVSerieRecommendationsResponse = z.infer<
+  typeof TVSerieRecommendationsAPIResponse
+>;
 export type KeywordsResponse = z.infer<typeof KeyWordsSchemaAPIResponse>;
+export type TVSerieKeywordsResponse = z.infer<typeof TVSerieKeywordsResponse>;
 
 // person
 export type Person = z.infer<typeof PersonSchema>;
