@@ -17,20 +17,32 @@ function Header() {
             <MenuIcon />
           </label>
           <input type="checkbox" id="btn-menu" hidden />
-          <nav className={`${styles.nav__menu} bg-sky-950 z-50`}>
-            <ul className="flex flex-col md:flex-row justify-center md:items-center gap-4">
-              <Link
-                to="/peliculas"
-                className="font-bold text-xl md:text-[1rem]"
-              >
-                Películas
-              </Link>
-              <Link to="/series" className="font-bold text-xl md:text-[1rem]">
-                Series
-              </Link>
-              <Link to="/gente" className="font-bold text-xl md:text-[1rem]">
-                Gente
-              </Link>
+          <nav className={`${styles.nav__menu}`}>
+            <ul className="flex flex-col md:flex-row justify-center md:items-center gap-4 bg-sky-950 z-50 px-4 py-5">
+              <div className="relative">
+                <li
+                  className={`${styles["menu-item"]} font-bold text-xl md:text-[1rem] cursor-pointer`}
+                >
+                  Películas
+                </li>
+
+                <div className={styles.submenu}>
+                  <Link>Populares</Link>
+                  <Link>En cartelera</Link>
+                  <Link>Próximamente</Link>
+                  <Link>Mejor puntuadas</Link>
+                </div>
+              </div>
+              <div>
+                <li className="font-bold text-xl md:text-[1rem] cursor-pointer">
+                  Series
+                </li>
+              </div>
+              <div>
+                <li className="font-bold text-xl md:text-[1rem] cursor-pointer">
+                  Gente
+                </li>
+              </div>
             </ul>
           </nav>
 

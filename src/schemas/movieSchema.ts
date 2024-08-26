@@ -190,6 +190,29 @@ export const TVSeriesSchema = z
     name: z.string().nullable().optional(),
     vote_average: z.number().nullable().optional(),
     vote_count: z.number().nullable().optional(),
+    number_of_episodes: z.number(),
+    number_of_seasons: z.number(),
+    seasons: z.array(
+      z.object({
+        air_date: z.null(),
+        episode_count: z.number(),
+        id: z.number(),
+        name: z.string(),
+        overview: z.string(),
+        poster_path: z.null(),
+        season_number: z.number(),
+        vote_average: z.number(),
+      })
+    ),
+    networks: z.array(
+      z.object({
+        id: z.number(),
+        logo_path: z.string(),
+        name: z.string(),
+        origin_country: z.string(),
+      })
+    ),
+    status: z.string(),
   })
   .passthrough();
 

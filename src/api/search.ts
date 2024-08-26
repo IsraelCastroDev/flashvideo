@@ -58,9 +58,6 @@ export const getSearchCollections = async (query: string) => {
   const { data } = await api(`/search/collection?query=${query}`);
   const validateData = MovieAPIResponse.safeParse(data);
 
-  console.log(data);
-  console.log(validateData);
-
   if (validateData.success) {
     return validateData.data;
   }

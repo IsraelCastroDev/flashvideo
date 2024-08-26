@@ -112,26 +112,30 @@ function SearchResults({ searchResult, isMovie, isPerson }: Props) {
               className="flex items-center gap-2 w-full shadow-md md:py-3"
             >
               <div className="w-1/4 flex items-center justify-center">
-                {res.poster_path !== null ? (
-                  <img
-                    src={`${
-                      import.meta.env.VITE_IMAGE_URL
-                    }/w300${res.poster_path!}`}
-                    alt={res.name!}
-                    className="block object-cover w-30 h-44"
-                  />
-                ) : (
-                  <ImageIcon
-                    classname="fill-gray-500"
-                    width="10rem"
-                    height="14rem"
-                  />
-                )}
+                <Link to={`/tv/${res.id}-${convertStringToSlug(res.name!)}`}>
+                  {res.poster_path !== null ? (
+                    <img
+                      src={`${
+                        import.meta.env.VITE_IMAGE_URL
+                      }/w300${res.poster_path!}`}
+                      alt={res.name!}
+                      className="block object-cover w-30 h-44"
+                    />
+                  ) : (
+                    <ImageIcon
+                      classname="fill-gray-500"
+                      width="10rem"
+                      height="14rem"
+                    />
+                  )}
+                </Link>
               </div>
 
               <div className="w-3/4">
                 <div>
-                  <h2 className="font-bold text-lg">{res.name}</h2>
+                  <Link to={`/tv/${res.id}-${convertStringToSlug(res.name!)}`}>
+                    <h2 className="font-bold text-lg">{res.name}</h2>
+                  </Link>
                   <small className="text-gray-500">
                     {formatDate(res.first_air_date!)}
                   </small>

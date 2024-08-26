@@ -20,7 +20,7 @@ function AsideSeachResult({ query }: Props) {
             <NavLink
               to={`/search/tv?query=${query}`}
               className={({ isActive }) =>
-                `block w-full h-full  ${isActive ? "bg-gray-300" : ""} md:p-3`
+                `block w-full h-full ${isActive ? "md:bg-gray-300" : ""} md:p-3`
               }
             >
               Series
@@ -30,7 +30,7 @@ function AsideSeachResult({ query }: Props) {
             <NavLink
               to={`/search/movie?query=${query}`}
               className={({ isActive }) =>
-                `block h-full w-full ${isActive ? "bg-gray-300" : ""} md:p-3`
+                `block h-full w-full ${isActive ? "md:bg-gray-300" : ""} md:p-3`
               }
             >
               Películas
@@ -40,7 +40,7 @@ function AsideSeachResult({ query }: Props) {
             <NavLink
               to={`/search/collection?query=${query}`}
               className={({ isActive }) =>
-                `block h-full w-full ${isActive ? "bg-gray-300" : ""} md:p-3`
+                `block h-full w-full ${isActive ? "md:bg-gray-300" : ""} md:p-3`
               }
             >
               Colecciones
@@ -50,7 +50,7 @@ function AsideSeachResult({ query }: Props) {
             <NavLink
               to={`/search/keyword?query=${query}`}
               className={({ isActive }) =>
-                `block h-full w-full ${isActive ? "bg-gray-300" : ""} md:p-3`
+                `block h-full w-full ${isActive ? "md:bg-gray-300" : ""} md:p-3`
               }
             >
               Palabras Claves
@@ -60,7 +60,7 @@ function AsideSeachResult({ query }: Props) {
             <NavLink
               to={`/search/person?query=${query}`}
               className={({ isActive }) =>
-                `block h-full w-full ${isActive ? "bg-gray-300" : ""} md:p-3`
+                `block h-full w-full ${isActive ? "md:bg-gray-300" : ""} md:p-3`
               }
             >
               Gente
