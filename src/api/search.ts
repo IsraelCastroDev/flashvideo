@@ -1,4 +1,5 @@
 import {
+  CollectionAPIResponse,
   KeyWordsSearchSchemaAPIResponse,
   MovieAPIResponse,
   MultiAPIResponse,
@@ -56,7 +57,7 @@ export const getSearchKeywords = async (query: string) => {
 
 export const getSearchCollections = async (query: string) => {
   const { data } = await api(`/search/collection?query=${query}`);
-  const validateData = MovieAPIResponse.safeParse(data);
+  const validateData = CollectionAPIResponse.safeParse(data);
 
   if (validateData.success) {
     return validateData.data;
