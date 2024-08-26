@@ -19,9 +19,9 @@ export default function Modal({ trailer }: Props) {
     <>
       <button
         onClick={showModal}
-        className="font-semibold flex items-center gap-2 border border-sky-500 px-2 text-sky-400 rounded-lg"
+        className="font-semibold flex items-center gap-2 border bg-sky-500 px-3 py-1 text-white rounded-lg"
       >
-        <PlayIcon classname="fill-sky-500" />
+        <PlayIcon classname="fill-white" />
         Ver tráiler
       </button>
 
