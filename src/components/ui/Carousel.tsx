@@ -16,11 +16,11 @@ function isMovie(item: Item): item is Movie {
 }
 
 function isCast(item: Item): item is CastMember {
-  return (item as CastMember).known_for_department !== undefined;
+  return (item as CastMember).profile_path !== undefined;
 }
 
 function isTVSerie(item: Item): item is TVSerie {
-  return (item as TVSerie).name !== undefined;
+  return (item as TVSerie).seasons !== undefined;
 }
 
 function Carousel({ data }: Props) {
