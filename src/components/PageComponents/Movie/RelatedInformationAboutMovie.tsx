@@ -5,9 +5,9 @@ import {
   KeywordsResponse,
   RecommendationsResponse,
 } from "../../../types";
-import Carousel from "../../ui/Carousel";
 import { convertStringToSlug, formatDate } from "../../../helpers";
 import { ImageIcon } from "../../ui/Icons";
+import Carousel from "../../ui/Carousel";
 
 interface Props {
   credits?: CreditsResponse;
