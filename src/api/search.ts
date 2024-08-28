@@ -14,8 +14,6 @@ export const getSearchMultiResults = async (query: string) => {
 
   if (validateData.success) {
     return validateData.data;
-  } else {
-    console.log(validateData.error.message.toString());
   }
 };
 

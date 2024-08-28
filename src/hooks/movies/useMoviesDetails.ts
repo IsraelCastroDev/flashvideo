@@ -46,8 +46,6 @@ export function useMovieDetails(movieId: Movie["id"]) {
     enabled: movieId !== undefined,
   });
 
-  console.log(creditsQuery.data?.cast);
-
   const recommendationsQuery = useQuery({
     queryKey: ["recommendations", movieId],
     queryFn: () => {
