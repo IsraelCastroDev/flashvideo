@@ -1,15 +1,26 @@
 import { getYear } from "../../../helpers";
-import { CreditsResponse, MovieWithType, Video } from "../../../types";
+import {
+  CollectionWithType,
+  CreditsResponse,
+  MovieWithType,
+  Video,
+} from "../../../types";
 import Modal from "../../ui/Modal";
 
+type Data = MovieWithType | CollectionWithType;
+
 interface Props {
-  movie: MovieWithType;
-  credits: CreditsResponse;
-  videos: Video[];
+  movie: Data;
+  credits?: CreditsResponse;
+  videos?: Video[];
+}
+
+function isMovie(item: Data): item is MovieWithType {
+  return (item as MovieWithType).type_identifier === "movie";
 }
 
 function MovieDetails({ movie, credits, videos }: Props) {
-  const trailer = videos.find((v) => v.type.toLowerCase() === "trailer");
+  const trailer = videos?.find((v) => v.type.toLowerCase() === "trailer");
 
   return (
     <section className="md:relative">
@@ -38,7 +49,7 @@ function MovieDetails({ movie, credits, videos }: Props) {
                       }`
                     : "https://img.freepik.com/free-photo/movie-background-collage_23-2149876006.jpg"
                 }
-                alt={`Poster de ${movie.title}`}
+                alt={`Poster de ${isMovie(movie) ? movie.title : movie.name}`}
                 className="block w-32 h-40 md:w-72 md:h-1/2 top-1/3 left-64 -translate-x-48 -translate-y-1/2 md:-translate-x-0 md:translate-y-0 absolute rounded-xl md:static"
               />
             </div>
@@ -46,13 +57,15 @@ function MovieDetails({ movie, credits, videos }: Props) {
             <div className="mt-4 px-4 md:w-2/3">
               <div>
                 <h1 className="text-center md:text-left text-xl md:text-4xl font-bold md:font-black">
-                  {movie.title}{" "}
+                  {isMovie(movie) ? movie.title : movie.name}{" "}
                   <span className="font-semibold">
-                    ({getYear(movie.release_date!)})
+                    {isMovie(movie) ? `(${getYear(movie.release_date!)})` : ""}
                   </span>
                 </h1>
                 <div className="flex justify-between items-center mt-3">
-                  <p className="font-semibold">{movie.release_date}</p>
+                  <p className="font-semibold">
+                    {isMovie(movie) ? movie.release_date : ""}
+                  </p>
                   {trailer && (
                     <>
                       <Modal trailer={trailer} />
@@ -66,18 +79,29 @@ function MovieDetails({ movie, credits, videos }: Props) {
 
                 <div>
                   <p className="text-pretty font-semibold mt-2">
-                    {movie.overview}
+                    {isMovie(movie) ? movie.overview : movie.overview}
                   </p>
                 </div>
 
-                <ol className="grid grid-cols-2 gap-3 mt-4">
-                  {credits?.crew.slice(0, 4).map((c) => (
-                    <li key={c.credit_id}>
-                      <h3 className="font-black">{c.original_name}</h3>
-                      <p>{c.known_for_department}</p>
-                    </li>
-                  ))}
-                </ol>
+                {!isMovie(movie) && (
+                  <div>
+                    <p className="text-pretty font-semibold mt-2">
+                      Número de películas:{" "}
+                      <span className="font-black">{movie.parts?.length}</span>
+                    </p>
+                  </div>
+                )}
+
+                {isMovie(movie) && (
+                  <ol className="grid grid-cols-2 gap-3 mt-4">
+                    {credits?.crew.slice(0, 4).map((c) => (
+                      <li key={c.credit_id}>
+                        <h3 className="font-black">{c.original_name}</h3>
+                        <p>{c.known_for_department}</p>
+                      </li>
+                    ))}
+                  </ol>
+                )}
               </div>
             </div>
           </div>
