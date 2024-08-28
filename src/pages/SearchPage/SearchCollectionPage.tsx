@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useSearch } from "../../hooks/search/useSearch";
 import Loader from "../../components/ui/Loader/Loader";
 import { toast } from "react-toastify";
-import SearchResults from "../../components/Search/SearchResults";
+import SearchResults from "../../components/PageComponents/Search/SearchResults";
 
 function SearchCollection() {
   const queryParam = useLocation().search;

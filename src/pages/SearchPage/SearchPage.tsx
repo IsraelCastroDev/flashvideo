@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../components/ui/Loader/Loader";
 import { useSearch } from "../../hooks/search/useSearch";
-import SearchResults from "../../components/Search/SearchResults";
+import SearchResults from "../../components/PageComponents/Search/SearchResults";
 
 function SearhPage() {
   const queryParam = useLocation().search;

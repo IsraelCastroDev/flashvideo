@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import AsidePerson from "../../components/Person/AsidePerson";
-import InfoPerson from "../../components/Person/InfoPerson";
 import Loader from "../../components/ui/Loader/Loader";
 import { usePerson } from "../../hooks/people/usePerson";
+import AsidePerson from "../../components/PageComponents/Person/AsidePerson";
+import InfoPerson from "../../components/PageComponents/Person/InfoPerson";
 
 function PersonPage() {
   const { id } = useParams<{ id: string }>();

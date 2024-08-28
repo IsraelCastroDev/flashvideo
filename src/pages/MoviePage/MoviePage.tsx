@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../components/ui/Loader/Loader";
 import { useMovieDetails } from "../../hooks/movies/useMoviesDetails";
-import MovieDetails from "../../components/Movie/MovieDetails";
-import RelatedInformationAboutMovie from "../../components/Movie/RelatedInformationAboutMovie";
+import MovieDetails from "../../components/PageComponents/Movie/MovieDetails";
+import RelatedInformationAboutMovie from "../../components/PageComponents/Movie/RelatedInformationAboutMovie";
 
 function MoviePage() {
   const { id } = useParams<{ id?: string }>();

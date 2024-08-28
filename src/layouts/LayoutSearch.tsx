@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import Header from "../components/Header/Header";
-import AsideSeachResult from "../components/Search/AsideSeachResult";
 import Loader from "../components/ui/Loader/Loader";
 import { useSearch } from "../hooks/search/useSearch";
+import Header from "../components/PageComponents/Header/Header";
+import AsideSeachResult from "../components/PageComponents/Search/AsideSeachResult";
 
 function LayoutSearch() {
   const queryParam = useLocation().search;

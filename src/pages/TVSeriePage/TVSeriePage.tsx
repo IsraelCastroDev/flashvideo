@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import RelatedInformationAboutTVSerie from "../../components/TVSerie/RelatedInformationAboutTVSerie";
-import TVSerieDetails from "../../components/TVSerie/TVSerieDetails";
 import { useTVSerie } from "../../hooks/tvserie/useTVSerie";
 import Loader from "../../components/ui/Loader/Loader";
+import TVSerieDetails from "../../components/PageComponents/TVSerie/TVSerieDetails";
+import RelatedInformationAboutTVSerie from "../../components/PageComponents/TVSerie/RelatedInformationAboutTVSerie";
 import { toast } from "react-toastify";
 import { useTVSerieDetails } from "../../hooks/tvserie/useTVSerieDetails";
 
