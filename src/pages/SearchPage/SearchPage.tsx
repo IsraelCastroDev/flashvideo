@@ -23,7 +23,7 @@ function SearhPage() {
   return (
     <>
       <ul className="flex flex-col gap-4 md:w-2/3">
-        {searchResult.results.length > 0 ? (
+        {searchResult.results ? (
           <SearchResults searchResult={searchResult} />
         ) : (
           <div className="h-[calc(100vh-237px)]">
