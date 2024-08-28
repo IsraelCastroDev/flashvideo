@@ -57,10 +57,11 @@ export type Video = z.infer<typeof VideoSchema>;
 // search
 export type Multi = z.infer<typeof MultiAPIResponse>;
 export type MultiWithType = z.infer<typeof MultiAPIResponseWithType>;
-export type SearchResult =
+export type SearchResultWithType =
   | MovieWithType
   | PersonWithType
   | CollectionWithType
   | TVSerieWithType;
+export type SearchResult = Movie | Person | Collection | TVSerie;
 
 export type Keyword = z.infer<typeof KeywordSchema>;
