@@ -29,6 +29,7 @@ function RelatedInformationAboutMovie({
         <div>
           <h3 className="text-xl font-bold md:text-2xl">Recomendaciones</h3>
           <div className="mt-2">
+            {/* movies recommendations */}
             {recommendations?.results && (
               <Carousel data={recommendations.results} />
             )}
