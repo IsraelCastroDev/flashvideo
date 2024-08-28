@@ -12,9 +12,37 @@ import { addTypeToResults } from "../../helpers";
 export function useSearch(query: string) {
   const searchQuery = useQuery({
     queryKey: ["search"],
-    queryFn: () => {
+    queryFn: async () => {
       if (query === undefined || query === "") return Promise.resolve(null);
-      return getSearchMultiResults(query);
+      const data = await getSearchMultiResults(query);
+      const modifiedData = data?.results.map((result) => {
+        let type_identifier = "";
+
+        if ("media_type" in result) {
+          if (result.media_type === "movie") {
+            type_identifier = "movie";
+          } else if (result.media_type === "person") {
+            type_identifier = "person";
+          } else if (result.media_type === "tv") {
+            type_identifier = "tv";
+          } else if (result.media_type === "collection") {
+            type_identifier = "collection";
+          }
+        }
+
+        return {
+          ...result,
+          type_identifier,
+        };
+      });
+
+      return {
+        ...data,
+        results: modifiedData ?? [],
+        page: data?.page ?? 1,
+        total_pages: data?.total_pages ?? 1,
+        total_results: data?.total_results ?? 0,
+      };
     },
     enabled: query !== undefined,
   });
