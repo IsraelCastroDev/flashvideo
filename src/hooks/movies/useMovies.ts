@@ -4,21 +4,49 @@ import {
   getPopularMovies,
   getUpcomingReleaseMovies,
 } from "../../api/moviesAPI";
+import { addTypeToResults } from "../../helpers";
 
 export function useMovies() {
   const popularMoviesQuery = useQuery({
     queryKey: ["popular"],
-    queryFn: getPopularMovies,
+    queryFn: async () => {
+      const data = await getPopularMovies();
+      const modifiedData = addTypeToResults(data!.results, "movie");
+      return {
+        ...data,
+        results: modifiedData,
+        page: data?.page ?? 1,
+        total_pages: data?.total_pages ?? 1,
+        total_results: data?.total_results ?? 0,
+      };
+    },
   });
 
   const topRatedMoviesQuery = useQuery({
     queryKey: ["topRated"],
-    queryFn: getMoviesTopRated,
+    queryFn: async () => {
+      const data = await getMoviesTopRated();
+      const modifiedData = addTypeToResults(data!.results, "movie");
+      return {
+        ...data,
+        results: modifiedData,
+        page: data?.page ?? 1,
+      };
+    },
   });
 
   const upcommingMoviesQuery = useQuery({
     queryKey: ["upcoming"],
-    queryFn: getUpcomingReleaseMovies,
+    queryFn: async () => {
+      const data = await getUpcomingReleaseMovies();
+      const modifiedData = addTypeToResults(data!.results, "movie");
+      return {
+        ...data,
+        results: modifiedData,
+        page: data?.page ?? 1,
+        total_pages: data?.total_pages ?? 1,
+      };
+    },
   });
 
   return { popularMoviesQuery, topRatedMoviesQuery, upcommingMoviesQuery };
