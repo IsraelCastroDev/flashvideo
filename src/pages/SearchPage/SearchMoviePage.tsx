@@ -23,7 +23,7 @@ function SearchMoviePage() {
 
   return (
     <ul className="flex flex-col gap-4 md:w-2/3">
-      {movieSearchResult.results.length > 0 ? (
+      {movieSearchResult && movieSearchResult.results.length > 0 ? (
         <SearchResults searchResult={movieSearchResult} />
       ) : (
         <div className="h-[calc(100vh-237px)]">

@@ -1,26 +1,30 @@
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { CastMember, Movie, TVSerie } from "../../types";
+import {
+  CastMemberWithType,
+  MovieWithType,
+  TVSerieWithType,
+} from "../../types";
 import { convertStringToSlug, formatDate } from "../../helpers";
 import "swiper/css";
 
-type DataCarousel = Movie[] | CastMember[] | TVSerie[];
-type Item = Movie | CastMember | TVSerie;
+type DataCarousel = MovieWithType[] | CastMemberWithType[] | TVSerieWithType[];
+type Item = MovieWithType | CastMemberWithType | TVSerieWithType;
 
 interface Props {
   data: DataCarousel;
 }
 
-function isMovie(item: Item): item is Movie {
-  return (item as Movie).title !== undefined;
+function isMovie(item: Item): item is MovieWithType {
+  return (item as MovieWithType).type_identifier === "movie";
 }
 
-function isCast(item: Item): item is CastMember {
-  return (item as CastMember).profile_path !== undefined;
+function isCast(item: Item): item is CastMemberWithType {
+  return (item as CastMemberWithType).type_identifier === "person";
 }
 
-function isTVSerie(item: Item): item is TVSerie {
-  return (item as TVSerie).seasons !== undefined;
+function isTVSerie(item: Item): item is TVSerieWithType {
+  return (item as TVSerieWithType).type_identifier === "tv";
 }
 
 function Carousel({ data }: Props) {

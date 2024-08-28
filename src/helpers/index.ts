@@ -1,3 +1,5 @@
+import { Collection, Movie, Person, TVSerie } from "../types";
+
 export const getYear = (date: string) => {
   return new Date(date).getFullYear();
 };
@@ -50,3 +52,9 @@ export const calculateAge = (dateStr: string): number => {
 
   return age;
 };
+
+export function addTypeToResults<
+  T extends Movie | Person | Collection | TVSerie
+>(results: T[], type_identifier: string): T[] & { type_identifier: string }[] {
+  return results.map((result) => ({ ...result, type_identifier }));
+}

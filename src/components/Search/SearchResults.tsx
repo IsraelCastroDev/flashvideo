@@ -1,22 +1,28 @@
 import { Link } from "react-router-dom";
 import { convertStringToSlug, formatDate } from "../../helpers";
-import { Collection, Movie, Multi, Person, SearchResult } from "../../types";
+import {
+  CollectionWithType,
+  MovieWithType,
+  MultiWithType,
+  PersonWithType,
+  SearchResult,
+} from "../../types";
 import { ImageIcon } from "../ui/Icons";
 
 interface Props {
-  searchResult: Multi;
+  searchResult: MultiWithType;
 }
 
-const isMovie = (item: SearchResult): item is Movie => {
-  return "original_title" in item; // devuelve true o false
+const isMovie = (item: SearchResult): item is MovieWithType => {
+  return (item as MovieWithType).type_identifier === "movie"; // devuelve true o false
 };
 
-const isPerson = (item: SearchResult): item is Person => {
-  return "profile_path" in item;
+const isPerson = (item: SearchResult): item is PersonWithType => {
+  return (item as PersonWithType).type_identifier === "person";
 };
 
-const isCollectionMovies = (item: SearchResult): item is Collection => {
-  return "original_name" in item;
+const isCollectionMovies = (item: SearchResult): item is CollectionWithType => {
+  return (item as CollectionWithType).type_identifier === "collection";
 };
 
 function SearchResults({ searchResult }: Props) {

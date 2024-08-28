@@ -7,11 +7,9 @@ import {
   getSearchPerson,
   getSearchTv,
 } from "../../api/search";
-// import { useState } from "react";
+import { addTypeToResults } from "../../helpers";
 
 export function useSearch(query: string) {
-  // const [enabled, setEnabled] = useState(false);
-
   const searchQuery = useQuery({
     queryKey: ["search"],
     queryFn: () => {
@@ -23,53 +21,92 @@ export function useSearch(query: string) {
 
   const personSearchQuery = useQuery({
     queryKey: ["personSearch"],
-    queryFn: () => {
+    queryFn: async () => {
       if (query === undefined || query === "") return Promise.resolve(null);
-      return getSearchPerson(query);
+      const data = await getSearchPerson(query);
+      const modifiedData = addTypeToResults(data!.results, "person");
+
+      return {
+        ...data,
+        results: modifiedData,
+        page: data?.page ?? 1,
+        total_pages: data?.total_pages ?? 1,
+        total_results: data?.total_results ?? 0,
+      };
     },
     enabled: query !== undefined,
   });
 
   const movieSearchQuery = useQuery({
     queryKey: ["searchMovie"],
-    queryFn: () => {
+    queryFn: async () => {
       if (query === undefined || query === "") return Promise.resolve(null);
-      return getSearchMovies(query);
+      const data = await getSearchMovies(query);
+      const modifiedData = addTypeToResults(data!.results, "movie");
+      return {
+        ...data,
+        results: modifiedData,
+        page: data?.page ?? 1,
+        total_pages: data?.total_pages ?? 1,
+        total_results: data?.total_results ?? 0,
+      };
     },
     enabled: query !== undefined,
   });
 
   const tvSearchQuery = useQuery({
     queryKey: ["searchTv"],
-    queryFn: () => {
+    queryFn: async () => {
       if (query === undefined || query === "") return Promise.resolve(null);
-      return getSearchTv(query);
+      const data = await getSearchTv(query);
+      const modifiedData = addTypeToResults(data!.results, "tv");
+
+      return {
+        ...data,
+        results: modifiedData,
+        page: data?.page ?? 1,
+        total_pages: data?.total_pages ?? 1,
+        total_results: data?.total_results ?? 0,
+      };
     },
     enabled: query !== undefined,
   });
 
   const keywordSearchQuery = useQuery({
     queryKey: ["keywordSearch"],
-    queryFn: () => {
+    queryFn: async () => {
       if (query === undefined || query === "") return Promise.resolve(null);
-      return getSearchKeywords(query);
+      const data = await getSearchKeywords(query);
+      const modifiedData = addTypeToResults(data!.results, "keyword");
+
+      return {
+        ...data,
+        results: modifiedData,
+        page: data?.page ?? 1,
+        total_pages: data?.total_pages ?? 1,
+        total_results: data?.total_results ?? 0,
+      };
     },
     enabled: query !== undefined,
   });
 
   const collectionSearchQuery = useQuery({
     queryKey: ["collectionSearch"],
-    queryFn: () => {
+    queryFn: async () => {
       if (query === undefined || query === "") return Promise.resolve(null);
-      return getSearchCollections(query);
+      const data = await getSearchCollections(query);
+      const modifiedData = addTypeToResults(data!.results, "collection");
+
+      return {
+        ...data,
+        results: modifiedData,
+        page: data?.page ?? 1,
+        total_pages: data?.total_pages ?? 1,
+        total_results: data?.total_results ?? 0,
+      };
     },
     enabled: query !== undefined,
   });
-
-  // const handleEnabled = () => {
-  //   setEnabled(true);
-  // };
-  // console.log("hookkkk", enabled);
 
   return {
     searchQuery,

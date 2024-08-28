@@ -34,15 +34,24 @@ export const MovieSchema = z
   })
   .passthrough();
 
+export const MovieSchemaWithType = MovieSchema.extend({
+  type_identifier: z.string().nullable().optional(),
+});
+
 export const CollectionSchema = z.object({
-  adult: z.boolean(),
+  adult: z.boolean().nullable().optional(),
   backdrop_path: z.string().nullable().optional(),
   id: z.number(),
   name: z.string(),
-  original_language: z.string(),
-  original_name: z.string(),
+  original_language: z.string().nullable().optional(),
+  original_name: z.string().nullable().optional(),
   overview: z.string().nullable().optional(),
   poster_path: z.string().nullable().optional(),
+  parts: z.array(MovieSchema).nullable().optional(),
+});
+
+export const CollectionSchemaWithType = CollectionSchema.extend({
+  type_identifier: z.string().nullable().optional(),
 });
 
 export const CollectionAPIResponse = z.object({
@@ -81,6 +90,10 @@ export const PersonSchema = z
   })
   .passthrough();
 
+export const PersonSchemaWithType = PersonSchema.extend({
+  type_identifier: z.string().nullable().optional(),
+});
+
 export const PersonSearchSchema = z.object({
   page: z.number(),
   results: z.array(PersonSchema),
@@ -101,6 +114,10 @@ export const CastMemberSchema = z.object({
   character: z.string(),
   credit_id: z.string(),
   order: z.number(),
+});
+
+export const CastMemberSchemaWithType = CastMemberSchema.extend({
+  type_identifier: z.string().nullable().optional(),
 });
 
 export const CreditsAPIResponse = z.object({
@@ -242,6 +259,10 @@ export const TVSeriesSchema = z.object({
   status: z.string().optional(),
 });
 
+export const TVSeriesSchemaWithType = TVSeriesSchema.extend({
+  type_identifier: z.string().nullable().optional(),
+});
+
 export const TVSeriesAPIResponse = z.object({
   page: z.number(),
   results: z.array(TVSeriesSchema),
@@ -261,11 +282,26 @@ export const ResultSearchSchema = z.union([
   PersonSchema,
   MovieSchema,
   TVSeriesSchema,
+  CollectionSchema,
+]);
+
+export const ResultSearchSchemaWithType = z.union([
+  PersonSchemaWithType,
+  MovieSchemaWithType,
+  TVSeriesSchemaWithType,
+  CollectionSchemaWithType,
 ]);
 
 export const MultiAPIResponse = z.object({
   page: z.number(),
   results: z.array(ResultSearchSchema),
+  total_pages: z.number(),
+  total_results: z.number(),
+});
+
+export const MultiAPIResponseWithType = z.object({
+  page: z.number(),
+  results: z.array(ResultSearchSchemaWithType),
   total_pages: z.number(),
   total_results: z.number(),
 });

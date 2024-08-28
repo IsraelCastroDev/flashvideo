@@ -7,6 +7,7 @@ import {
   getVideosOfTheMovie,
 } from "../../api/moviesAPI";
 import { Movie } from "../../types";
+import { addTypeToResults } from "../../helpers";
 
 export function useMovieDetails(movieId: Movie["id"]) {
   const movieQuery = useQuery({
@@ -29,12 +30,23 @@ export function useMovieDetails(movieId: Movie["id"]) {
 
   const creditsQuery = useQuery({
     queryKey: ["credits", movieId],
-    queryFn: () => {
+    queryFn: async () => {
       if (movieId === undefined) return Promise.resolve(null);
-      return getCreditsByMovie(movieId);
+      const data = await getCreditsByMovie(movieId);
+      const modifiedDataCast = addTypeToResults(data!.cast, "person");
+      const modifiedDataCrew = addTypeToResults(data!.crew, "person");
+
+      return {
+        ...data,
+        cast: modifiedDataCast,
+        crew: modifiedDataCrew,
+        id: movieId ?? 0,
+      };
     },
     enabled: movieId !== undefined,
   });
+
+  console.log(creditsQuery.data?.cast);
 
   const recommendationsQuery = useQuery({
     queryKey: ["recommendations", movieId],
