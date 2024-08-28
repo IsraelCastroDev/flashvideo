@@ -1,9 +1,9 @@
 import { getYear } from "../../helpers";
-import { CreditsResponse, Movie, Video } from "../../types";
+import { CreditsResponse, MovieWithType, Video } from "../../types";
 import Modal from "../ui/Modal";
 
 interface Props {
-  movie: Movie;
+  movie: MovieWithType;
   credits: CreditsResponse;
   videos: Video[];
 }
