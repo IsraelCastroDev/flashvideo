@@ -16,7 +16,10 @@ interface Props {
 }
 
 function isMovie(item: Item): item is MovieWithType {
-  return (item as MovieWithType).type_identifier === "movie";
+  return (
+    (item as MovieWithType).type_identifier === "movie" ||
+    (item as MovieWithType).media_type === "movie"
+  );
 }
 
 function isCast(item: Item): item is CastMemberWithType {
