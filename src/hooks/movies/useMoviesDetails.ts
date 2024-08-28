@@ -9,12 +9,29 @@ import {
 import { Movie } from "../../types";
 import { addTypeToResults } from "../../helpers";
 
+function tranformMovieData(data: Movie, movieId: number) {
+  return {
+    ...data,
+    type_identifier: "movie",
+    id: movieId ?? 0,
+    adult: data?.adult ?? false,
+    backdrop_path: data?.backdrop_path ?? "",
+    overview: data?.overview ?? "",
+    poster_path: data?.poster_path ?? "",
+  };
+}
+
 export function useMovieDetails(movieId: Movie["id"]) {
   const movieQuery = useQuery({
     queryKey: ["movie", movieId],
-    queryFn: () => {
+    queryFn: async () => {
       if (movieId === undefined) return Promise.resolve(null);
-      return getMovieById(movieId);
+      const data = await getMovieById(movieId);
+      if (data) {
+        return tranformMovieData(data, movieId);
+      }
+
+      return null;
     },
     enabled: movieId !== undefined,
   });
