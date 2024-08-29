@@ -4,23 +4,37 @@ import {
   getDetailsByPerson,
   getMovieCreditsFromPerson,
 } from "../../api/personAPI";
+import { addTypeToResults } from "../../helpers";
 
 export function usePerson(personId: Person["id"]) {
   const result = useQueries({
     queries: [
       {
         queryKey: ["person", personId],
-        queryFn: () => {
+        queryFn: async () => {
           if (personId === undefined) return Promise.resolve(null);
-          return getDetailsByPerson(personId);
+          const data = await getDetailsByPerson(personId);
+          return {
+            ...data,
+            type_identifier: "person",
+            id: personId ?? 0,
+            adult: data?.adult ?? false,
+            name: data?.name ?? "",
+          };
         },
         enabled: personId !== undefined,
       },
       {
         queryKey: ["movieCreditsFromPerson", personId],
-        queryFn: () => {
+        queryFn: async () => {
           if (personId === undefined) return Promise.resolve(null);
-          return getMovieCreditsFromPerson(personId);
+          const data = await getMovieCreditsFromPerson(personId);
+          const modifiedData = addTypeToResults(data!.cast, "movie");
+          return {
+            ...data,
+            cast: modifiedData,
+            id: personId ?? 0,
+          };
         },
         enabled: personId !== undefined,
       },
