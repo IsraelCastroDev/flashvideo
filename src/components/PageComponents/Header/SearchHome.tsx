@@ -15,7 +15,7 @@ function SearchHome() {
   };
 
   return (
-    <div className="bg-bg-image bg-center bg-cover bg-no-repeat min-h-72 max-h-80 flex justify-center items-center">
+    <div className="bg-bg-image bg-center bg-cover bg-no-repeat min-h-72 max-h-80 flex justify-center items-center text-white">
       <div className="p-5 md:p-10 space-y-2 md:space-y-5 h-full w-full">
         <div>
           <h2 className="text-5xl font-black">Te damos la bienvenida.</h2>
