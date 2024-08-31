@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import SearchHome from "./SearchHome";
 import Search from "./Search";
-import { MenuIcon, SearchIcon } from "../../ui/Icons";
+import { MenuIcon, SearchIcon } from "../Icons";
 import { useState } from "react";
 
 function Header() {
@@ -18,7 +18,7 @@ function Header() {
 
   return (
     <>
-      <header className={`${isHome ? "sticky top-0" : ""} text-white z-10`}>
+      <header className={`sticky top-0 text-white z-10`}>
         <div className="flex items-center justify-between gap-1 bg-sky-950 py-5 md:py-1 px-4 md:px-10 z-20">
           <div className="flex items-center gap-4 md:flex-row-reverse">
             <label

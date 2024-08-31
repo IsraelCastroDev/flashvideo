@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { SearchIcon } from "../../ui/Icons";
+import { SearchIcon } from "../Icons";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
