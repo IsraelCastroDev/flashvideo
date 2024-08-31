@@ -8,14 +8,16 @@ const HomePageLazy = lazy(() => import("./pages/HomePage"));
 const LayoutLazy = lazy(() => import("./layouts/Layout"));
 const LayoutMovieLazy = lazy(() => import("./layouts/LayoutMovie"));
 const LayoutSearch = lazy(() => import("./layouts/LayoutSearch"));
+const LayoutPage = lazy(() => import("./layouts/LayoutPage"));
+
 const CollectionPageLazy = lazy(
   () => import("./pages/CollectionPage/CollectionPage")
 );
 const MoviePageLazy = lazy(() => import("./pages/MoviePage/MoviePage"));
+const PopularMoviePageLazy = lazy(
+  () => import("./pages/Movie/PopularMoviesPage")
+);
 const PersonPageLazy = lazy(() => import("./pages/PersonPage/PersonPage"));
-const PeoplePageLazy = lazy(() => import("./pages/PeoplePage"));
-const SeriesPageLazy = lazy(() => import("./pages/SeriesPage"));
-const MoviesPageLazy = lazy(() => import("./pages/MoviesPage"));
 const SearchTvPage = lazy(() => import("./pages/SearchPage/SearchTvPage"));
 const TVSeriePageLazy = lazy(() => import("./pages/TVSeriePage/TVSeriePage"));
 const SearhPage = lazy(() => import("./pages/SearchPage/SearchPage"));
@@ -38,11 +40,12 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
         <Routes>
+          <Route element={<LayoutPage />}>
+            <Route path="/movie" element={<PopularMoviePageLazy />} />
+          </Route>
+
           <Route element={<LayoutLazy />}>
             <Route path="/" element={<HomePageLazy />} index />
-            <Route path="/peliculas" element={<MoviesPageLazy />} />
-            <Route path="/series" element={<SeriesPageLazy />} />
-            <Route path="/gente" element={<PeoplePageLazy />} />
             <Route path="*" element={<NotFound />} />
           </Route>
 
