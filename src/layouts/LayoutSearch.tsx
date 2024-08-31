@@ -2,7 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../components/ui/Loader/Loader";
 import { useSearch } from "../hooks/search/useSearch";
-import Header from "../components/PageComponents/Header/Header";
+import Header from "../components/ui/Header/Header";
 import AsideSeachResult from "../components/PageComponents/Search/AsideSeachResult";
 
 function LayoutSearch() {
