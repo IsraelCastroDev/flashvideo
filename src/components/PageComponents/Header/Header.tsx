@@ -3,11 +3,18 @@ import styles from "./Header.module.css";
 import SearchHome from "./SearchHome";
 import Search from "./Search";
 import { MenuIcon, SearchIcon } from "../../ui/Icons";
+import { useState } from "react";
 
 function Header() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const isSearchPage = location.pathname.split("/")[1] === "search";
+
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+  const handleOpen = (menu: string) => {
+    setOpenMenu((prevMenu) => (prevMenu === menu ? null : menu));
+  };
 
   return (
     <>
@@ -25,20 +32,63 @@ function Header() {
               <ul className="flex flex-col md:flex-row justify-center md:items-center gap-4 bg-sky-950 z-50 px-4 py-5">
                 <div className="relative">
                   <li
-                    className={`${styles["menu-item"]} font-bold text-xl md:text-[1rem] cursor-pointer`}
+                    onClick={() => handleOpen("movieOpen")}
+                    className={`${styles["menu-item"]} font-bold text-xl cursor-pointer`}
                   >
                     Películas
                   </li>
+                  <div
+                    className={`${styles.submenu} ${
+                      openMenu === "movieOpen" ? "" : "hidden"
+                    } text-gray-800`}
+                  >
+                    <ul>
+                      <li className="font-bold text-xl cursor-pointer">
+                        <Link to={"/movie"}>Popular</Link>
+                      </li>
+                      <li className="font-bold text-xl cursor-pointer">TV</li>
+                    </ul>
+                  </div>
                 </div>
-                <div>
-                  <li className="font-bold text-xl md:text-[1rem] cursor-pointer">
+                <div className="relative">
+                  <li
+                    onClick={() => handleOpen("serieOpen")}
+                    className="font-bold text-xl cursor-pointer"
+                  >
                     Series
                   </li>
+                  <div
+                    className={`${styles.submenu} ${
+                      openMenu === "serieOpen" ? "" : "hidden"
+                    } text-gray-800`}
+                  >
+                    <ul>
+                      <li className="font-bold text-xl cursor-pointer">
+                        Cines
+                      </li>
+                      <li className="font-bold text-xl cursor-pointer">TV</li>
+                    </ul>
+                  </div>
                 </div>
-                <div>
-                  <li className="font-bold text-xl md:text-[1rem] cursor-pointer">
+                <div className="relative">
+                  <li
+                    onClick={() => handleOpen("peopleOpen")}
+                    className="font-bold text-xl cursor-pointer"
+                  >
                     Gente
                   </li>
+                  <div
+                    className={`${styles.submenu} ${
+                      openMenu === "peopleOpen" ? "" : "hidden"
+                    } text-gray-800`}
+                  >
+                    <ul>
+                      <li className="font-bold text-xl cursor-pointer">
+                        Cines
+                      </li>
+                      <li className="font-bold text-xl cursor-pointer">TV</li>
+                    </ul>
+                  </div>
                 </div>
               </ul>
             </nav>
@@ -58,4 +108,5 @@ function Header() {
     </>
   );
 }
+
 export default Header;
