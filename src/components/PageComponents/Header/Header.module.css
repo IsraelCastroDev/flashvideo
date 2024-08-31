@@ -7,6 +7,13 @@
   left: 0;
   right: 0;
   bottom: 0;
+  font-size: 1.2rem;
+}
+
+.submenu {
+  color: #696767;
+  font-size: 1rem;
+  padding: 0.3rem 0.5rem;
 }
 
 input[type="checkbox"]:checked ~ .nav__menu {
@@ -18,18 +25,15 @@ input[type="checkbox"]:checked ~ .nav__menu {
     translate: 0;
     position: unset;
   }
-}
 
-/*-------------- MENU HOVER ---------------*/
-.menu-item:hover .submenu {
-  display: block;
-  position: relative;
-}
-
-.submenu {
-  display: none;
-  position: absolute;
-  top: 2rem;
-  right: 0;
-  z-index: 10;
+  .submenu {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 10;
+    width: 15rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
 }
