@@ -13,9 +13,9 @@ const LayoutPage = lazy(() => import("./layouts/LayoutPage"));
 const CollectionPageLazy = lazy(
   () => import("./pages/CollectionPage/CollectionPage")
 );
-const MoviePageLazy = lazy(() => import("./pages/MoviePage/MoviePage"));
+const MoviePageLazy = lazy(() => import("./pages/Movies/MoviePage/MoviePage"));
 const PopularMoviePageLazy = lazy(
-  () => import("./pages/Movie/PopularMoviesPage")
+  () => import("./pages/Movies/PopularMovies/PopularMoviesPage")
 );
 const PersonPageLazy = lazy(() => import("./pages/PersonPage/PersonPage"));
 const SearchTvPage = lazy(() => import("./pages/SearchPage/SearchTvPage"));
