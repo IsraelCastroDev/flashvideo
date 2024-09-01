@@ -1,6 +1,9 @@
 import { create } from "zustand";
-import { filtersSlice, FiltersSliceType } from "./filtersSlice";
+import { devtools } from "zustand/middleware";
+import { sortSlice, FiltersSliceType } from "./filtersSlice";
 
-export const useAppStore = create<FiltersSliceType>((...a) => ({
-  ...filtersSlice(...a),
-}));
+export const useAppStore = create<FiltersSliceType>()(
+  devtools((...a) => ({
+    ...sortSlice(...a),
+  }))
+);
