@@ -43,10 +43,15 @@ function Header() {
                     } text-gray-800`}
                   >
                     <ul>
-                      <li className="font-bold text-xl cursor-pointer">
+                      <li className="font-bold text-lg cursor-pointer">
                         <Link to={"/movie"}>Popular</Link>
                       </li>
-                      <li className="font-bold text-xl cursor-pointer">TV</li>
+                      <li className="font-bold text-lg cursor-pointer">
+                        <Link to={"/movie/upcoming"}>Próximos estrenos</Link>
+                      </li>
+                      <li className="font-bold text-lg cursor-pointer">
+                        <Link to={"/movie/top-rated"}>Mejor puntuadas</Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
