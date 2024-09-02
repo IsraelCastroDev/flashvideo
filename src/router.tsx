@@ -17,6 +17,13 @@ const MoviePageLazy = lazy(() => import("./pages/Movies/MoviePage/MoviePage"));
 const PopularMoviePageLazy = lazy(
   () => import("./pages/Movies/PopularMovies/PopularMoviesPage")
 );
+const UpcomingMoviePageLazy = lazy(
+  () => import("./pages/Movies/UpcomingMovies/UpcomingMoviesPage")
+);
+const TopRatedMoviePageLazy = lazy(
+  () => import("./pages/Movies/TopRatedMovies/TopRatedMoviesPage")
+);
+
 const PersonPageLazy = lazy(() => import("./pages/PersonPage/PersonPage"));
 const SearchTvPage = lazy(() => import("./pages/SearchPage/SearchTvPage"));
 const TVSeriePageLazy = lazy(() => import("./pages/TVSeriePage/TVSeriePage"));
@@ -42,6 +49,8 @@ function App() {
         <Routes>
           <Route element={<LayoutPage />}>
             <Route path="/movie" element={<PopularMoviePageLazy />} />
+            <Route path="movie/upcoming" element={<UpcomingMoviePageLazy />} />
+            <Route path="movie/top-rated" element={<TopRatedMoviePageLazy />} />
           </Route>
 
           <Route element={<LayoutLazy />}>
