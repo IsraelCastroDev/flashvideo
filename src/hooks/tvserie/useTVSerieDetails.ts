@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import {
+  getTVSerie,
   getTVSerieCredits,
   getTVSerieKeywords,
   getTVSerieRecommendations,
@@ -7,6 +8,15 @@ import {
 } from "../../api/tvSeries";
 
 export function useTVSerieDetails(id: number) {
+  const tvSerieQuery = useQuery({
+    queryKey: ["tvSerie", id],
+    queryFn: () => {
+      if (id === undefined) return Promise.resolve(null);
+      return getTVSerie(id);
+    },
+    enabled: id !== undefined,
+  });
+
   const tvSerieCreditsQuery = useQuery({
     queryKey: ["tvSerieCredits", id],
     queryFn: () => {
@@ -44,6 +54,7 @@ export function useTVSerieDetails(id: number) {
   });
 
   return {
+    tvSerieQuery,
     tvSerieCreditsQuery,
     tvSerieVideosQuery,
     tvSerieRecommendationsQuery,
