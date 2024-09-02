@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 import SearchHome from "./SearchHome";
 import Search from "./Search";
 import { MenuIcon, SearchIcon } from "../Icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Header() {
   const location = useLocation();
@@ -15,6 +15,26 @@ function Header() {
   const handleOpen = (menu: string) => {
     setOpenMenu((prevMenu) => (prevMenu === menu ? null : menu));
   };
+
+  const handleCloseMenu = () => {
+    setOpenMenu(null);
+  };
+
+  useEffect(() => {
+    // verifica si el click fue fuera del menu
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement; // recupera el elemento
+      // si el click fue fuera del menu
+      if (!target.closest(`.${styles.nav__menu}`)) {
+        handleCloseMenu();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -33,7 +53,7 @@ function Header() {
                 <div className="relative">
                   <li
                     onClick={() => handleOpen("movieOpen")}
-                    className={`${styles["menu-item"]} font-bold text-xl cursor-pointer`}
+                    className={`${styles["menu-item"]} font-bold text-lg cursor-pointer`}
                   >
                     Películas
                   </li>
@@ -43,14 +63,38 @@ function Header() {
                     } text-gray-800`}
                   >
                     <ul>
-                      <li className="font-bold text-sm cursor-pointer">
-                        <Link to={"/movie"}>Popular</Link>
+                      <li
+                        className="font-bold text-sm cursor-pointer"
+                        onClick={handleCloseMenu}
+                      >
+                        <Link
+                          to={"/movie"}
+                          className="w-full block hover:bg-gray-300 text-white md:text-gray-600 p-2 rounded-md"
+                        >
+                          Popular
+                        </Link>
                       </li>
-                      <li className="font-bold text-sm cursor-pointer">
-                        <Link to={"/movie/upcoming"}>Próximos estrenos</Link>
+                      <li
+                        className="font-bold text-sm cursor-pointer"
+                        onClick={handleCloseMenu}
+                      >
+                        <Link
+                          to={"/movie/upcoming"}
+                          className="w-full block hover:bg-gray-300 text-white md:text-gray-600 p-2 rounded-md"
+                        >
+                          Próximos estrenos
+                        </Link>
                       </li>
-                      <li className="font-bold text-sm cursor-pointer">
-                        <Link to={"/movie/top-rated"}>Mejor puntuadas</Link>
+                      <li
+                        className="font-bold text-sm cursor-pointer"
+                        onClick={handleCloseMenu}
+                      >
+                        <Link
+                          to={"/movie/top-rated"}
+                          className="w-full block hover:bg-gray-300 text-white md:text-gray-600 p-2 rounded-md"
+                        >
+                          Mejor puntuadas
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -58,7 +102,7 @@ function Header() {
                 <div className="relative">
                   <li
                     onClick={() => handleOpen("serieOpen")}
-                    className="font-bold text-xl cursor-pointer"
+                    className="font-bold text-lg cursor-pointer"
                   >
                     Series
                   </li>
@@ -68,17 +112,49 @@ function Header() {
                     } text-gray-800`}
                   >
                     <ul>
-                      <li className="font-bold text-sm cursor-pointer">
-                        <Link to={"/tv"}>Popular</Link>
+                      <li
+                        className="font-bold text-sm cursor-pointer"
+                        onClick={handleCloseMenu}
+                      >
+                        <Link
+                          to={"/tv"}
+                          className="w-full block hover:bg-gray-300 text-white md:text-gray-600 p-2 rounded-md"
+                        >
+                          Popular
+                        </Link>
                       </li>
-                      <li className="font-bold text-sm cursor-pointer">
-                        <Link to={"/tv/top-rated"}>Mejor puntuadas</Link>
+                      <li
+                        className="font-bold text-sm cursor-pointer"
+                        onClick={handleCloseMenu}
+                      >
+                        <Link
+                          to={"/tv/top-rated"}
+                          className="w-full block hover:bg-gray-300 text-white md:text-gray-600 p-2 rounded-md"
+                        >
+                          Mejor puntuadas
+                        </Link>
                       </li>
-                      <li className="font-bold text-sm cursor-pointer">
-                        <Link to={"/tv/airing-today"}>Se emiten hoy</Link>
+                      <li
+                        className="font-bold text-sm cursor-pointer"
+                        onClick={handleCloseMenu}
+                      >
+                        <Link
+                          to={"/tv/airing-today"}
+                          className="w-full block hover:bg-gray-300 text-white md:text-gray-600 p-2 rounded-md"
+                        >
+                          Se emiten hoy
+                        </Link>
                       </li>
-                      <li className="font-bold text-sm cursor-pointer">
-                        <Link to={"/tv/airing-today"}>En televisión</Link>
+                      <li
+                        className="font-bold text-sm cursor-pointer"
+                        onClick={handleCloseMenu}
+                      >
+                        <Link
+                          to={"/tv/airing-today"}
+                          className="w-full block hover:bg-gray-300 text-white md:text-gray-600 p-2 rounded-md"
+                        >
+                          En televisión
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -86,7 +162,7 @@ function Header() {
                 <div className="relative">
                   <li
                     onClick={() => handleOpen("peopleOpen")}
-                    className="font-bold text-xl cursor-pointer"
+                    className="font-bold text-lg cursor-pointer"
                   >
                     Gente
                   </li>
@@ -96,8 +172,16 @@ function Header() {
                     } text-gray-800`}
                   >
                     <ul>
-                      <li className="font-bold text-sm cursor-pointer">
-                        <Link to={"/person"}>Populares</Link>
+                      <li
+                        className="font-bold text-sm cursor-pointer"
+                        onClick={handleCloseMenu}
+                      >
+                        <Link
+                          to={"/person"}
+                          className="w-full block hover:bg-gray-300 text-white md:text-gray-600 p-2 rounded-md"
+                        >
+                          Populares
+                        </Link>
                       </li>
                     </ul>
                   </div>
