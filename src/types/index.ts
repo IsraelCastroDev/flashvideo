@@ -19,6 +19,7 @@ import {
   CollectionSchemaWithType,
   TVSeriesSchemaWithType,
   CastMemberSchemaWithType,
+  GenreSchema,
 } from "../schemas/movieSchema";
 
 export type Movie = z.infer<typeof MovieSchema>;
@@ -65,3 +66,6 @@ export type SearchResultWithType =
 export type SearchResult = Movie | Person | Collection | TVSerie;
 
 export type Keyword = z.infer<typeof KeywordSchema>;
+
+// genres
+export type Genre = z.infer<typeof GenreSchema>;
