@@ -5,8 +5,12 @@ import {
   getUpcomingReleaseMovies,
 } from "../../api/moviesAPI";
 import { addTypeToResults } from "../../helpers";
+import { getGenres } from "../../api/genres";
+import { useAppStore } from "../../store/useAppStore";
 
 export function useMovies() {
+  const setGenres = useAppStore((state) => state.setGenres);
+
   const popularMoviesQuery = useQuery({
     queryKey: ["popular"],
     queryFn: async () => {
@@ -49,5 +53,16 @@ export function useMovies() {
     },
   });
 
-  return { popularMoviesQuery, topRatedMoviesQuery, upcommingMoviesQuery };
+  const genresMoviesQuery = useQuery({
+    queryKey: ["genres"],
+    queryFn: getGenres,
+  });
+
+  if (genresMoviesQuery.data) setGenres(genresMoviesQuery.data.genres);
+
+  return {
+    popularMoviesQuery,
+    topRatedMoviesQuery,
+    upcommingMoviesQuery,
+  };
 }
