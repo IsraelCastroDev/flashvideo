@@ -305,3 +305,14 @@ export const MultiAPIResponseWithType = z.object({
   total_pages: z.number(),
   total_results: z.number(),
 });
+
+//GENRES
+
+export const GenreSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+});
+
+export const GenreAPIResponse = z.object({
+  genres: z.array(GenreSchema),
+});
