@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useTVSerie } from "../../hooks/tvserie/useTVSerie";
-import Loader from "../../components/ui/Loader/Loader";
-import TVSerieDetails from "../../components/PageComponents/TVSerie/TVSerieDetails";
-import RelatedInformationAboutTVSerie from "../../components/PageComponents/TVSerie/RelatedInformationAboutTVSerie";
 import { toast } from "react-toastify";
-import { useTVSerieDetails } from "../../hooks/tvserie/useTVSerieDetails";
+import { useTVSerieDetails } from "../../../hooks/tvserie/useTVSerieDetails";
+import Loader from "../../../components/ui/Loader/Loader";
+import TVSerieDetails from "../../../components/PageComponents/TVSerie/TVSerieDetails";
+import RelatedInformationAboutTVSerie from "../../../components/PageComponents/TVSerie/RelatedInformationAboutTVSerie";
 
 function TVSeriePage() {
   const params = useParams<{ id: string }>();
@@ -12,7 +11,7 @@ function TVSeriePage() {
   const id = idParam ? Number(idParam) : 0;
 
   // Queries
-  const { tvSerieQuery } = useTVSerie(id);
+  const { tvSerieQuery } = useTVSerieDetails(id);
   const {
     tvSerieCreditsQuery,
     tvSerieVideosQuery,
