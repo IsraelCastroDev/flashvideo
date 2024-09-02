@@ -104,3 +104,46 @@ export function filterMovies(
       return true;
     });
 }
+
+export function filterTVSeries(
+  tvSeries: TVSerie[] | undefined,
+  sort: string,
+  genreFilterId: number | null
+): TVSerie[] {
+  if (!tvSeries) return [];
+
+  return tvSeries
+    .slice() // Para crear una copia del array original antes de ordenar
+    .sort((a, b) => {
+      if (sort === "releaseDateAsc") {
+        return (
+          new Date(a.first_air_date ? a.first_air_date : new Date()).getTime() -
+          new Date(b.first_air_date ? b.first_air_date : new Date()).getTime()
+        );
+      }
+
+      if (sort === "releaseDateDesc") {
+        return (
+          new Date(b.first_air_date ? b.first_air_date : new Date()).getTime() -
+          new Date(a.first_air_date ? a.first_air_date : new Date()).getTime()
+        );
+      }
+
+      if (sort === "titleAZ") {
+        return a.name!.localeCompare(b.name ? b.name : "No name");
+      }
+
+      if (sort === "titleZA") {
+        return b.name!.localeCompare(a.name ? a.name : "No name");
+      }
+
+      return 0; // Si no coincide con ninguno de los filtros anteriores
+    })
+    .filter((tvSerie) => {
+      if (genreFilterId) {
+        return tvSerie.genre_ids?.includes(genreFilterId);
+      }
+
+      return true;
+    });
+}
