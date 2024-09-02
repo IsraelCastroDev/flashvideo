@@ -2,14 +2,14 @@ import { toast } from "react-toastify";
 import { useMovies } from "../../../hooks/movies/useMovies";
 import MovieCard from "../../../components/PageComponents/Movie/MovieCard";
 import Loader from "../../../components/ui/Loader/Loader";
-import { useSortMovies } from "../../../hooks/filters/useSortMovies";
+import { useFiltersMovies } from "../../../hooks/filters/useSiltersMovies";
 
 function MoviesPage() {
   const { popularMoviesQuery } = useMovies();
 
   const { data: popularMovies, isLoading, isError } = popularMoviesQuery;
 
-  const { filteredPopularMovies } = useSortMovies(popularMovies?.results);
+  const { filteredPopularMovies } = useFiltersMovies(popularMovies?.results);
 
   if (isLoading) return <Loader />;
   if (isError) return toast.error("No se pudo cargar la información");

@@ -1,7 +1,7 @@
 import { useAppStore } from "../../store/useAppStore";
 import { Movie } from "../../types";
 
-export function useSortMovies(movies: Movie[] | undefined) {
+export function useFiltersMovies(movies: Movie[] | undefined) {
   const sort = useAppStore((state) => state.sort);
 
   const filterPopularMovies = (movies: Movie[]): Movie[] => {

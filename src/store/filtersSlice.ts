@@ -5,7 +5,7 @@ export type FiltersSliceType = {
   changeSort: (filter: string) => void;
 };
 
-export const sortSlice: StateCreator<FiltersSliceType> = (set) => ({
+export const filtersSlice: StateCreator<FiltersSliceType> = (set) => ({
   sort: "releaseDateDesc",
   changeSort: (filter) => {
     set({ sort: filter });
