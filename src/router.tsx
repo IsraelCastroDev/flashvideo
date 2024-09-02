@@ -28,7 +28,7 @@ const PersonPageLazy = lazy(
   () => import("./pages/Person/PersonPage/PersonPage")
 );
 const PopularPersonPageLazy = lazy(
-  () => import("./pages/Person/PopularPersons/PopularPersons")
+  () => import("./pages/Person/PopularPersons/PopularPersonsPage")
 );
 
 const SearchTvPage = lazy(() => import("./pages/SearchPage/SearchTvPage"));
