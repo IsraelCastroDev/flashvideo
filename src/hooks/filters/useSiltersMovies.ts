@@ -3,6 +3,7 @@ import { Movie } from "../../types";
 
 export function useFiltersMovies(movies: Movie[] | undefined) {
   const sort = useAppStore((state) => state.sort);
+  const genreFilterId = useAppStore((state) => state.genreFilterId);
 
   const filterPopularMovies = (movies: Movie[]): Movie[] => {
     const result = movies
@@ -31,6 +32,13 @@ export function useFiltersMovies(movies: Movie[] | undefined) {
         }
 
         return 0; // Si no coincide con ninguno de los filtros anteriores
+      })
+      .filter((movie) => {
+        if (genreFilterId) {
+          return movie.genre_ids?.includes(genreFilterId);
+        }
+
+        return true;
       });
 
     return result;

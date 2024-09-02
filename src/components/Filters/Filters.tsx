@@ -4,17 +4,29 @@ import { GreaterThenIcon } from "../ui/Icons";
 
 function Filters() {
   const genres = useAppStore((state) => state.genres);
-  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
+  const changeSelectedGenre = useAppStore(
+    (state) => state.changeSelectedGenreFilterId
+  );
 
   const changeSort = useAppStore((state) => state.changeSort);
+  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
+
   const [sortingOption, setSortingOption] = useState<string | null>(null);
 
   const handleOpen = (option: string) => {
     setSortingOption((prev) => (prev === option ? null : option));
   };
 
-  const handleSelectGenre = (genre: string) => {
+  const handleSelectGenre = (genre: string | null) => {
     setSelectedGenre((prevGenre) => (prevGenre === genre ? null : genre));
+  };
+
+  const handleChangeFilter = (genre: number | null) => {
+    if (genre === null) {
+      changeSelectedGenre(null);
+    } else {
+      changeSelectedGenre(genre);
+    }
   };
 
   return (
@@ -84,18 +96,31 @@ function Filters() {
               <h3 className="text-gray-600">Géneros</h3>
 
               <div className="flex flex-wrap gap-3 mt-2">
+                <button
+                  onClick={() => {
+                    handleChangeFilter(null);
+                    handleSelectGenre(null);
+                  }}
+                  className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 hover:text-white`}
+                >
+                  Todos
+                </button>
                 {genres.map((genre) => (
-                  <div
-                    onClick={() => handleSelectGenre(genre.name)}
+                  <button
+                    onClick={() => {
+                      handleSelectGenre(genre.name);
+                      handleChangeFilter(genre.id);
+                    }}
                     key={genre.id}
                     className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 ${
                       selectedGenre === genre.name
                         ? "bg-sky-500 text-white"
                         : ""
-                    } hover:text-white cursor-pointer`}
+                    } hover:text-white cursor-pointer disabled:cursor-default`}
+                    disabled={selectedGenre === genre.name}
                   >
                     <small>{genre.name}</small>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
