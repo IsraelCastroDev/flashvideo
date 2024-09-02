@@ -10,18 +10,18 @@ interface Props {
 
 function MovieCard({ movie }: Props) {
   const pathName = useLocation().pathname;
-  const isSearchPage = useMemo(() => pathName === "/movie", [pathName]);
+  const isMoviePage = useMemo(() => pathName.startsWith("/movie"), [pathName]);
 
   return (
     <li
       key={movie.id}
       className={`flex items-center ${
-        isSearchPage ? "flex-col" : ""
+        isMoviePage ? "flex-col" : ""
       } gap-2 w-full shadow-md md:py-3`}
     >
       <div
         className={`flex items-center ${
-          isSearchPage ? "" : "justify-center w-1/4 "
+          isMoviePage ? "" : "justify-center w-1/4 "
         }`}
       >
         <Link to={`/movie/${movie.id}-${convertStringToSlug(movie.title!)}`}>
@@ -30,7 +30,7 @@ function MovieCard({ movie }: Props) {
               src={`${import.meta.env.VITE_IMAGE_URL}/w300${movie.poster_path}`}
               alt={movie.name!}
               className={`block object-cover ${
-                isSearchPage ? "w-full" : "w-30 h-44"
+                isMoviePage ? "w-full" : "w-30 h-44"
               }`}
             />
           ) : (
@@ -49,7 +49,7 @@ function MovieCard({ movie }: Props) {
           </small>
         </div>
 
-        {!isSearchPage && (
+        {!isMoviePage && (
           <div>
             <p className="truncate-text text-gray-500">{movie.overview}</p>
           </div>
