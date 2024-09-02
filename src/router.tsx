@@ -24,9 +24,31 @@ const TopRatedMoviePageLazy = lazy(
   () => import("./pages/Movies/TopRatedMovies/TopRatedMoviesPage")
 );
 
-const PersonPageLazy = lazy(() => import("./pages/PersonPage/PersonPage"));
+const PersonPageLazy = lazy(
+  () => import("./pages/Person/PersonPage/PersonPage")
+);
+const PopularPersonPageLazy = lazy(
+  () => import("./pages/Person/PopularPersons/PopularPersons")
+);
+
 const SearchTvPage = lazy(() => import("./pages/SearchPage/SearchTvPage"));
-const TVSeriePageLazy = lazy(() => import("./pages/TVSeriePage/TVSeriePage"));
+
+const TVSeriePageLazy = lazy(
+  () => import("./pages/TvSeries/TVSeriePage/TVSeriePage")
+);
+const PopularTvSeriePageLazy = lazy(
+  () => import("./pages/TvSeries/PopularTVSeries/PopularTVSeriesPage")
+);
+const TopRatedTvSeriePageLazy = lazy(
+  () => import("./pages/TvSeries/TopRatedTVSeries/TopRatedTVSeriesPage")
+);
+const AiringTodayTvSeriesPageLazy = lazy(
+  () => import("./pages/TvSeries/AiringTodayTVSeries/AiringTodayTVSeriesPage")
+);
+const OnTheAirTvSeriesPageLazy = lazy(
+  () => import("./pages/TvSeries/OnTheAirTVSeries/OnTheAirTvSeriesPage")
+);
+
 const SearhPage = lazy(() => import("./pages/SearchPage/SearchPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const SearchMoviePageLazy = lazy(
@@ -49,8 +71,22 @@ function App() {
         <Routes>
           <Route element={<LayoutPage />}>
             <Route path="/movie" element={<PopularMoviePageLazy />} />
-            <Route path="movie/upcoming" element={<UpcomingMoviePageLazy />} />
-            <Route path="movie/top-rated" element={<TopRatedMoviePageLazy />} />
+            <Route path="/movie/upcoming" element={<UpcomingMoviePageLazy />} />
+            <Route
+              path="/movie/top-rated"
+              element={<TopRatedMoviePageLazy />}
+            />
+            <Route path="/tv" element={<PopularTvSeriePageLazy />} />
+            <Route path="/tv/top-rated" element={<TopRatedTvSeriePageLazy />} />
+            <Route
+              path="/tv/airing-today"
+              element={<AiringTodayTvSeriesPageLazy />}
+            />
+            <Route
+              path="/tv/on-the-air"
+              element={<OnTheAirTvSeriesPageLazy />}
+            />
+            <Route path="/person" element={<PopularPersonPageLazy />} />
           </Route>
 
           <Route element={<LayoutLazy />}>
