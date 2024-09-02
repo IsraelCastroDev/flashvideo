@@ -101,7 +101,10 @@ function Filters() {
                     handleChangeFilter(null);
                     handleSelectGenre(null);
                   }}
-                  className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 hover:text-white`}
+                  className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 hover:text-white ${
+                    selectedGenre === null ? "bg-sky-500 text-white" : ""
+                  } cursor-pointer disabled:cursor-default`}
+                  disabled={selectedGenre === null}
                 >
                   Todos
                 </button>
