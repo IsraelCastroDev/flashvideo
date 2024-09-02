@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { useAppStore } from "../../store/useAppStore";
 import { GreaterThenIcon } from "../ui/Icons";
+import { useLocation } from "react-router-dom";
 
 function Filters() {
+  const location = useLocation();
+  const isMoviePage = location.pathname.startsWith("/movie");
+  const isTVSeriePage = location.pathname.startsWith("/tv");
+
   const genres = useAppStore((state) => state.genres);
+  const genresTVSerie = useAppStore((state) => state.genresTVSerie);
   const changeSelectedGenre = useAppStore(
     (state) => state.changeSelectedGenreFilterId
   );
@@ -95,37 +101,73 @@ function Filters() {
             <div>
               <h3 className="text-gray-600">Géneros</h3>
 
-              <div className="flex flex-wrap gap-3 mt-2">
-                <button
-                  onClick={() => {
-                    handleChangeFilter(null);
-                    handleSelectGenre(null);
-                  }}
-                  className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 hover:text-white ${
-                    selectedGenre === null ? "bg-sky-500 text-white" : ""
-                  } cursor-pointer disabled:cursor-default`}
-                  disabled={selectedGenre === null}
-                >
-                  Todos
-                </button>
-                {genres.map((genre) => (
+              {isMoviePage && (
+                <div className="flex flex-wrap gap-3 mt-2">
                   <button
                     onClick={() => {
-                      handleSelectGenre(genre.name);
-                      handleChangeFilter(genre.id);
+                      handleChangeFilter(null);
+                      handleSelectGenre(null);
                     }}
-                    key={genre.id}
-                    className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 ${
-                      selectedGenre === genre.name
-                        ? "bg-sky-500 text-white"
-                        : ""
-                    } hover:text-white cursor-pointer disabled:cursor-default`}
-                    disabled={selectedGenre === genre.name}
+                    className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 hover:text-white ${
+                      selectedGenre === null ? "bg-sky-500 text-white" : ""
+                    } cursor-pointer disabled:cursor-default`}
+                    disabled={selectedGenre === null}
                   >
-                    <small>{genre.name}</small>
+                    Todos
                   </button>
-                ))}
-              </div>
+                  {genres.map((genre) => (
+                    <button
+                      onClick={() => {
+                        handleSelectGenre(genre.name);
+                        handleChangeFilter(genre.id);
+                      }}
+                      key={genre.id}
+                      className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 ${
+                        selectedGenre === genre.name
+                          ? "bg-sky-500 text-white"
+                          : ""
+                      } hover:text-white cursor-pointer disabled:cursor-default`}
+                      disabled={selectedGenre === genre.name}
+                    >
+                      <small>{genre.name}</small>
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {isTVSeriePage && (
+                <div className="flex flex-wrap gap-3 mt-2">
+                  <button
+                    onClick={() => {
+                      handleChangeFilter(null);
+                      handleSelectGenre(null);
+                    }}
+                    className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 hover:text-white ${
+                      selectedGenre === null ? "bg-sky-500 text-white" : ""
+                    } cursor-pointer disabled:cursor-default`}
+                    disabled={selectedGenre === null}
+                  >
+                    Todos
+                  </button>
+                  {genresTVSerie.map((genre) => (
+                    <button
+                      onClick={() => {
+                        handleSelectGenre(genre.name);
+                        handleChangeFilter(genre.id);
+                      }}
+                      key={genre.id}
+                      className={`px-2 py-1 border border-gray-400 rounded-full hover:bg-sky-500 ${
+                        selectedGenre === genre.name
+                          ? "bg-sky-500 text-white"
+                          : ""
+                      } hover:text-white cursor-pointer disabled:cursor-default`}
+                      disabled={selectedGenre === genre.name}
+                    >
+                      <small>{genre.name}</small>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
