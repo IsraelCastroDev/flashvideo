@@ -43,13 +43,13 @@ function Header() {
                     } text-gray-800`}
                   >
                     <ul>
-                      <li className="font-bold text-lg cursor-pointer">
+                      <li className="font-bold text-sm cursor-pointer">
                         <Link to={"/movie"}>Popular</Link>
                       </li>
-                      <li className="font-bold text-lg cursor-pointer">
+                      <li className="font-bold text-sm cursor-pointer">
                         <Link to={"/movie/upcoming"}>Próximos estrenos</Link>
                       </li>
-                      <li className="font-bold text-lg cursor-pointer">
+                      <li className="font-bold text-sm cursor-pointer">
                         <Link to={"/movie/top-rated"}>Mejor puntuadas</Link>
                       </li>
                     </ul>
@@ -68,10 +68,18 @@ function Header() {
                     } text-gray-800`}
                   >
                     <ul>
-                      <li className="font-bold text-xl cursor-pointer">
-                        Cines
+                      <li className="font-bold text-sm cursor-pointer">
+                        <Link to={"/tv"}>Popular</Link>
                       </li>
-                      <li className="font-bold text-xl cursor-pointer">TV</li>
+                      <li className="font-bold text-sm cursor-pointer">
+                        <Link to={"/tv/top-rated"}>Mejor puntuadas</Link>
+                      </li>
+                      <li className="font-bold text-sm cursor-pointer">
+                        <Link to={"/tv/airing-today"}>Se emiten hoy</Link>
+                      </li>
+                      <li className="font-bold text-sm cursor-pointer">
+                        <Link to={"/tv/airing-today"}>En televisión</Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -88,10 +96,9 @@ function Header() {
                     } text-gray-800`}
                   >
                     <ul>
-                      <li className="font-bold text-xl cursor-pointer">
-                        Cines
+                      <li className="font-bold text-sm cursor-pointer">
+                        <Link to={"/person"}>Populares</Link>
                       </li>
-                      <li className="font-bold text-xl cursor-pointer">TV</li>
                     </ul>
                   </div>
                 </div>
