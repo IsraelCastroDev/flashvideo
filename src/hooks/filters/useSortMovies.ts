@@ -36,7 +36,6 @@ export function useSortMovies(movies: Movie[] | undefined) {
     return result;
   };
 
-  // Solo filtrar si hay películas disponibles y si se ha hecho clic en "Buscar"
   const filteredPopularMovies: Movie[] = movies
     ? filterPopularMovies(movies)
     : movies || [];
