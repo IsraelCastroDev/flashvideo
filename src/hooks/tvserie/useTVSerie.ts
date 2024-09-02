@@ -1,15 +1,47 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTVSerie } from "../../api/tvSeries";
+import {
+  getAiringTodayTVSeries,
+  getGenres,
+  getOnTheAirTVSeries,
+  getPopularTVSeries,
+  getTopRatedTVSeries,
+} from "../../api/tvSeries";
+import { useAppStore } from "../../store/useAppStore";
 
-export function useTVSerie(id: number) {
-  const tvSerieQuery = useQuery({
-    queryKey: ["tvSerie", id],
-    queryFn: () => {
-      if (id === undefined) return Promise.resolve(null);
-      return getTVSerie(id);
-    },
-    enabled: id !== undefined,
+export function useTVSerie() {
+  const setGenresTVSeries = useAppStore((state) => state.setGenresTVSeries);
+
+  const popularTVSerieQuery = useQuery({
+    queryKey: ["popularTVSerie"],
+    queryFn: getPopularTVSeries,
   });
 
-  return { tvSerieQuery };
+  const topRatedTVSeriesQuery = useQuery({
+    queryKey: ["topRatedTVSeries"],
+    queryFn: getTopRatedTVSeries,
+  });
+
+  const airingTodayTVSeriesQuery = useQuery({
+    queryKey: ["airingTodayTVSeries"],
+    queryFn: getAiringTodayTVSeries,
+  });
+
+  const onTheAirTVSeriesQuery = useQuery({
+    queryKey: ["onTheAirTVSeries"],
+    queryFn: getOnTheAirTVSeries,
+  });
+
+  const tvSeriesGenres = useQuery({
+    queryKey: ["tvSeriesGenres"],
+    queryFn: getGenres,
+  });
+
+  if (tvSeriesGenres.data) setGenresTVSeries(tvSeriesGenres.data.genres);
+
+  return {
+    popularTVSerieQuery,
+    topRatedTVSeriesQuery,
+    airingTodayTVSeriesQuery,
+    onTheAirTVSeriesQuery,
+  };
 }
