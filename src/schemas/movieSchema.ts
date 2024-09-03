@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { CastMemberSchema } from "./personSchema";
 
 export const MovieSchema = z
   .object({
@@ -43,6 +42,25 @@ export const MovieAPIResponse = z.object({
 });
 
 export const MovieSchemaWithType = MovieSchema.extend({
+  type_identifier: z.string().nullable().optional(),
+});
+
+export const CastMemberSchema = z.object({
+  adult: z.boolean(),
+  gender: z.number(),
+  id: z.number(),
+  known_for_department: z.string(),
+  name: z.string(),
+  original_name: z.string(),
+  popularity: z.number(),
+  profile_path: z.string().nullable().optional(),
+  cast_id: z.number().optional(),
+  character: z.string(),
+  credit_id: z.string(),
+  order: z.number(),
+});
+
+export const CastMemberSchemaWithType = CastMemberSchema.extend({
   type_identifier: z.string().nullable().optional(),
 });
 
