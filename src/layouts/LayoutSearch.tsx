@@ -24,7 +24,7 @@ function LayoutSearch() {
   return (
     <>
       <Header />
-      <main className="flex flex-col md:flex-row gap-4 py-2 px-2">
+      <main className="flex flex-col md:flex-row gap-4 py-7 px-2">
         <AsideSeachResult query={query} />
         <Outlet />
       </main>
