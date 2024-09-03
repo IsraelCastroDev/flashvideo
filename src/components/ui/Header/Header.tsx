@@ -1,14 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import SearchHome from "./SearchHome";
-import Search from "./Search";
+// import Search from "./Search";
 import { MenuIcon, SearchIcon } from "../Icons";
 import { useState, useEffect } from "react";
 
 function Header() {
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const isSearchPage = location.pathname.split("/")[1] === "search";
+  // const isSearchPage = location.pathname.split("/")[1] === "search";
 
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 
@@ -200,7 +200,7 @@ function Header() {
         </div>
       </header>
       {isHome && <SearchHome />}
-      {isSearchPage && <Search />}
+      {/* {isSearchPage && <Search />} */}
     </>
   );
 }
