@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCollection } from "@/api/collection";
+import { getCollection } from "@/api/collectionAPI";
 
 export function useCollection(id: number) {
   const collectionQuery = useQuery({

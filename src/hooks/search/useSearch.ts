@@ -6,8 +6,8 @@ import {
   getSearchMultiResults,
   getSearchPerson,
   getSearchTv,
-} from "@/api/search";
-import { addTypeToResults } from "../../helpers";
+} from "@/api/searchAPI";
+import { addTypeToResults } from "@/helpers";
 
 export function useSearch(query: string) {
   const searchQuery = useQuery({

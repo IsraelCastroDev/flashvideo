@@ -5,7 +5,7 @@ import {
   getUpcomingReleaseMovies,
 } from "@/api/moviesAPI";
 import { addTypeToResults } from "@/helpers";
-import { getGenres } from "@/api/genres";
+import { getGenres } from "@/api/genresAPI";
 import { useAppStore } from "@/store/useAppStore";
 
 export function useMovies() {
