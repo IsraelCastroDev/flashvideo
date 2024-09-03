@@ -6,6 +6,7 @@ import {
   getTVSerieRecommendations,
   getTVSerieVideos,
 } from "../../api/tvSeries";
+import { addTypeToResults } from "../../helpers";
 
 export function useTVSerieDetails(id: number) {
   const tvSerieQuery = useQuery({
@@ -19,9 +20,18 @@ export function useTVSerieDetails(id: number) {
 
   const tvSerieCreditsQuery = useQuery({
     queryKey: ["tvSerieCredits", id],
-    queryFn: () => {
+    queryFn: async () => {
       if (id === undefined) return Promise.resolve(null);
-      return getTVSerieCredits(id);
+      const data = await getTVSerieCredits(id);
+      const modifiedDataCast = addTypeToResults(data!.cast, "person");
+      const modifiedDataCrew = addTypeToResults(data!.crew, "person");
+
+      return {
+        ...data,
+        id: id ?? 0,
+        cast: modifiedDataCast,
+        crew: modifiedDataCrew,
+      };
     },
     enabled: id !== undefined,
   });
