@@ -19,9 +19,6 @@ export const getPopularPerson = async () => {
   const { data } = await api("/person/popular");
   const validateData = PersonSearchSchema.safeParse(data);
 
-  console.log(validateData);
-  console.log(data);
-
   if (validateData.success) {
     return validateData.data;
   }
