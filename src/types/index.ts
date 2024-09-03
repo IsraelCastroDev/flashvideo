@@ -6,6 +6,8 @@ import {
   RecommendedMovieAPIResponse,
   VideoSchema,
   GenreSchema,
+  CastMemberSchema,
+  CastMemberSchemaWithType,
 } from "@/schemas/movieSchema";
 import {
   TVSerieKeywordsResponse,
@@ -17,12 +19,7 @@ import {
   CollectionSchema,
   CollectionSchemaWithType,
 } from "@/schemas/collectionSchema";
-import {
-  CastMemberSchema,
-  CastMemberSchemaWithType,
-  PersonSchema,
-  PersonSchemaWithType,
-} from "@/schemas/personSchema";
+import { PersonSchema, PersonSchemaWithType } from "@/schemas/personSchema";
 import {
   KeywordSchema,
   KeyWordsSchemaAPIResponse,
