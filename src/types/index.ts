@@ -1,26 +1,36 @@
 import { z } from "zod";
 import {
-  PersonSchema,
   MovieSchema,
-  CastMemberSchema,
   MovieCreditsAPIResponse,
   CreditsAPIResponse,
   RecommendedMovieAPIResponse,
-  KeyWordsSchemaAPIResponse,
   VideoSchema,
-  MultiAPIResponse,
-  TVSeriesSchema,
-  KeywordSchema,
-  TVSerieRecommendationsAPIResponse,
-  TVSerieKeywordsResponse,
-  CollectionSchema,
-  MultiAPIResponseWithType,
-  PersonSchemaWithType,
-  CollectionSchemaWithType,
-  TVSeriesSchemaWithType,
-  CastMemberSchemaWithType,
   GenreSchema,
 } from "@/schemas/movieSchema";
+import {
+  TVSerieKeywordsResponse,
+  TVSerieRecommendationsAPIResponse,
+  TVSeriesSchema,
+  TVSeriesSchemaWithType,
+} from "@/schemas/tvSerieSchema";
+import {
+  CollectionSchema,
+  CollectionSchemaWithType,
+} from "@/schemas/collectionSchema";
+import {
+  CastMemberSchema,
+  CastMemberSchemaWithType,
+  PersonSchema,
+  PersonSchemaWithType,
+} from "@/schemas/personSchema";
+import {
+  KeywordSchema,
+  KeyWordsSchemaAPIResponse,
+} from "@/schemas/kewordSchema";
+import {
+  MultiAPIResponse,
+  MultiAPIResponseWithType,
+} from "@/schemas/searchSchema";
 
 export type Movie = z.infer<typeof MovieSchema>;
 export interface MovieWithType extends Movie {

@@ -5,7 +5,7 @@ import {
   getTVSerieKeywords,
   getTVSerieRecommendations,
   getTVSerieVideos,
-} from "@/api/tvSeries";
+} from "@/api/tvSeriesAPI";
 import { addTypeToResults } from "@/helpers";
 
 export function useTVSerieDetails(id: number) {

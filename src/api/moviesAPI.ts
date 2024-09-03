@@ -1,6 +1,5 @@
 import {
   CreditsAPIResponse,
-  KeyWordsSchemaAPIResponse,
   MovieAPIResponse,
   MovieRatedAPISchema,
   MovieSchema,
@@ -10,6 +9,7 @@ import {
 } from "@/schemas/movieSchema";
 import { Movie } from "@/types";
 import { api } from "./axios";
+import { KeyWordsSchemaAPIResponse } from "@/schemas/kewordSchema";
 
 export const getPopularMovies = async () => {
   const { data } = await api(`/movie/popular`);

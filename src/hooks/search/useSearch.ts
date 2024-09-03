@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import {
   getSearchCollections,
   getSearchKeywords,
@@ -8,6 +7,7 @@ import {
   getSearchTv,
 } from "@/api/searchAPI";
 import { addTypeToResults } from "@/helpers";
+import { useQuery } from "@tanstack/react-query";
 
 export function useSearch(query: string) {
   const searchQuery = useQuery({

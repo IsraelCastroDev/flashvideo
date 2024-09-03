@@ -1,12 +1,10 @@
-import {
-  CollectionAPIResponse,
-  KeyWordsSearchSchemaAPIResponse,
-  MovieAPIResponse,
-  MultiAPIResponse,
-  PersonSearchSchema,
-  TVSeriesAPIResponse,
-} from "@/schemas/movieSchema";
+import { MultiAPIResponse } from "@/schemas/searchSchema";
 import { api } from "./axios";
+import { PersonSearchSchema } from "@/schemas/personSchema";
+import { MovieAPIResponse } from "@/schemas/movieSchema";
+import { TVSeriesAPIResponse } from "@/schemas/tvSerieSchema";
+import { KeyWordsSearchSchemaAPIResponse } from "@/schemas/kewordSchema";
+import { CollectionAPIResponse } from "@/schemas/collectionSchema";
 
 export const getSearchMultiResults = async (query: string) => {
   const { data } = await api(`/search/multi?query=${query}`);

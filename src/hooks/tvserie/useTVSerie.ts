@@ -5,7 +5,7 @@ import {
   getOnTheAirTVSeries,
   getPopularTVSeries,
   getTopRatedTVSeries,
-} from "@/api/tvSeries";
+} from "@/api/tvSeriesAPI";
 import { useAppStore } from "@/store/useAppStore";
 import { addTypeToResults } from "@/helpers";
 
