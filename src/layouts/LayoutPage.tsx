@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Header from "../components/ui/Header/Header";
-import Filters from "../components/Filters/Filters";
-import Footer from "../components/Footer";
+import Header from "@components/ui/Header/Header";
+import Filters from "@components/Filters/Filters";
+import Footer from "@components/Footer";
 
 function LayoutPage() {
   const location = useLocation();

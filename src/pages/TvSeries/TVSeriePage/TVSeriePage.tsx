@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useTVSerieDetails } from "../../../hooks/tvserie/useTVSerieDetails";
-import Loader from "../../../components/ui/Loader/Loader";
-import TVSerieDetails from "../../../components/PageComponents/TVSerie/TVSerieDetails";
-import RelatedInformationAboutTVSerie from "../../../components/PageComponents/TVSerie/RelatedInformationAboutTVSerie";
+import Loader from "@components/ui/Loader/Loader";
+import TVSerieDetails from "@components/PageComponents/TVSerie/TVSerieDetails";
+import RelatedInformationAboutTVSerie from "@components/PageComponents/TVSerie/RelatedInformationAboutTVSerie";
 
 function TVSeriePage() {
   const params = useParams<{ id: string }>();

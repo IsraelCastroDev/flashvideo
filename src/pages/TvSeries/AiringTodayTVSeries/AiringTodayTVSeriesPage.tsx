@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
-import TVSerieCard from "../../../components/PageComponents/TVSerie/TVSerieCard";
-import Loader from "../../../components/ui/Loader/Loader";
+import TVSerieCard from "@components/PageComponents/TVSerie/TVSerieCard";
+import Loader from "@components/ui/Loader/Loader";
 import { useFilterAiringTodayTVSeries } from "../../../hooks/filters/useFiltersTVSeries";
 import { useTVSerie } from "../../../hooks/tvserie/useTVSerie";
 

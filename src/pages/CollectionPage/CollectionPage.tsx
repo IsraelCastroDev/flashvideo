@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
-import MovieDetails from "../../components/PageComponents/Movie/MovieDetails";
-import RelatedInformationAboutMovie from "../../components/PageComponents/Movie/RelatedInformationAboutMovie";
+import MovieDetails from "@components/PageComponents/Movie/MovieDetails";
+import RelatedInformationAboutMovie from "@components/PageComponents/Movie/RelatedInformationAboutMovie";
 import { useCollection } from "../../hooks/collection/useCollection";
-import Loader from "../../components/ui/Loader/Loader";
+import Loader from "@components/ui/Loader/Loader";
 import { useParams } from "react-router-dom";
 
 function CollectionPage() {
