@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import PersonCard from "@components/PageComponents/Person/PersonCard";
 import Loader from "@components/ui/Loader/Loader";
-import { usePerson } from "../../../hooks/people/usePerson";
+import { usePerson } from "@/hooks/people/usePerson";
 
 function PopularPersons() {
   const { popularPersonsQuery } = usePerson();

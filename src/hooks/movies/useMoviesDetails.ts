@@ -5,9 +5,9 @@ import {
   getMovieById,
   getMovieRecommendations,
   getVideosOfTheMovie,
-} from "../../api/moviesAPI";
-import { Movie } from "../../types";
-import { addTypeToResults } from "../../helpers";
+} from "@/api/moviesAPI";
+import { Movie } from "@/types";
+import { addTypeToResults } from "@/helpers";
 
 function tranformMovieData(data: Movie, movieId: number) {
   return {

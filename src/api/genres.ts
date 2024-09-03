@@ -1,4 +1,4 @@
-import { GenreAPIResponse } from "../schemas/movieSchema";
+import { GenreAPIResponse } from "@/schemas/movieSchema";
 import { api } from "./axios";
 
 export const getGenres = async () => {

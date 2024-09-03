@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useSearch } from "../../hooks/search/useSearch";
-import Loader from "@components/ui/Loader/Loader";
+import { useSearch } from "@/hooks/search/useSearch";
 import { toast } from "react-toastify";
+import Loader from "@components/ui/Loader/Loader";
 
 function SearchKeywordPage() {
   const queryParam = useParams().search;

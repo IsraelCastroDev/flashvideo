@@ -4,10 +4,10 @@ import {
   CreditsResponse,
   KeywordsResponse,
   RecommendationsResponse,
-} from "../../../types";
-import { convertStringToSlug, formatDate } from "../../../helpers";
-import { ImageIcon } from "../../ui/Icons";
-import Carousel from "../../ui/Carousel";
+} from "@/types";
+import { convertStringToSlug, formatDate } from "@/helpers";
+import { ImageIcon } from "@components/ui/Icons";
+import Carousel from "@components/ui/Carousel";
 
 interface Props {
   credits?: CreditsResponse;

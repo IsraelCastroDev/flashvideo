@@ -6,7 +6,7 @@ import {
   TVSeriesAPIResponse,
   TVSeriesSchema,
   VideosAPIResponse,
-} from "../schemas/movieSchema";
+} from "@/schemas/movieSchema";
 import { api } from "./axios";
 
 export const getTVSerie = async (id: number) => {

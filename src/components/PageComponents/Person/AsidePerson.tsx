@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { MovieCredits, Person } from "../../../types";
+import { MovieCredits, Person } from "@/types";
 import {
   calculateAge,
   convertStringToSlug,
   formatDate,
   getYear,
-} from "../../../helpers";
-import Carousel from "../../ui/Carousel";
+} from "@/helpers";
+import Carousel from "@components/ui/Carousel";
 
 interface Props {
   person: Person;

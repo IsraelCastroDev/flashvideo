@@ -1,11 +1,11 @@
-import { getYear } from "../../../helpers";
+import { getYear } from "@/helpers";
 import {
   CollectionWithType,
   CreditsResponse,
   MovieWithType,
   Video,
-} from "../../../types";
-import Modal from "../../ui/Modal";
+} from "@/types";
+import Modal from "@components/ui/Modal";
 
 type Data = MovieWithType | CollectionWithType;
 

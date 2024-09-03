@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
-import { useMovies } from "../../../hooks/movies/useMovies";
+import { useMovies } from "@/hooks/movies/useMovies";
 import MovieCard from "@components/PageComponents/Movie/MovieCard";
 import Loader from "@components/ui/Loader/Loader";
-import { useFiltersMovies } from "../../../hooks/filters/useSiltersMovies";
+import { useFiltersMovies } from "@/hooks/filters/useSiltersMovies";
 
 function MoviesPage() {
   const { popularMoviesQuery } = useMovies();

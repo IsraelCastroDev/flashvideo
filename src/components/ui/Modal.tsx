@@ -1,7 +1,7 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useState } from "react";
 import { PlayIcon } from "./Icons";
-import { Video } from "../../types";
+import { Video } from "@/types";
 import LiteYoutuve from "./LiteYoutuve";
 
 interface Props {

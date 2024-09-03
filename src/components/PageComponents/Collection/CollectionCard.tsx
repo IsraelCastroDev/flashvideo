@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { CollectionWithType } from "../../../types";
-import { convertStringToSlug } from "../../../helpers";
-import { ImageIcon } from "../../ui/Icons";
+import { CollectionWithType } from "@/types";
+import { convertStringToSlug } from "@/helpers";
+import { ImageIcon } from "@components/ui/Icons";
 
 interface Props {
   collection: CollectionWithType;

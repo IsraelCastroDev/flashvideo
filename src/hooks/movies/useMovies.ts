@@ -3,10 +3,10 @@ import {
   getMoviesTopRated,
   getPopularMovies,
   getUpcomingReleaseMovies,
-} from "../../api/moviesAPI";
-import { addTypeToResults } from "../../helpers";
-import { getGenres } from "../../api/genres";
-import { useAppStore } from "../../store/useAppStore";
+} from "@/api/moviesAPI";
+import { addTypeToResults } from "@/helpers";
+import { getGenres } from "@/api/genres";
+import { useAppStore } from "@/store/useAppStore";
 
 export function useMovies() {
   const setGenres = useAppStore((state) => state.setGenres);

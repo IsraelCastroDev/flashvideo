@@ -2,8 +2,8 @@ import {
   MovieCreditsAPIResponse,
   PersonSchema,
   PersonSearchSchema,
-} from "../schemas/movieSchema";
-import { Person } from "../types";
+} from "@/schemas/movieSchema";
+import { Person } from "@/types";
 import { api } from "./axios";
 
 export const getDetailsByPerson = async (id: Person["id"]) => {

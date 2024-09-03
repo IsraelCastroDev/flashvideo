@@ -1,10 +1,7 @@
 import { useQueries } from "@tanstack/react-query";
-import { Person } from "../../types";
-import {
-  getDetailsByPerson,
-  getMovieCreditsFromPerson,
-} from "../../api/personAPI";
-import { addTypeToResults } from "../../helpers";
+import { Person } from "@/types";
+import { getDetailsByPerson, getMovieCreditsFromPerson } from "@/api/personAPI";
+import { addTypeToResults } from "@/helpers";
 
 export function usePersonDetails(personId: Person["id"]) {
   const result = useQueries({

@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import Loader from "@components/ui/Loader/Loader";
-import { useFilterTopRatedTVSeries } from "../../../hooks/filters/useFiltersTVSeries";
-import { useTVSerie } from "../../../hooks/tvserie/useTVSerie";
+import { useFilterTopRatedTVSeries } from "@/hooks/filters/useFiltersTVSeries";
+import { useTVSerie } from "@/hooks/tvserie/useTVSerie";
 import TVSerieCard from "@components/PageComponents/TVSerie/TVSerieCard";
 
 function TopRatedTVSeriesPage() {

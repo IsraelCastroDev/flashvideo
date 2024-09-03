@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
-import { convertStringToSlug, formatDate } from "../../../helpers";
-import { Person } from "../../../types";
-import { ImageIcon } from "../../ui/Icons";
+import { convertStringToSlug, formatDate } from "@/helpers";
+import { Person } from "@/types";
+import { ImageIcon } from "@components/ui/Icons";
 
 interface Props {
   person: Person;

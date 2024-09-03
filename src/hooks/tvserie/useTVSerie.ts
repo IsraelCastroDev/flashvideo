@@ -5,9 +5,9 @@ import {
   getOnTheAirTVSeries,
   getPopularTVSeries,
   getTopRatedTVSeries,
-} from "../../api/tvSeries";
-import { useAppStore } from "../../store/useAppStore";
-import { addTypeToResults } from "../../helpers";
+} from "@/api/tvSeries";
+import { useAppStore } from "@/store/useAppStore";
+import { addTypeToResults } from "@/helpers";
 
 export function useTVSerie() {
   const setGenresTVSeries = useAppStore((state) => state.setGenresTVSeries);

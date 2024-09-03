@@ -1,4 +1,4 @@
-import { Collection, Movie, Person, TVSerie } from "../types";
+import { Collection, Movie, Person, TVSerie } from "@/types";
 
 export const getYear = (date: string) => {
   return new Date(date).getFullYear();

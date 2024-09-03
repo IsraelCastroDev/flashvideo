@@ -1,6 +1,6 @@
-import { getYear } from "../../../helpers";
-import { CreditsResponse, TVSerie, Video } from "../../../types";
-import Modal from "../../ui/Modal";
+import { getYear } from "@/helpers";
+import { CreditsResponse, TVSerie, Video } from "@/types";
+import Modal from "@components/ui/Modal";
 
 interface Props {
   tvSerie: TVSerie;

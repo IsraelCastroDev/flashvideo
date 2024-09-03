@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAppStore } from "../../store/useAppStore";
-import { GreaterThenIcon } from "../ui/Icons";
+import { useAppStore } from "@/store/useAppStore";
+import { GreaterThenIcon } from "@components/ui/Icons";
 import { useLocation } from "react-router-dom";
 
 function Filters() {

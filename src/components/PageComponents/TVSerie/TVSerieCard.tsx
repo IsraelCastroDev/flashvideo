@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
-import { TVSerie } from "../../../types";
-import { ImageIcon } from "../../ui/Icons";
-import { convertStringToSlug, formatDate } from "../../../helpers";
+import { TVSerie } from "@/types";
+import { ImageIcon } from "@components/ui/Icons";
+import { convertStringToSlug, formatDate } from "@/helpers";
 import { useMemo } from "react";
 
 interface Props {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { MovieCredits } from "../../../types";
-import { convertStringToSlug, getYear } from "../../../helpers";
+import { MovieCredits } from "@/types";
+import { convertStringToSlug, getYear } from "@/helpers";
 
 interface Props {
   movieCreditsFromPerson: MovieCredits;

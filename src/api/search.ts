@@ -5,7 +5,7 @@ import {
   MultiAPIResponse,
   PersonSearchSchema,
   TVSeriesAPIResponse,
-} from "../schemas/movieSchema";
+} from "@/schemas/movieSchema";
 import { api } from "./axios";
 
 export const getSearchMultiResults = async (query: string) => {

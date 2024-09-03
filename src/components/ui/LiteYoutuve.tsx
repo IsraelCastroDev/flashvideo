@@ -1,6 +1,6 @@
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
-import { Video } from "../../types";
+import { Video } from "@/types";
 
 interface Props {
   id: Video["key"];

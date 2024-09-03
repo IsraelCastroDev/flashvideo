@@ -20,7 +20,7 @@ import {
   TVSeriesSchemaWithType,
   CastMemberSchemaWithType,
   GenreSchema,
-} from "../schemas/movieSchema";
+} from "@/schemas/movieSchema";
 
 export type Movie = z.infer<typeof MovieSchema>;
 export interface MovieWithType extends Movie {

@@ -1,6 +1,6 @@
-import { filterMovies } from "../../helpers";
-import { useAppStore } from "../../store/useAppStore";
-import { Movie } from "../../types";
+import { filterMovies } from "@/helpers";
+import { useAppStore } from "@/store/useAppStore";
+import { Movie } from "@/types";
 
 export function useFiltersMovies(movies: Movie[] | undefined) {
   const sort = useAppStore((state) => state.sort);

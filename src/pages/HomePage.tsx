@@ -1,6 +1,6 @@
 import Carousel from "@components/ui/Carousel";
 import Loader from "@components/ui/Loader/Loader";
-import { useMovies } from "../hooks/movies/useMovies";
+import { useMovies } from "@/hooks/movies/useMovies";
 import { toast } from "react-toastify";
 
 function HomePage() {

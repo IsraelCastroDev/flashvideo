@@ -2,8 +2,8 @@ import {
   CreditsResponse,
   TVSerieKeywordsResponse,
   TVSerieRecommendationsResponse,
-} from "../../../types";
-import Carousel from "../../ui/Carousel";
+} from "@/types";
+import Carousel from "@components/ui/Carousel";
 
 interface Props {
   tvSerieCredits: CreditsResponse;

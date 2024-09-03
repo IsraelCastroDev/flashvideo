@@ -1,5 +1,5 @@
 import { StateCreator } from "zustand";
-import { Genre } from "../types";
+import { Genre } from "@/types";
 
 export type GenresSliceType = {
   genres: Genre[];

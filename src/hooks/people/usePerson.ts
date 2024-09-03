@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPopularPerson } from "../../api/personAPI";
+import { getPopularPerson } from "@/api/personAPI";
 
 export function usePerson() {
   const popularPersonsQuery = useQuery({

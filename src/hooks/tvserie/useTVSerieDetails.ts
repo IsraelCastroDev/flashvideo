@@ -5,8 +5,8 @@ import {
   getTVSerieKeywords,
   getTVSerieRecommendations,
   getTVSerieVideos,
-} from "../../api/tvSeries";
-import { addTypeToResults } from "../../helpers";
+} from "@/api/tvSeries";
+import { addTypeToResults } from "@/helpers";
 
 export function useTVSerieDetails(id: number) {
   const tvSerieQuery = useQuery({

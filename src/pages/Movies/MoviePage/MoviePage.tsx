@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "@components/ui/Loader/Loader";
-import { useMovieDetails } from "../../../hooks/movies/useMoviesDetails";
+import { useMovieDetails } from "@/hooks/movies/useMoviesDetails";
 import MovieDetails from "@components/PageComponents/Movie/MovieDetails";
 import RelatedInformationAboutMovie from "@components/PageComponents/Movie/RelatedInformationAboutMovie";
 

@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import Loader from "@components/ui/Loader/Loader";
-import { useFilterUpcomingMovies } from "../../../hooks/filters/useSiltersMovies";
-import { useMovies } from "../../../hooks/movies/useMovies";
+import { useFilterUpcomingMovies } from "@/hooks/filters/useSiltersMovies";
+import { useMovies } from "@/hooks/movies/useMovies";
 import MovieCard from "@components/PageComponents/Movie/MovieCard";
 
 function UpcomingMovies() {

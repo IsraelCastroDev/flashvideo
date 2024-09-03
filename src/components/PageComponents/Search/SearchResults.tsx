@@ -4,11 +4,11 @@ import {
   MultiWithType,
   PersonWithType,
   SearchResult,
-} from "../../../types";
-import MovieCard from "../Movie/MovieCard";
-import PersonCard from "../Person/PersonCard";
-import CollectionCard from "../Collection/CollectionCard";
-import TVSerieCard from "../TVSerie/TVSerieCard";
+} from "@/types";
+import MovieCard from "@components/PageComponents/Movie/MovieCard";
+import PersonCard from "@components/PageComponents/Person/PersonCard";
+import CollectionCard from "@components/PageComponents/Collection/CollectionCard";
+import TVSerieCard from "@components/PageComponents/TVSerie/TVSerieCard";
 
 interface Props {
   searchResult: MultiWithType;

@@ -1,4 +1,4 @@
-import { CollectionSchema } from "../schemas/movieSchema";
+import { CollectionSchema } from "@/schemas/movieSchema";
 import { api } from "./axios";
 
 export const getCollection = async (id: number) => {

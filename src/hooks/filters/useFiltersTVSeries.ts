@@ -1,6 +1,6 @@
-import { filterTVSeries } from "../../helpers";
-import { useAppStore } from "../../store/useAppStore";
-import { TVSerie } from "../../types";
+import { filterTVSeries } from "@/helpers";
+import { useAppStore } from "@/store/useAppStore";
+import { TVSerie } from "@/types";
 
 export function useFilterPopularTVSeries(tvSeries: TVSerie[] | undefined) {
   const sort = useAppStore((state) => state.sort);

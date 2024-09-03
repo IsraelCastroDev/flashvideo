@@ -5,7 +5,7 @@ import {
   MovieWithType,
   TVSerieWithType,
 } from "../../types";
-import { convertStringToSlug, formatDate } from "../../helpers";
+import { convertStringToSlug, formatDate } from "@/helpers";
 import "swiper/css";
 
 type DataCarousel = MovieWithType[] | CastMemberWithType[] | TVSerieWithType[];

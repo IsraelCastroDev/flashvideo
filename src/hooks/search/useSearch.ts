@@ -6,7 +6,7 @@ import {
   getSearchMultiResults,
   getSearchPerson,
   getSearchTv,
-} from "../../api/search";
+} from "@/api/search";
 import { addTypeToResults } from "../../helpers";
 
 export function useSearch(query: string) {

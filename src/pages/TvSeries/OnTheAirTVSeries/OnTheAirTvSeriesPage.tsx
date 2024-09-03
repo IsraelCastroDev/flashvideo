@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
 import TVSerieCard from "@components/PageComponents/TVSerie/TVSerieCard";
 import Loader from "@components/ui/Loader/Loader";
-import { useFiltersOnTheAirTVSeries } from "../../../hooks/filters/useFiltersTVSeries";
-import { useTVSerie } from "../../../hooks/tvserie/useTVSerie";
+import { useFiltersOnTheAirTVSeries } from "@/hooks/filters/useFiltersTVSeries";
+import { useTVSerie } from "@/hooks/tvserie/useTVSerie";
 
 function OnTheAirTvSeriesPage() {
   const { airingTodayTVSeriesQuery } = useTVSerie();

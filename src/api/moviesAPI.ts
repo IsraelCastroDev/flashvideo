@@ -7,8 +7,8 @@ import {
   RecommendedMovieAPIResponse,
   UpcommingMoviesAPISchema,
   VideosAPIResponse,
-} from "../schemas/movieSchema";
-import { Movie } from "../types";
+} from "@/schemas/movieSchema";
+import { Movie } from "@/types";
 import { api } from "./axios";
 
 export const getPopularMovies = async () => {

@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
-import { convertStringToSlug, formatDate } from "../../../helpers";
-import { Movie } from "../../../types";
-import { ImageIcon } from "../../ui/Icons";
+import { convertStringToSlug, formatDate } from "@/helpers";
+import { Movie } from "@/types";
+import { ImageIcon } from "@components/ui/Icons";
 import { useMemo } from "react";
 
 interface Props {
