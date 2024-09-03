@@ -65,9 +65,7 @@ function AsidePerson({ person, movieCreditsFromPerson }: Props) {
           <div className="md:hidden">
             <h3 className="font-semibold">Biografía</h3>
             <p className="text-pretty">
-              {person.biography === null || person.biography?.length === 0
-                ? "Biografía no disponible"
-                : `${person.biography}`}
+              {person.biography || "Biografía no disponible"}
             </p>
           </div>
         </div>
@@ -79,45 +77,51 @@ function AsidePerson({ person, movieCreditsFromPerson }: Props) {
           <div className="hidden md:block">
             <h3 className="font-semibold md:text-2xl">Biografía</h3>
             <p className="text-pretty">
-              {person.biography === null || person.biography?.length === 0
-                ? "Biografía no disponible"
-                : `${person.biography}`}
+              {person.biography || "Biografía no disponible"}
             </p>
           </div>
 
           <h2 className="text-xl md:text-2xl font-semibold">Conocido por</h2>
-          <Carousel data={movieCreditsFromPerson.cast} />
+          {movieCreditsFromPerson.cast.length > 0 ? (
+            <Carousel data={movieCreditsFromPerson.cast} />
+          ) : (
+            <p>No se encontró la información</p>
+          )}
         </div>
 
         <div className="px-4 py-4 hidden md:block">
           <h2 className="text-xl md:text-2xl font-bold">Interpretación</h2>
 
           <div className="mt-4">
-            {movieCreditsFromPerson.cast.map((movie) => (
-              <div
-                key={movie.id}
-                className="flex items-center gap-6 border border-t-gray-500 py-2 last-of-type:border-b-gray-500"
-              >
-                <p className="font-semibold flex-initial">
-                  {movie.release_date !== ""
-                    ? getYear(movie.release_date!)
-                    : "-----"}
-                </p>
-                <div>
-                  <Link
-                    to={`/movie/${movie.id}-${convertStringToSlug(
-                      movie.title!
-                    )}`}
-                    className="font-bold hover:text-sky-500"
-                  >
-                    {movie.title}
-                  </Link>
-                  <p>
-                    como <span>{movie.character}</span>
+            {movieCreditsFromPerson.cast.length > 0 ? (
+              movieCreditsFromPerson.cast.map((movie) => (
+                <div
+                  key={movie.id}
+                  className="flex items-center gap-6 border border-t-gray-500 py-2 last-of-type:border-b-gray-500"
+                >
+                  <p className="font-semibold flex-initial">
+                    {movie.release_date !== ""
+                      ? getYear(movie.release_date!)
+                      : "-----"}
                   </p>
+                  <div>
+                    <Link
+                      to={`/movie/${movie.id}-${convertStringToSlug(
+                        movie.title!
+                      )}`}
+                      className="font-bold hover:text-sky-500"
+                    >
+                      {movie.title}
+                    </Link>
+                    <p>
+                      como <span>{movie.character}</span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>No se encontró la información</p>
+            )}
           </div>
         </div>
       </div>

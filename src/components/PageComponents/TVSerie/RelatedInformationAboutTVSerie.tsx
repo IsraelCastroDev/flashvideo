@@ -22,15 +22,21 @@ function RelatedInformationAboutTVSerie({
         <div>
           <h3 className="text-xl font-bold md:text-2xl">Reparto</h3>
           <div className="mt-2">
-            {tvSerieCredits?.cast && <Carousel data={tvSerieCredits?.cast} />}
+            {tvSerieCredits?.cast && tvSerieCredits.cast.length > 0 ? (
+              <Carousel data={tvSerieCredits?.cast} />
+            ) : (
+              <p>No hay reparto</p>
+            )}
           </div>
         </div>
 
         <div>
           <h3 className="text-xl font-bold md:text-2xl">Recomendaciones</h3>
           <div className="mt-2">
-            {tvSerieRecommendations.results && (
+            {tvSerieRecommendations.results.length > 0 ? (
               <Carousel data={tvSerieRecommendations.results} />
+            ) : (
+              <p>No hay recomendaciones</p>
             )}
           </div>
         </div>
@@ -40,13 +46,20 @@ function RelatedInformationAboutTVSerie({
         <h3 className="text-xl font-bold md:text-2xl">Palabras claves</h3>
 
         <div className="flex w-full flex-wrap justify-start gap-2 mt-2">
-          {tvSerieKweywords?.results.map((keyword) => (
-            <div key={keyword.id} className="bg-gray-300 px-2 py-1 rounded-md">
-              <p className="font-semibold text-sm md:font-bold">
-                {keyword.name}
-              </p>
-            </div>
-          ))}
+          {tvSerieKweywords.results.length > 0 ? (
+            tvSerieKweywords?.results.map((keyword) => (
+              <div
+                key={keyword.id}
+                className="bg-gray-300 px-2 py-1 rounded-md"
+              >
+                <p className="font-semibold text-sm md:font-bold">
+                  {keyword.name}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>No hay palabras claves</p>
+          )}
         </div>
       </aside>
     </section>

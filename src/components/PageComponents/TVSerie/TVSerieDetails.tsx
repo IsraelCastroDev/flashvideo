@@ -48,16 +48,15 @@ function TVSerieDetails({ tvSerie, tvSerieCredits, tvSerieVideos }: Props) {
                 <h1 className="text-center md:text-left text-xl md:text-4xl font-bold md:font-black">
                   {tvSerie.name}{" "}
                   <span className="font-semibold">
-                    ({getYear(tvSerie.first_air_date!)})
+                    {tvSerie.first_air_date &&
+                      `(${getYear(tvSerie.first_air_date!)})`}
                   </span>
                 </h1>
                 <div className="flex justify-between items-center mt-3">
-                  <p className="font-semibold">{tvSerie.first_air_date}</p>
-                  {trailer && (
-                    <>
-                      <Modal trailer={trailer} />
-                    </>
-                  )}
+                  <p className="font-semibold">
+                    {tvSerie.first_air_date && tvSerie.first_air_date}
+                  </p>
+                  {trailer && <Modal trailer={trailer} />}
                 </div>
               </div>
 
@@ -66,17 +65,21 @@ function TVSerieDetails({ tvSerie, tvSerieCredits, tvSerieVideos }: Props) {
 
                 <div>
                   <p className="text-pretty font-semibold mt-2">
-                    {tvSerie.overview}
+                    {tvSerie.overview || "Sin descripción"}
                   </p>
                 </div>
 
                 <ol className="grid grid-cols-2 gap-3 mt-4">
-                  {tvSerieCredits?.crew.slice(0, 4).map((c) => (
-                    <li key={c.credit_id}>
-                      <h3 className="font-black">{c.original_name}</h3>
-                      <p>{c.known_for_department}</p>
-                    </li>
-                  ))}
+                  {tvSerieCredits.crew.length > 0 ? (
+                    tvSerieCredits?.crew.slice(0, 4).map((c) => (
+                      <li key={c.credit_id}>
+                        <h3 className="font-black">{c.original_name}</h3>
+                        <p>{c.known_for_department}</p>
+                      </li>
+                    ))
+                  ) : (
+                    <p>No hay datos</p>
+                  )}
                 </ol>
               </div>
             </div>

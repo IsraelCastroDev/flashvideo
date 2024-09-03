@@ -79,7 +79,9 @@ function MovieDetails({ movie, credits, videos }: Props) {
 
                 <div>
                   <p className="text-pretty font-semibold mt-2">
-                    {isMovie(movie) ? movie.overview : movie.overview}
+                    {isMovie(movie)
+                      ? `${movie.overview || "No hay resumen"}`
+                      : `${movie.overview || "No hay resumen"}`}
                   </p>
                 </div>
 
@@ -87,19 +89,25 @@ function MovieDetails({ movie, credits, videos }: Props) {
                   <div>
                     <p className="text-pretty font-semibold mt-2">
                       Número de películas:{" "}
-                      <span className="font-black">{movie.parts?.length}</span>
+                      <span className="font-black">
+                        {movie.parts && movie.parts.length}
+                      </span>
                     </p>
                   </div>
                 )}
 
                 {isMovie(movie) && (
                   <ol className="grid grid-cols-2 gap-3 mt-4">
-                    {credits?.crew.slice(0, 4).map((c) => (
-                      <li key={c.credit_id}>
-                        <h3 className="font-black">{c.original_name}</h3>
-                        <p>{c.known_for_department}</p>
-                      </li>
-                    ))}
+                    {credits?.crew && credits?.crew.length > 0 ? (
+                      credits?.crew.slice(0, 4).map((c) => (
+                        <li key={c.credit_id}>
+                          <h3 className="font-black">{c.original_name}</h3>
+                          <p>{c.known_for_department}</p>
+                        </li>
+                      ))
+                    ) : (
+                      <li>No hay reparto</li>
+                    )}
                   </ol>
                 )}
               </div>

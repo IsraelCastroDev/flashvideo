@@ -29,17 +29,21 @@ const isCollectionMovies = (item: SearchResult): item is CollectionWithType => {
 function SearchResults({ searchResult }: Props) {
   return (
     <>
-      {searchResult?.results.map((res) => {
-        if (isMovie(res)) {
-          return <MovieCard movie={res} key={res.id} />;
-        } else if (isPerson(res)) {
-          return <PersonCard person={res} key={res.id} />;
-        } else if (isCollectionMovies(res)) {
-          return <CollectionCard collection={res} key={res.id} />;
-        } else {
-          return <TVSerieCard tvSerie={res} key={res.id} />;
-        }
-      })}
+      {searchResult.results.length > 0 ? (
+        searchResult?.results.map((res) => {
+          if (isMovie(res)) {
+            return <MovieCard movie={res} key={res.id} />;
+          } else if (isPerson(res)) {
+            return <PersonCard person={res} key={res.id} />;
+          } else if (isCollectionMovies(res)) {
+            return <CollectionCard collection={res} key={res.id} />;
+          } else {
+            return <TVSerieCard tvSerie={res} key={res.id} />;
+          }
+        })
+      ) : (
+        <p className="font-bold text-lg">No se encontraron resultados.</p>
+      )}
     </>
   );
 }
