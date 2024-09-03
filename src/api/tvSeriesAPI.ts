@@ -1,13 +1,15 @@
 import {
   CreditsAPIResponse,
   GenreAPIResponse,
+  VideosAPIResponse,
+} from "@/schemas/movieSchema";
+import { api } from "./axios";
+import {
   TVSerieKeywordsResponse,
   TVSerieRecommendationsAPIResponse,
   TVSeriesAPIResponse,
   TVSeriesSchema,
-  VideosAPIResponse,
-} from "@/schemas/movieSchema";
-import { api } from "./axios";
+} from "@/schemas/tvSerieSchema";
 
 export const getTVSerie = async (id: number) => {
   const { data } = await api(`/tv/${id}`);
