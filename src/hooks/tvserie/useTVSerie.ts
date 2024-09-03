@@ -7,28 +7,61 @@ import {
   getTopRatedTVSeries,
 } from "../../api/tvSeries";
 import { useAppStore } from "../../store/useAppStore";
+import { addTypeToResults } from "../../helpers";
 
 export function useTVSerie() {
   const setGenresTVSeries = useAppStore((state) => state.setGenresTVSeries);
 
   const popularTVSerieQuery = useQuery({
     queryKey: ["popularTVSerie"],
-    queryFn: getPopularTVSeries,
+    queryFn: async () => {
+      const data = await getPopularTVSeries();
+      const modifiedData = addTypeToResults(data!.results, "tvSerie");
+
+      return {
+        ...data,
+        results: modifiedData,
+      };
+    },
   });
 
   const topRatedTVSeriesQuery = useQuery({
     queryKey: ["topRatedTVSeries"],
-    queryFn: getTopRatedTVSeries,
+    queryFn: async () => {
+      const data = await getTopRatedTVSeries();
+      const modifiedData = addTypeToResults(data!.results, "tvSerie");
+
+      return {
+        ...data,
+        results: modifiedData,
+      };
+    },
   });
 
   const airingTodayTVSeriesQuery = useQuery({
     queryKey: ["airingTodayTVSeries"],
-    queryFn: getAiringTodayTVSeries,
+    queryFn: async () => {
+      const data = await getAiringTodayTVSeries();
+      const modifiedData = addTypeToResults(data!.results, "tvSerie");
+
+      return {
+        ...data,
+        results: modifiedData,
+      };
+    },
   });
 
   const onTheAirTVSeriesQuery = useQuery({
     queryKey: ["onTheAirTVSeries"],
-    queryFn: getOnTheAirTVSeries,
+    queryFn: async () => {
+      const data = await getOnTheAirTVSeries();
+      const modifiedData = addTypeToResults(data!.results, "tvSerie");
+
+      return {
+        ...data,
+        results: modifiedData,
+      };
+    },
   });
 
   const tvSeriesGenres = useQuery({
