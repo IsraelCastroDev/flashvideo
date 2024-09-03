@@ -24,7 +24,7 @@ function TVSerieCard({ tvSerie }: Props) {
           isTVSeriePage ? "" : "justify-center w-1/4 "
         }`}
       >
-        <Link to={`/movie/${tvSerie.id}-${convertStringToSlug(tvSerie.name!)}`}>
+        <Link to={`/tv/${tvSerie.id}-${convertStringToSlug(tvSerie.name!)}`}>
           {tvSerie.poster_path !== null ? (
             <img
               src={`${import.meta.env.VITE_IMAGE_URL}/w300${

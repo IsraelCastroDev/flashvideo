@@ -23,7 +23,7 @@ function PersonCard({ person }: Props) {
           isPersonPage ? "" : "justify-center w-1/4 "
         }`}
       >
-        <Link to={`/movie/${person.id}-${convertStringToSlug(person.name!)}`}>
+        <Link to={`/person/${person.id}-${convertStringToSlug(person.name!)}`}>
           {person.profile_path !== null ? (
             <img
               src={`${import.meta.env.VITE_IMAGE_URL}/w300${
