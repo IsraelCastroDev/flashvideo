@@ -18,7 +18,7 @@ Aplicación web para buscar y explorar películas, series y actores. Utiliza fil
 - **Validación de Datos**: Zod
 - **Peticiones a la API**: Axios
 - **Manejo de peticiones**: Tanstack Query (React Query)
-- **Estilos**: TailwindCSS, CSS Modules
+- **Estilos**: Tailwind CSS, CSS Modules
 - **Manejo de Rutas**: React Router
 
 ## 📦 Instalación
