@@ -30,7 +30,11 @@ function RelatedInformationAboutMovie({
             <div>
               <h3 className="text-xl font-bold md:text-2xl">Reparto</h3>
               <div className="mt-2">
-                {credits?.cast && <Carousel data={credits?.cast} />}
+                {credits.cast.length > 0 ? (
+                  <Carousel data={credits?.cast} />
+                ) : (
+                  <p>No hay reparto</p>
+                )}
               </div>
             </div>
           )}
@@ -40,8 +44,10 @@ function RelatedInformationAboutMovie({
               <h3 className="text-xl font-bold md:text-2xl">Recomendaciones</h3>
               <div className="mt-2">
                 {/* movies recommendations */}
-                {recommendations?.results && (
+                {recommendations.results.length > 0 ? (
                   <Carousel data={recommendations.results} />
+                ) : (
+                  <p>No hay recomendaciones</p>
                 )}
               </div>
             </div>
