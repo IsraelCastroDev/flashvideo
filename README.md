@@ -1,50 +1,40 @@
-# React + TypeScript + Vite
+# 🎬 Aplicación de Películas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para buscar y explorar películas, series y actores. Utiliza filtros avanzados para refinar las búsquedas y permite ordenar los resultados por diversos criterios.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Búsqueda Avanzada**: Encuentra películas, series y actores con opciones de filtrado.
+- **Filtros por Categoría**: Filtra resultados por género, fecha de estreno, etc.
+- **Ordenamiento Personalizado**: Ordena resultados por título (A-Z, Z-A) o por fecha de estreno (Ascendente, Descendente).
+- **Paginación Dinámica**: Carga resultados de forma eficiente mientras navegas por los resultados.
+- **Validación de Datos**: Validación robusta de las respuestas de la API usando Zod.
 
-## Expanding the ESLint configuration
+### Pantalla de inicio
+![Pantalla de inicio](./assets/captura-1.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠 Tecnologías Utilizadas
 
-- Configure the top-level `parserOptions` property like this:
+- **Frontend**: React, TypeScript, Zustand
+- **Gestión de Estado**: Zustand (con slices para filtros y paginación)
+- **Validación de Datos**: Zod
+- **Consumo de API**: React Query
+- **Estilos**: CSS Modules, SASS (opcional)
+- **Manejo de Rutas**: React Router
+- **Backend**: (Si aplica, puedes mencionar el backend que usas)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 📦 Instalación
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Asegúrate de tener [Node.js](https://nodejs.org/) instalado en tu sistema.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Originalmente se usó pnpm.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/nombre-del-repo.git
+2. Ve al directorio del proyecto:
+   ```bash
+   cd nombre-del-repo
+3. Instala las dependencias:
+4. ```bash
+   pnpm install
