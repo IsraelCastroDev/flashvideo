@@ -29,7 +29,7 @@ function MovieDetails({ movie, credits, videos }: Props) {
           className={`bg-center bg-cover bg-no-repeat h-72 md:h-[calc(100vh-70px)] relative block opacity-45`}
           style={{
             backgroundImage: `url("${
-              movie.backdrop_path !== null
+              movie.backdrop_path
                 ? `${
                     import.meta.env.VITE_IMAGE_URL
                   }/w1920_and_h800_multi_faces${movie.backdrop_path}`
@@ -43,7 +43,7 @@ function MovieDetails({ movie, credits, videos }: Props) {
             <div className="md:w-1/3">
               <img
                 src={
-                  movie.poster_path !== null
+                  movie.poster_path
                     ? `${import.meta.env.VITE_IMAGE_URL}/w200${
                         movie.poster_path
                       }`
@@ -59,7 +59,12 @@ function MovieDetails({ movie, credits, videos }: Props) {
                 <h1 className="text-center md:text-left text-xl md:text-4xl font-bold md:font-black">
                   {isMovie(movie) ? movie.title : movie.name}{" "}
                   <span className="font-semibold">
-                    {isMovie(movie) ? `(${getYear(movie.release_date!)})` : ""}
+                    {isMovie(movie)
+                      ? `${
+                          movie.release_date &&
+                          `(${getYear(movie.release_date!)})`
+                        }`
+                      : ""}
                   </span>
                 </h1>
                 <div className="flex justify-between items-center mt-3">
