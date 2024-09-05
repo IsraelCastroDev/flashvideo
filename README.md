@@ -10,8 +10,13 @@ Aplicación web para buscar y explorar películas, series y actores. Utiliza fil
 - **Paginación Dinámica**: Carga resultados de forma eficiente mientras navegas por los resultados.
 - **Validación de Datos**: Validación robusta de las respuestas de la API usando Zod.
 
-### Pantalla de inicio
-![Pantalla de inicio](./assets/captura-1.png)
+## 📷 Capturas
+### Página de inicio
+![Página de inicio](./assets/captura-1.png)
+### Página de película
+![Página de película](./assets/captura-3.png)
+### Página de categorías
+![Página de categorías](./assets/captura-2.png)
 
 ## 🛠 Tecnologías Utilizadas
 
