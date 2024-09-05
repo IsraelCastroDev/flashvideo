@@ -44,3 +44,5 @@ Asegúrate de tener [Node.js](https://nodejs.org/) instalado en tu sistema.
 ![Página de película](./assets/captura-3.png)
 ### Página de categorías
 ![Página de categorías](./assets/captura-2.png)
+### Página de búsqueda
+![Página de búsqueda](./assets/captura-4.png)
