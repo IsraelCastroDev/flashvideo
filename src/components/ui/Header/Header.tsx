@@ -150,7 +150,7 @@ function Header() {
                         onClick={handleCloseMenu}
                       >
                         <Link
-                          to={"/tv/airing-today"}
+                          to={"/tv/on-the-air"}
                           className="w-full block hover:bg-gray-300 text-white md:text-gray-600 p-2 rounded-md"
                         >
                           En televisión
