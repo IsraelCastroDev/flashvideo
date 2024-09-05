@@ -100,9 +100,9 @@ function Carousel({ data }: Props) {
             <div className="p-2">
               <h2
                 className="text-sm font-bold"
-                title={`${isMovie(item) ? item.title : item.original_name}`}
+                title={`${isMovie(item) ? item.title : item.name}`}
               >
-                {isMovie(item) ? item.title : item.original_name}
+                {isMovie(item) ? item.title : item.name}
               </h2>
               {isCast(item) && (
                 <p className="text-sm text-gray-600">{item.character}</p>
