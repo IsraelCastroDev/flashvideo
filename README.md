@@ -29,7 +29,7 @@ Asegúrate de tener [Node.js](https://nodejs.org/) instalado en tu sistema.
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/nombre-del-repo.git
+   git clone https://github.com/IsraelCastroDev/flashvideo
 2. Ve al directorio del proyecto:
    ```bash
    cd nombre-del-repo
